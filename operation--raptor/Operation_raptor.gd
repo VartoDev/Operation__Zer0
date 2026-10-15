@@ -11,6 +11,7 @@ var Sound_gespielt = false
 
 
 
+
 # -----Wurzeln--------
 @onready var camera: Camera3D = $Camera3D
 @onready var Walking = $Walking_Sound
@@ -40,7 +41,6 @@ func _input(event: InputEvent) -> void:
 		
 
 		
-		#$AK47.rotate_x(-event.relative.y *  mouse_sensitivity * 1)
 		
 		# ALT (Fehlerhaft):
 
@@ -51,9 +51,9 @@ func _input(event: InputEvent) -> void:
 func _process(delta: float) -> void:
 	
 	time_passed += delta
-	var breathing = sin(1.5 * time_passed ) * 0.02 
-	var breathing2 = sin(1.5 * time_passed ) * 0.02 
-	var breathing3 = sin(1.5 * time_passed ) * 0.04 
+	var breathing = sin(0.5 * time_passed ) * 0.02 
+	var breathing2 = sin(0.5 * time_passed ) * 0.02 
+	var breathing3 = sin(0.5 * time_passed ) * 0.04 
 	
 	
 	
@@ -67,8 +67,8 @@ func _process(delta: float) -> void:
 	
 	
 	
-	$".".position.y = breathing3
-	$AK47.position.y = breathing
+	$".".position.y = breathing3 
+	$AK47.position.y = breathing + 1
 	$AK47.position.x = breathing2
 	
 	if Input.is_action_just_pressed("Schießen"):
@@ -77,11 +77,6 @@ func _process(delta: float) -> void:
 		$Shot.play()
 		#ändere es noch um das shell drop random.radiant (1,4) ist 
 		$Shell_drop.play()
-		await get_tree().create_timer(2.5).timeout
-		
-		$Shell_drop.stop()
-		
-		print("Animation wird gestartet")
 		
 		
 		
@@ -107,7 +102,7 @@ func _process(delta: float) -> void:
 func _physics_process(_delta: float) -> void:
 	var input_dir = Vector3.ZERO
 
-	if Input.is_key_pressed(KEY_W) or Input.is_action_pressed("ui_up"):
+	if Input.is_key_pressed(KEY_W) or Input.is_action_pressed("ui_up") and Global.allowed_move:
 		input_dir -= transform.basis.z
 		if not Sound_gespielt:
 			Walking.play()
@@ -115,7 +110,7 @@ func _physics_process(_delta: float) -> void:
 	
 			
 		
-	if Input.is_key_pressed(KEY_S) or Input.is_action_pressed("ui_down"):
+	if Input.is_key_pressed(KEY_S) or Input.is_action_pressed("ui_down") and Global.allowed_move:
 		input_dir += transform.basis.z
 		if not Sound_gespielt:
 			Walking.play()
@@ -123,14 +118,14 @@ func _physics_process(_delta: float) -> void:
 	
 		
 	# A steuert fest nach -X (Westen)
-	if Input.is_key_pressed(KEY_A) or Input.is_action_pressed("ui_left"):
+	if Input.is_key_pressed(KEY_A) or Input.is_action_pressed("ui_left") and Global.allowed_move:
 		input_dir -= transform.basis.x
 		if not Sound_gespielt:
 			Walking.play()
 			Sound_gespielt = true
 	
 	# D steuert fest nach +X (Osten)
-	if Input.is_key_pressed(KEY_D) or Input.is_action_pressed("ui_right"):
+	if Input.is_key_pressed(KEY_D) or Input.is_action_pressed("ui_right") and Global.allowed_move:
 		input_dir += transform.basis.x
 		if not Sound_gespielt:
 			Walking.play()
