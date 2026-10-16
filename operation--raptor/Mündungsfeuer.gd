@@ -18,7 +18,7 @@ func _process(delta: float) -> void:
 		
 		
 		
-		Mündungsfeuer.transparency = 0.67
+		Mündungsfeuer.transparency = 0
 		await get_tree().create_timer(0.05).timeout  # <----- Mesh instance
 		Mündungsfeuer.transparency = 1
 

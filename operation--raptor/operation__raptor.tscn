@@ -5063,3 +5063,9 @@ mesh = SubResource("ArrayMesh_oe3rj")
 [node name="AnimationPlayer" type="AnimationPlayer" parent="human_with_ak_FINITO" unique_id=118451322]
 libraries/ = SubResource("AnimationLibrary_dcmru")
 script = ExtResource("13_08lwh")
+
+[node name="Mündungsfeuer" type="MeshInstance3D" parent="human_with_ak_FINITO" unique_id=720437217]
+transform = Transform3D(1.3113173e-08, -0.29999438, 0.0018380076, -0.30000004, -1.3113419e-08, -2.4286147e-18, 8.034081e-11, -0.0018380076, -0.29999438, -26.253757, 2.2246668, -3.5908413)
+transparency = 1.0
+mesh = SubResource("CylinderMesh_05blp")
+script = ExtResource("9_x4dg6")
