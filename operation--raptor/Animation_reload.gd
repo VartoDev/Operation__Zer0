@@ -26,7 +26,7 @@ var animation_active = true in [walk_patrol, aim_fire, fire_single, idle_to_aim,
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	print("DAS SYSTEM FUNKTIONIERT")
+	print("SYSTEM: [Animation] FUNKTIONIERT")
 	
 	
 

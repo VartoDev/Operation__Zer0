@@ -16,6 +16,9 @@ var Sound_gespielt = false
 @onready var camera: Camera3D = $Camera3D
 @onready var Walking = $Walking_Sound
 @onready var reload_animation = $ViewModel2/human_with_ak_reload/Reload_animation
+@onready var laser_pointer = $"../Player2/AK47/ViewModel/Gun/MuzzleFlash/LaserMain"
+@onready var main_charakter = $"."
+
 
 
 
@@ -23,7 +26,7 @@ var Sound_gespielt = false
 #--------func_ready-----
 
 func _ready() -> void:
-	print(">>> DAS SKRIPT LÄUFT ERFOLGREICH! <<<")
+	print("SYSTEM [Main_Code] FUNKTIONIERT") 
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	
 #------- Main Code-------
@@ -50,34 +53,36 @@ func _input(event: InputEvent) -> void:
 	
 func _process(delta: float) -> void:
 	
-	time_passed += delta
-	var breathing = sin(0.5 * time_passed ) * 0.02 
+	time_passed += delta                                            
+	 # Atemverhalten bis Z. 71  
+	# ----------------->
+	var breathing = sin(0.5 * time_passed ) * 0.02                 
 	var breathing2 = sin(0.5 * time_passed ) * 0.02 
 	var breathing3 = sin(0.5 * time_passed ) * 0.04 
+
 	
-	
-	
-	
-	if Input.is_key_pressed(KEY_W) or Input.is_key_pressed(KEY_S) or Input.is_key_pressed(KEY_D) or Input.is_key_pressed(KEY_A) :
+	if Input.is_key_pressed(KEY_W) or Input.is_key_pressed(KEY_S)\
+	 or Input.is_key_pressed(KEY_D) or Input.is_key_pressed(KEY_A) :
 		breathing3 = sin(7 * time_passed ) * 0.07 
 		breathing = sin(5 * time_passed ) * 0.01 
 		breathing2 = sin(5 * time_passed ) * 0.01 
 	else:
 		breathing3 = sin(1.5 * time_passed ) * 0.04 
 	
-	
-	
 	$".".position.y = breathing3 
 	$AK47.position.y = breathing + 1
 	$AK47.position.x = breathing2
 	
+	# Richtig stellung des laserpointes 
+	
+	
+
+	
 	if Input.is_action_just_pressed("Schießen"):
-		
-		print("Funktioniert!")
 		$Shot.play()
-		#ändere es noch um das shell drop random.radiant (1,4) ist 
-		$Shell_drop.play()
-		
+		$Shell_drop.play()                 #ändere es noch um das shell drop random.radiant (1,4) ist 
+							
+		 
 		
 		
 		

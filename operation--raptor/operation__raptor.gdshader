@@ -1,18 +1,26 @@
+
 shader_type canvas_item;
 
-uniform float scanline_count : hint_range(10.0, 1980.0) = 15400.0;
-uniform float aberration : hint_range(0.0, 0.1) = 0.003;
-uniform float contrast : hint_range(0.5, 3.0) = 3.50;
+uniform float scanline_count : hint_range(10.0, 1920.0) = 540.0;
+uniform float contrast : hint_range(0.5, 3.0) = 1.0;
 uniform float distortion : hint_range(0.0, 0.5) = 0.1;
-uniform float grain_strength : hint_range(0.0, 0.1) = 0.93;
-uniform float pixel_size : hint_range(1.0, 32.0) = 116.0; // Je höher, desto pixeliger (1.0 = normal)
+uniform float grain_strength : hint_range(0.0, 0.1) = 0.03;
+uniform float blur_strength : hint_range(0.0, 2.0, 0.05) = 0.65;
+uniform float glitch_strength : hint_range(0.0, 0.08, 0.001) = 0.022;
+uniform float glitch_frequency : hint_range(1.0, 30.0, 1.0) = 12.0;
 
-// Godot 4 benötigt diesen genauen Hinweis, um die gerenderte 3D-Welt zu fangen
-uniform sampler2D screen_tex : hint_screen_texture, filter_linear_mipmap;
+uniform sampler2D screen_tex : hint_screen_texture, filter_linear_mipmap, repeat_disable;
 
-// Pseudo-zufällige Rauschfunktion basierend auf Pixel-Koordinaten und Zeit
 float noise(vec2 co) {
-    return fract(sin(dot(co, vec2(12.9898, 78.233))) * 1143758.5453);
+    return fract(
+        sin(dot(co, vec2(12.9898, 12.233))) * 20000.5453
+    );
+}
+
+float hash21(vec2 p) {
+    return fract(
+        sin(dot(p, vec2(127.1, 311.7))) * 43758.5453123
+    );
 }
 
 vec2 uv_curve(vec2 uv) {
@@ -22,36 +30,165 @@ vec2 uv_curve(vec2 uv) {
     return uv * 0.5 + 0.5;
 }
 
-void fragment() {
-    // 1. Pixelation-Effekt berechnen (Pixel künstlich vergrößern)
-    // Holt die echte Auflösung des Bildschirms ab
-    vec2 text_size = vec2(textureSize(screen_tex, 0)); 
-    // Teilt das Bild in feste Rasterblöcke auf
-    vec2 pixelated_uv = floor(SCREEN_UV * (text_size / pixel_size)) / (text_size / pixel_size);
+vec3 sample_screen(vec2 uv) {
+    return texture(
+        screen_tex,
+        clamp(uv, vec2(0.001), vec2(0.999))
+    ).rgb;
+}
 
-    // 2. Die normale Linsenkrümmung auf die pixeligen Koordinaten anwenden
+vec3 blurred_screen(vec2 uv, vec2 offset) {
+    vec3 color = sample_screen(uv) * 4.0;
+
+    color += sample_screen(uv + vec2(offset.x, 0.0)) * 2.0;
+    color += sample_screen(uv - vec2(offset.x, 0.0)) * 2.0;
+    color += sample_screen(uv + vec2(0.0, offset.y)) * 2.0;
+    color += sample_screen(uv - vec2(0.0, offset.y)) * 2.0;
+
+    color += sample_screen(uv + offset);
+    color += sample_screen(uv - offset);
+    color += sample_screen(uv + vec2(offset.x, -offset.y));
+    color += sample_screen(uv + vec2(-offset.x, offset.y));
+
+    return color / 16.0;
+}
+
+void fragment() {
+    vec2 target_resolution = vec2(400.0, 400.0);
+
+    vec2 pixelated_uv = (
+        floor(SCREEN_UV * target_resolution) + vec2(0.5)
+    ) / target_resolution;
+
+    float frame_id = floor(TIME * glitch_frequency);
+
+    float glitch_trigger = step(
+        0.88,
+        hash21(vec2(frame_id, 17.0))
+    );
+
+    float secondary_trigger = step(
+        0.94,
+        hash21(vec2(frame_id, 98.4))
+    );
+
+    float band_center = hash21(vec2(frame_id, 31.7));
+
+    float band_size = mix(
+        0.004,
+        0.035,
+        hash21(vec2(frame_id, 4.3))
+    );
+
+    float glitch_band = 1.0 - smoothstep(
+        band_size,
+        band_size + 0.003,
+        abs(SCREEN_UV.y - band_center)
+    );
+
+    float second_center = hash21(vec2(frame_id, 62.8));
+
+    float second_size = mix(
+        0.0015,
+        0.008,
+        hash21(vec2(frame_id, 23.6))
+    );
+
+    float second_band = 1.0 - smoothstep(
+        second_size,
+        second_size + 0.0015,
+        abs(SCREEN_UV.y - second_center)
+    );
+
+    float line_shift = (
+        hash21(vec2(frame_id, 7.4)) - 0.5
+    ) * 2.0;
+
+    float secondary_shift = (
+        hash21(vec2(frame_id, 44.2)) - 0.5
+    ) * 2.0;
+
+    float active_glitch = glitch_band * glitch_trigger;
+    float active_secondary = second_band * secondary_trigger;
+
+    pixelated_uv.x += line_shift
+        * glitch_strength
+        * active_glitch;
+
+    pixelated_uv.x += secondary_shift
+        * glitch_strength
+        * 0.35
+        * active_secondary;
+
     vec2 curved_uv = uv_curve(pixelated_uv);
-    
-    if (curved_uv.x < 0.0 || curved_uv.x > 1.0 || curved_uv.y < 0.0 || curved_uv.y > 1.0) {
+
+    if (
+        curved_uv.x < 0.0 ||
+        curved_uv.x > 1.0 ||
+        curved_uv.y < 0.0 ||
+        curved_uv.y > 1.0
+    ) {
         COLOR = vec4(0.0, 0.0, 0.0, 1.0);
     } else {
-        // Holt die Farben aus der screen_tex mit den verpixelten, gekrümmten UVs
-        float r = texture(screen_tex, vec2(curved_uv.x + aberration, curved_uv.y)).r;
-        float g = texture(screen_tex, curved_uv).g;
-        float b = texture(screen_tex, vec2(curved_uv.x - aberration, curved_uv.y)).b;
-        
-        vec3 color = vec3(r, g, b);
-        
-        // Berechnet die analogen Scanlines
-        float scanline = sin(curved_uv.y * scanline_count * PI * 2.0);
+        vec2 blur_offset = (
+            vec2(1.0) / target_resolution
+        ) * blur_strength;
+
+        vec3 color = blurred_screen(
+            curved_uv,
+            blur_offset
+        );
+
+        float glitch_mask = clamp(
+            active_glitch + active_secondary,
+            0.0,
+            1.0
+        );
+
+        float static_noise = noise(vec2(
+            floor(SCREEN_UV.x * 420.0),
+            frame_id + floor(SCREEN_UV.y * 900.0)
+        ));
+
+        color += vec3(
+            (static_noise - 0.5) * 0.18 * glitch_mask
+        );
+
+        float glitch_flicker = (
+            hash21(vec2(frame_id, 55.0)) - 0.5
+        ) * 0.22;
+
+        color += vec3(
+            glitch_flicker * glitch_mask
+        );
+
+        color = clamp(
+            (color - 0.5) * contrast + 0.5,
+            0.0,
+            1.0
+        );
+
+        float scanline = sin(
+            curved_uv.y * scanline_count * PI * 2.0
+        );
+
         scanline = (scanline + 1.0) / 2.0;
         scanline = mix(0.7, 1.0, scanline);
+
         color *= scanline;
-        
-        // Berechnet das Sensor-Rauschen (nutzt auch die Pixel-UVs für groberes Rauschen)
-        float grain = (noise(curved_uv + TIME) - 0.5) * grain_strength;
-        color += vec3(grain);
-        
-        COLOR = vec4(color, 1.0);
+
+        float grain = noise(
+            floor(curved_uv * target_resolution)
+            + vec2(TIME * 17.0, TIME * 11.0)
+        ) * grain_strength;
+
+        color += vec3(
+            grain - grain_strength * 0.5
+        );
+
+        COLOR = vec4(
+            clamp(color, 0.0, 1.0),
+            1.0
+        );
     }
 }

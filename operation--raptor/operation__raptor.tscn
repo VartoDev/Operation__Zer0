@@ -11,16 +11,19 @@
 [ext_resource type="AudioStream" uid="uid://dy2vognjfoc74" path="res://Sounds/Shell_Casing.mp3" id="8_08lwh"]
 [ext_resource type="PackedScene" uid="uid://crxuyfbksua2c" path="res://gmc_yukon_xl_presidential_state_car.glb" id="9_4ss8y"]
 [ext_resource type="Script" uid="uid://dw6hyfbl8pl01" path="res://Mündungsfeuer.gd" id="9_x4dg6"]
+[ext_resource type="Script" uid="uid://dq68r7aw5eebx" path="res://Raycast.gd" id="10_08lwh"]
 [ext_resource type="Script" uid="uid://c02las64vodw3" path="res://Animation_reload.gd" id="13_08lwh"]
+[ext_resource type="AudioStream" uid="uid://da6q7celgyh26" path="res://Sounds/bullet_hit_metal_002_(1).mp3" id="14_mwdpx"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_5wpy2"]
 shader = ExtResource("6_2u7n7")
 shader_parameter/scanline_count = 240.0
-shader_parameter/aberration = 0.003
 shader_parameter/contrast = 1.15
 shader_parameter/distortion = 0.1
 shader_parameter/grain_strength = 0.03
-shader_parameter/pixel_size = 3.0
+
+[sub_resource type="AudioStreamMP3" id="AudioStreamMP3_mwdpx"]
+data = PackedByteArray("SUQzBAAAAAABBVRJVDIAAAAMAAADSGl0IE1hcmtlcgBUUEUxAAAAEAAAA01ldGFsbGljRG9vbTE2AFRYWFgAAAAoAAADY29tbWVudABCcm91Z2h0IHRvIHlvdSBieSBmbGFzaGtpdC5jb20AVFNTRQAAAA8AAANMYXZmNTcuODMuMTAwAAAAAAAAAAAAAAD/+1AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABJbmZvAAAADwAAAAQAAAdXAFVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVY6Ojo6Ojo6Ojo6Ojo6Ojo6Ojo6Ojo6Ojo7Hx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fH/////////////////////////////////wAAAABMYXZjNTcuMTAAAAAAAAAAAAAAAAAkBFEAAAAAAAAHV7rtOj0AAAAAAAAAAAAAAAAAAAAA//uQZAAAA1lEwIUkwAI16mgQoAgAUSWRMTj2gAj1lyPnAiAA9zRkYrJ9IATBMVo25znROzAQAAAhGf+7Jkyd5////etBAhERd3ZMmTJpoRERERF3faIiN8REe7IEEIj/+7JkyZO/BMnd7/7iIj9oIAMBhaetGOYgAAAA7gAAAAeHh4eGAAAAAAeHh4eGAAB////////////5z5yEb///znEEITyHPQhCEIc5znOd5znOc55AMDFnf//gAdAAB3gYefAMAAAuXHjyriSapAH/FDYHjJ91J2RE7z8+ywHC+mkCwNkEEUDriYDkqT5padOjzOboo0LlPKJJKsm7tWy0wuAShaMAPBNNJmrdJS2dSB8+XC+PEvDwZB6m1OqgyDrUPEvDCHhhx5hcx4F9Tp0Fvf7a2oKJcyHgUE3SPG5Tb//+328plNk5NKZTJhQLCwAgAAGEgAgAAH9If///4tE/+0G39/769U/bxweCmUIdksorS9iC2wufMl7TMpapNYfDArWfURECzmKIJiqleKF2wDmyMnRnT+CMNvgXJ2FIozaj//uSZAqDlBtZ3oclIAIwQAjh4AgAD/k7d8ewxwi4gCPUEIm4CjhQgjOe5TEJ/JvJKg3NBi7aDMQQI9J5lF6yshfXajlLyyF+4toPSjmxRsy5pV7LaNdHTFzXbgpCcKQLpW2pKdEdSgp+gs4JEdQumPNJjbbpRiFKXiTLc6ZlBHPYZbdpNOb2FrOWsHRmIzpMy79oB//3WvbxlCtmih51tNtL4VS11QvpscK5dIk9bTKUOU8yd3TbAkOKiqnLAAVXAyCRgAEUEIAyBhF1QgeotwhSXGwBRMA0Co0B9jZJMjJcZXBIGAUEgYBa1a5yVEqYGSk0jBJLKqmqqtFvWNXOJb9OJV2OSOt5avRLZfK/9abXk4KJEkjiKMkZbcOzzOORVTU8+YO2u2znNI1T9qJa0sSrwUGioirsjirATCON8V+Q0WiHb1v/1qTxf1KmqmelNDWBLse3NJrirWH2/ZhWwPkYxqrRZ7mtIE4jHpNuShqVCsJZBBAEqRZoJc7EWbwVI5jYO9DDWXlpTK9U1gMzC8cq+taRnqHLVx5KHEpc6lOa1//7kmQYgZREYk9Z6FVyMmAY5QAiAAvtixAgjNcBmTFiCBCMeMdSQHwOmHL/DLV/UjA+BSHhxNZTmlX//8ioOmHFFgtBUebDmh0Lh6Vdf//8HA6KBEDooEQPB+HpV8OHoLoXAIQSREA1CBJDlR//Q40w5Jqf9TTnbopKcOAvAH7MsXZNJ3bPM/pddQNfkdSiDb1TS22i3bW8gPQMrHNDs8ITLRqzTCpdK36L3JWPGcWZGL+83OSI40xto6rkdVGSKiVe9bh36hrvrk8XIYjNhMRmmCy0PNy2IaUqcnS/sRtzvfMttiN8FII/uVs0SlzX+CFm5uc4vX3e059pVy2vH2kfrpdiZd41PV7Segh6WQmHyQ3iKKMWxJZustIAMPFHlwaRHlFLT2I1KK3ULIjN3S1hsxAbExEpOIZxReZvXIwNCI3O1VdQUY3Q4SBAMzcL0c0Du0dhdY3rHhydILEJQL4cguOERwQDuwNKlKFRsQbAhAC+pY0QACQgEzDciCEIQrC5cT4hP5CYn/J3hCFeYYhCEzYUKiFxC8lmEMIU1JRKqvD/+5JEFw/yql5CWCEccGPMeBAEZnwAAAGkAAAAIAAANIAAAATq7M3V/9mUofGbqr6lVZmDAQpj9mNmP/ZmZmZQqykzdVfoUTTBUYW/5CfCsY1jH3h6r1Wb6FARKsx/0uHeNlC+zKOU1VRxIkSo1Gcre1Y8z5IkSOy2zlbNfzjORRqnxq313BQnGqqliSXOJJVM+q9VRuVvliVf+Zapyc848//P+8kZqq+HLIo0BQ1rTEFNRTMuMTAwVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y4vbr"]
 resource_name = "Scene_-_Root"
@@ -201,6 +204,19 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_j0xd1")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_x4dg6"]
+albedo_color = Color(0.96982557, 0, 0.20008665, 1)
+emission_enabled = true
+emission = Color(1, 0.23137255, 0, 1)
+emission_energy_multiplier = 0.1
+emission_on_uv2 = true
+anisotropy_enabled = true
+anisotropy = 1.0
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_5wpy2"]
+material = SubResource("StandardMaterial3D_x4dg6")
+height = 4701.144
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_555ar"]
 _surfaces = [{
@@ -4745,14 +4761,23 @@ _data = {
 &"walk-reload": SubResource("Animation_wvais")
 }
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o61qs"]
-albedo_color = Color(1, 0.53333336, 0.11372549, 1)
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l36o3"]
+albedo_color = Color(0.9892258, 0.5125255, 0.2205342, 1)
+emission_enabled = true
+emission_energy_multiplier = 8.05
+emission_on_uv2 = true
 
-[sub_resource type="CylinderMesh" id="CylinderMesh_05blp"]
-material = SubResource("StandardMaterial3D_o61qs")
+[sub_resource type="CylinderMesh" id="CylinderMesh_eivwk"]
+material = SubResource("StandardMaterial3D_l36o3")
 top_radius = 0.0
 bottom_radius = 0.18
 cap_top = false
+
+[sub_resource type="BoxMesh" id="BoxMesh_05blp"]
+size = Vector3(0.35595703, 0.24597168, 0.3413086)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5wpy2"]
+size = Vector3(1, 2.5697632, 0.7788086)
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_05blp"]
 
@@ -4781,9 +4806,10 @@ glow_blend_mode = 2
 fog_enabled = true
 fog_light_color = Color(0.07058824, 0.07058824, 0.07058824, 1)
 fog_light_energy = 0.0
-fog_density = 0.1546
+fog_sun_scatter = 1.0
+fog_density = 0.1646
 volumetric_fog_enabled = true
-volumetric_fog_density = 0.1325
+volumetric_fog_density = 0.1925
 volumetric_fog_emission_energy = 1024.0
 volumetric_fog_gi_inject = 0.5
 volumetric_fog_anisotropy = 0.65
@@ -4791,9 +4817,21 @@ volumetric_fog_ambient_inject = 5.8
 adjustment_enabled = true
 adjustment_brightness = 1.12
 adjustment_contrast = 3.15
-adjustment_saturation = 0.23
+adjustment_saturation = 2.0
 
-[sub_resource type="SystemFont" id="SystemFont_1fj8a"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_ntaqt"]
+size = Vector3(3.6578522, 2.8693848, 10.789246)
+
+[sub_resource type="FontVariation" id="FontVariation_l36o3"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mwdpx"]
+albedo_color = Color(0.9892258, 0.5125255, 0.2205342, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_x4dg6"]
+material = SubResource("StandardMaterial3D_mwdpx")
+top_radius = 0.0
+bottom_radius = 0.18
+cap_top = false
 
 [node name="Operation_Raptor" type="Node3D" unique_id=625757802]
 
@@ -4802,11 +4840,12 @@ transform = Transform3D(-3.4733614e-05, 0, -1, 0, 1, 0, 1, 0, -3.4733614e-05, -3
 script = ExtResource("1_bi2oh")
 
 [node name="Camera3D" type="Camera3D" parent="Player" unique_id=175659033]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.22246921, 2.1109252, -0.073345184)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.22246838, 2.1109252, -0.09680176)
 current = true
 fov = 111.6
 
 [node name="CanvasLayer" type="CanvasLayer" parent="Player/Camera3D" unique_id=1754816361]
+layer = 0
 
 [node name="ColorRect" type="ColorRect" parent="Player/Camera3D/CanvasLayer" unique_id=1868731790]
 material = SubResource("ShaderMaterial_5wpy2")
@@ -4827,11 +4866,11 @@ parameters/looping = true
 stream = ExtResource("5_4ss8y")
 volume_db = 80.0
 autoplay = true
-parameters/looping = false
+parameters/looping = true
 
 [node name="Shot" type="AudioStreamPlayer" parent="Player" unique_id=320586467]
 stream = ExtResource("7_1fj8a")
-pitch_scale = 0.8
+pitch_scale = 0.78
 max_polyphony = 5
 
 [node name="Reload" type="AudioStreamPlayer" parent="Player" unique_id=1400409678]
@@ -4840,8 +4879,12 @@ max_polyphony = 2
 
 [node name="Shell_drop" type="AudioStreamPlayer" parent="Player" unique_id=372165850]
 stream = ExtResource("8_08lwh")
-volume_db = 17.5
+volume_db = 24.0
 max_polyphony = 32
+
+[node name="Hitmarker" type="AudioStreamPlayer" parent="Player" unique_id=1992175471]
+stream = SubResource("AudioStreamMP3_mwdpx")
+volume_db = 3.324
 
 [node name="AK47" type="Node3D" parent="Player" unique_id=631223262]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.9600424, 0)
@@ -4866,8 +4909,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.20418629, 0.135, 0.01994959
 mesh = SubResource("ArrayMesh_08lwh")
 
 [node name="MuzzleFlash" type="MeshInstance3D" parent="Player/AK47/ViewModel/Gun" unique_id=1217799686]
-transform = Transform3D(9.9188066e-05, 8.7617e-06, -9.395756e-06, 1.1044966e-11, -7.314751e-05, -6.821116e-05, -1.2847086e-05, 6.76461e-05, -7.254156e-05, 0.79, 0.113, -0.099)
+transform = Transform3D(9.9188066e-05, 0, 1.2847074e-05, 0, 0.000100016594, 0, -1.2847074e-05, 0, 9.9188066e-05, 0.79, 0.113, -0.099)
 mesh = SubResource("ArrayMesh_mwdpx")
+
+[node name="LaserMain" type="MeshInstance3D" parent="Player/AK47/ViewModel/Gun/MuzzleFlash" unique_id=68385601]
+transform = Transform3D(5.8383017, -99.7214, -4.269949, -72.780014, -7.180456, 68.18343, -68.30976, -0.8731954, -73.00615, 234323.53, 16864.977, 2023.5293)
+mesh = SubResource("CylinderMesh_5wpy2")
 
 [node name="R_Upper" type="MeshInstance3D" parent="Player/AK47/ViewModel" unique_id=1695207622]
 transform = Transform3D(0.9918213, -0.11943127, -0.045018706, 0.10953839, 0.9775377, -0.18005958, 0.065512225, 0.17365566, 0.98262495, -0.12723498, 0.69988894, 0.2853274)
@@ -4882,7 +4929,7 @@ transform = Transform3D(0.9945882, -0.058479384, -0.08587431, 0.05832712, 0.9982
 mesh = SubResource("ArrayMesh_g8tqx")
 
 [node name="L_Upper" type="MeshInstance3D" parent="Player/AK47/ViewModel" unique_id=1111524883]
-transform = Transform3D(0.7593444, 0.5904677, 0.27339303, -0.30195537, -0.05241475, 0.95188004, 0.57638425, -0.8053573, 0.13849406, 0.0032111274, 0.70232576, -0.28436565)
+transform = Transform3D(0.75934434, 0.5904677, 0.27339324, -0.30195558, -0.05241479, 0.95188, 0.57638425, -0.80535734, 0.13849416, 0.0032111274, 0.70232576, -0.28436565)
 mesh = SubResource("ArrayMesh_s2t4x")
 
 [node name="L_Fore" type="MeshInstance3D" parent="Player/AK47/ViewModel" unique_id=1076113933]
@@ -4894,11 +4941,11 @@ transform = Transform3D(0.9945882, -0.058479384, -0.08587431, 0.05832712, 0.9982
 mesh = SubResource("ArrayMesh_e3gmg")
 
 [node name="Head" type="MeshInstance3D" parent="Player/AK47/ViewModel" unique_id=560129339]
-transform = Transform3D(0.9822624, 0.12817046, -0.1368684, -0.15666388, 0.9620509, -0.2234154, 0.10303913, 0.2408949, 0.9650661, -0.008757083, 0.85691625, 0.02599483)
+transform = Transform3D(0.9822624, 0.12817048, -0.1368684, -0.1566639, 0.9620509, -0.2234154, 0.10303913, 0.2408949, 0.9650661, -0.008757083, 0.85691625, 0.02599483)
 mesh = SubResource("ArrayMesh_0lsxm")
 
 [node name="Torso" type="MeshInstance3D" parent="Player/AK47/ViewModel" unique_id=1929134962]
-transform = Transform3D(0.99939084, 0.00015058006, 0.03489917, 0, 0.9999907, -0.0043146773, -0.034899496, 0.004312049, 0.99938154, -0.059669122, 0.39202845, 0.00075016316)
+transform = Transform3D(0.99939084, 0.00015058008, 0.03489917, 0, 0.9999907, -0.004314678, -0.034899496, 0.0043120496, 0.99938154, -0.059669122, 0.39202845, 0.00075016316)
 mesh = SubResource("ArrayMesh_2op43")
 
 [node name="ThighL" type="MeshInstance3D" parent="Player/AK47/ViewModel" unique_id=1771879653]
@@ -4932,8 +4979,22 @@ script = ExtResource("13_08lwh")
 [node name="Mündungsfeuer" type="MeshInstance3D" parent="Player/AK47" unique_id=1713125173]
 transform = Transform3D(-1.1112503e-11, 0.00025422452, -0.2999999, -0.3, -1.3113417e-08, -2.7755576e-18, -1.3113413e-08, 0.2999999, 0.00025422452, 0.11999047, 0.56332386, -1.3355751)
 transparency = 1.0
-mesh = SubResource("CylinderMesh_05blp")
+mesh = SubResource("CylinderMesh_eivwk")
 script = ExtResource("9_x4dg6")
+
+[node name="LaserUndSchuss" type="RayCast3D" parent="Player/AK47" unique_id=1921550634]
+transform = Transform3D(-3.4733614e-05, 0, 1, 0, 1, 0, -1, 0, -3.4733614e-05, 0.093737125, 0.57073915, -1.0886536)
+target_position = Vector3(200, 0, 0)
+debug_shape_thickness = 1
+script = ExtResource("10_08lwh")
+
+[node name="Referenzpunkt" type="MeshInstance3D" parent="Player/AK47" unique_id=153878504]
+transform = Transform3D(0.02, 0, 0, 0, 0.02, 0, 0, 0, 0.02, 0.10527778, 0.56230295, -1.0558167)
+mesh = SubResource("BoxMesh_05blp")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Player" unique_id=1696265390]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.011043906, 1.5171322, 0.066417694)
+shape = SubResource("BoxShape3D_5wpy2")
 
 [node name="Stadt" parent="." unique_id=1895705749 instance=ExtResource("2_bi2oh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.4585476, -0.0032756329, -2.7339745)
@@ -4943,8 +5004,9 @@ environment = SubResource("Environment_05blp")
 
 [node name="LampenLicht" type="AreaLight3D" parent="." unique_id=1956181394]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.70787, 10.011763, -1.694555)
-light_color = Color(1, 0.8784314, 0.21176471, 1)
-light_energy = 4.673
+light_color = Color(0.9071633, 0.89709026, 0.60313743, 1)
+light_energy = 0.079
+light_volumetric_fog_energy = 0.079
 light_size = 0.86
 shadow_enabled = true
 shadow_bias = 1.4
@@ -4966,106 +5028,162 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -73.68997, 20.085936, -46.040
 [node name="Licht3" parent="." unique_id=779141519 instance=ExtResource("1_lrg8k")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.0569115, 20.085936, -63.515675)
 
-[node name="GMC" parent="." unique_id=1298014764 instance=ExtResource("9_4ss8y")]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -58.31152, 0, -17.66603)
+[node name="GMC" type="CharacterBody3D" parent="." unique_id=1061129904]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.6293945e-06, 0, 0)
+
+[node name="GMC_Model" parent="GMC" unique_id=1298014764 instance=ExtResource("9_4ss8y")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -58.311527, 0, -17.66603)
+
+[node name="GMC_BODY" type="CollisionShape3D" parent="GMC" unique_id=425670392]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -58.254623, 2.14743, -17.570133)
+shape = SubResource("BoxShape3D_ntaqt")
+
+[node name="Bullet_Hit_Metall" type="AudioStreamPlayer" parent="GMC" unique_id=664191911]
+stream = ExtResource("14_mwdpx")
+max_polyphony = 10
 
 [node name="Text" type="Label" parent="." unique_id=2094355004]
 offset_left = 1.0
 offset_right = 1481.0
 offset_bottom = 1370.0
-theme_override_fonts/font = SubResource("SystemFont_1fj8a")
-theme_override_font_sizes/font_size = 36
-text = "Health
-Munition: 30/30
+theme_override_fonts/font = SubResource("FontVariation_l36o3")
+theme_override_font_sizes/font_size = 56
+text = "Health: 100%
+Munition: 15/15
 "
 
-[node name="human_with_ak_FINITO" type="Node3D" parent="." unique_id=1365581306]
+[node name="Player2" type="CharacterBody3D" parent="." unique_id=2136447417]
+transform = Transform3D(-3.4733614e-05, 0, -1, 0, 1, 0, 1, 0, -3.4733614e-05, -31.550243, -0.10399747, -3.6403272)
 
-[node name="ViewModel" type="Node3D" parent="human_with_ak_FINITO" unique_id=603744288]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.552105, 1.2670131, -3.7273831)
+[node name="Walking_Sound" type="AudioStreamPlayer3D" parent="Player2" unique_id=1180140085]
+transform = Transform3D(-3.4733614e-05, 0, 1, 0, 1, 0, -1, 0, -3.4733614e-05, 1.804593, -0.53105855, -23.198183)
+stream = ExtResource("5_q3rc5")
+volume_db = 39.135
+max_polyphony = 10
+parameters/looping = true
 
-[node name="Body" type="MeshInstance3D" parent="human_with_ak_FINITO/ViewModel" unique_id=2019697565]
-transform = Transform3D(0.9977966, 0, -0.0663475, 0, 1, 0, 0.0663475, 0, 0.9977966, -8.8136905e-05, -0.061, 0.0026538998)
+[node name="Wind" type="AudioStreamPlayer3D" parent="Player2" unique_id=349548266]
+stream = ExtResource("5_4ss8y")
+volume_db = 80.0
+autoplay = true
+parameters/looping = true
+
+[node name="Shot" type="AudioStreamPlayer" parent="Player2" unique_id=869293143]
+stream = ExtResource("7_1fj8a")
+pitch_scale = 0.8
+max_polyphony = 5
+
+[node name="Reload" type="AudioStreamPlayer" parent="Player2" unique_id=976433575]
+stream = ExtResource("7_x4dg6")
+max_polyphony = 2
+
+[node name="Shell_drop" type="AudioStreamPlayer" parent="Player2" unique_id=949597605]
+stream = ExtResource("8_08lwh")
+volume_db = 17.5
+max_polyphony = 32
+
+[node name="AK47" type="Node3D" parent="Player2" unique_id=1770027858]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.9600424, 0)
+
+[node name="ViewModel" type="Node3D" parent="Player2/AK47" unique_id=887729044]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, -0.39426112, 0)
+
+[node name="Body" type="MeshInstance3D" parent="Player2/AK47/ViewModel" unique_id=272215927]
+transform = Transform3D(0.9975641, 0.0009405266, -0.06975013, -2.910383e-11, 0.9999091, 0.013483002, 0.06975647, -0.013450159, 0.9974734, -0.00023851698, -0.057930637, 0.010988123)
 mesh = SubResource("ArrayMesh_o61qs")
 
-[node name="Gun" type="MeshInstance3D" parent="human_with_ak_FINITO/ViewModel" unique_id=750097031]
-transform = Transform3D(0.99410444, -0.063832976, -0.08764437, 0.0640225, 0.9979482, -0.0006497097, 0.08750601, -0.0049653333, 0.99615157, 0.3103718, 0.7919442, 0.13325083)
+[node name="Gun" type="MeshInstance3D" parent="Player2/AK47/ViewModel" unique_id=1702614261]
+transform = Transform3D(0.9945882, -0.05847938, -0.08587431, 0.05832712, 0.9982883, -0.00428319, 0.0859778, -0.0007487917, 0.99629676, 0.31464523, 0.79246986, 0.1362421)
 mesh = SubResource("ArrayMesh_1fj8a")
 
-[node name="Mag" type="MeshInstance3D" parent="human_with_ak_FINITO/ViewModel/Gun" unique_id=904884887]
+[node name="Mag" type="MeshInstance3D" parent="Player2/AK47/ViewModel/Gun" unique_id=1234417212]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.25082475, -0.019613827, -0.03604238)
 mesh = SubResource("ArrayMesh_x4dg6")
 
-[node name="Handle" type="MeshInstance3D" parent="human_with_ak_FINITO/ViewModel/Gun" unique_id=1382925544]
+[node name="Handle" type="MeshInstance3D" parent="Player2/AK47/ViewModel/Gun" unique_id=2011568013]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.20418629, 0.135, 0.019949598)
 mesh = SubResource("ArrayMesh_08lwh")
 
-[node name="MuzzleFlash" type="MeshInstance3D" parent="human_with_ak_FINITO/ViewModel/Gun" unique_id=422704896]
-transform = Transform3D(9.9188066e-05, 1.0839512e-05, 6.8958184e-06, 0, 5.3685082e-05, -8.4387386e-05, -1.2847074e-05, 8.368833e-05, 5.3240357e-05, 0.79, 0.113, -0.099)
+[node name="MuzzleFlash" type="MeshInstance3D" parent="Player2/AK47/ViewModel/Gun" unique_id=1401701509]
+transform = Transform3D(9.9188066e-05, 0, 1.2847074e-05, 0, 0.000100016594, 0, -1.2847074e-05, 0, 9.9188066e-05, 0.79, 0.113, -0.099)
 mesh = SubResource("ArrayMesh_mwdpx")
 
-[node name="R_Upper" type="MeshInstance3D" parent="human_with_ak_FINITO/ViewModel" unique_id=2124789530]
-transform = Transform3D(0.99149567, -0.121207066, -0.047382884, 0.11117062, 0.978126, -0.17581432, 0.06765637, 0.16905154, 0.9832823, -0.12853311, 0.6979731, 0.2818202)
+[node name="LaserMain" type="MeshInstance3D" parent="Player2/AK47/ViewModel/Gun/MuzzleFlash" unique_id=224773840]
+transform = Transform3D(5.838439, -99.72143, -4.2701087, 99.812294, 5.8469644, -0.07486674, 0.32438374, -4.2584286, 99.89216, 234323.56, -13714.287, 10021.953)
+mesh = SubResource("CylinderMesh_5wpy2")
+
+[node name="R_Upper" type="MeshInstance3D" parent="Player2/AK47/ViewModel" unique_id=1835196910]
+transform = Transform3D(0.9918212, -0.11943127, -0.045018703, 0.109538384, 0.9775377, -0.18005957, 0.06551222, 0.17365566, 0.9826249, -0.12723498, 0.69988894, 0.2853274)
 mesh = SubResource("ArrayMesh_l36o3")
 
-[node name="R_Fore" type="MeshInstance3D" parent="human_with_ak_FINITO/ViewModel" unique_id=957429269]
-transform = Transform3D(0.96656054, -0.24968086, 0.0584829, 0.25638023, 0.9457433, -0.19959635, -0.005474422, 0.20791581, 0.9781314, 0.1719154, 0.48139608, 0.34659153)
+[node name="R_Fore" type="MeshInstance3D" parent="Player2/AK47/ViewModel" unique_id=1606431983]
+transform = Transform3D(0.9689245, -0.24115472, 0.055041984, 0.2473361, 0.9474081, -0.2030834, -0.003172703, 0.21038638, 0.9776131, 0.17308964, 0.48262587, 0.3483521)
 mesh = SubResource("ArrayMesh_eivwk")
 
-[node name="R_Hand" type="MeshInstance3D" parent="human_with_ak_FINITO/ViewModel" unique_id=1981897488]
-transform = Transform3D(0.99410444, -0.063832976, -0.08764437, 0.0640225, 0.9979482, -0.0006497097, 0.08750601, -0.0049653333, 0.99615157, 0.327286, 0.7801189, 0.16136973)
+[node name="R_Hand" type="MeshInstance3D" parent="Player2/AK47/ViewModel" unique_id=2027651388]
+transform = Transform3D(0.9945882, -0.05847938, -0.08587431, 0.05832712, 0.9982883, -0.00428319, 0.0859778, -0.0007487917, 0.99629676, 0.33154568, 0.78043824, 0.16428165)
 mesh = SubResource("ArrayMesh_g8tqx")
 
-[node name="L_Upper" type="MeshInstance3D" parent="human_with_ak_FINITO/ViewModel" unique_id=954049438]
-transform = Transform3D(0.7568945, 0.5925347, 0.2757049, -0.30222785, -0.05669186, 0.9515484, 0.5794557, -0.80354744, 0.13617076, 0.002885792, 0.6981693, -0.28765443)
+[node name="L_Upper" type="MeshInstance3D" parent="Player2/AK47/ViewModel" unique_id=1628517123]
+transform = Transform3D(0.7593443, 0.5904677, 0.2733932, -0.30195558, -0.052414786, 0.9518799, 0.57638425, -0.8053573, 0.13849415, 0.0032111274, 0.70232576, -0.28436565)
 mesh = SubResource("ArrayMesh_s2t4x")
 
-[node name="L_Fore" type="MeshInstance3D" parent="human_with_ak_FINITO/ViewModel" unique_id=480262826]
-transform = Transform3D(0.7479947, 0.6636486, -0.00862595, 0.008339536, 0.0035977846, 0.99995875, 0.6636523, -0.7480358, -0.0028433984, 0.33468035, 0.69250005, -0.110876404)
+[node name="L_Fore" type="MeshInstance3D" parent="Player2/AK47/ViewModel" unique_id=372060289]
+transform = Transform3D(0.752731, 0.658317, 0.0038061778, -0.008513054, 0.0039525493, 0.99995595, 0.6582729, -0.75273025, 0.008579497, 0.3355081, 0.6970246, -0.10852243)
 mesh = SubResource("ArrayMesh_o6uix")
 
-[node name="L_Hand" type="MeshInstance3D" parent="human_with_ak_FINITO/ViewModel" unique_id=1825228820]
-transform = Transform3D(0.99410444, -0.063832976, -0.08764437, 0.0640225, 0.9979482, -0.0006497097, 0.08750601, -0.0049653333, 0.99615157, 0.57706815, 0.9020816, 0.0794984)
+[node name="L_Hand" type="MeshInstance3D" parent="Player2/AK47/ViewModel" unique_id=199668813]
+transform = Transform3D(0.9945882, -0.05847938, -0.08587431, 0.05832712, 0.9982883, -0.00428319, 0.0859778, -0.0007487917, 0.99629676, 0.5818334, 0.9013953, 0.08246254)
 mesh = SubResource("ArrayMesh_e3gmg")
 
-[node name="Head" type="MeshInstance3D" parent="human_with_ak_FINITO/ViewModel" unique_id=810830397]
-transform = Transform3D(0.98286796, 0.12358208, -0.13674074, -0.15208045, 0.96291065, -0.222878, 0.10412541, 0.23985526, 0.9652084, -0.012686984, 0.85417855, 0.022143112)
+[node name="Head" type="MeshInstance3D" parent="Player2/AK47/ViewModel" unique_id=1290574471]
+transform = Transform3D(0.9822624, 0.12817048, -0.1368684, -0.1566639, 0.9620509, -0.2234154, 0.10303913, 0.2408949, 0.9650661, -0.008757083, 0.85691625, 0.02599483)
 mesh = SubResource("ArrayMesh_0lsxm")
 
-[node name="Torso" type="MeshInstance3D" parent="human_with_ak_FINITO/ViewModel" unique_id=536735203]
-transform = Transform3D(0.9994482, -0.0013057137, 0.033192035, 0.0013064335, 0.99999917, 0, -0.03319201, 4.3363187e-05, 0.999449, -0.060033496, 0.389, -0.001324374)
+[node name="Torso" type="MeshInstance3D" parent="Player2/AK47/ViewModel" unique_id=522545459]
+transform = Transform3D(0.99939084, 0.00015058008, 0.03489917, 0, 0.9999907, -0.004314678, -0.034899496, 0.0043120496, 0.99938154, -0.059669122, 0.39202845, 0.00075016316)
 mesh = SubResource("ArrayMesh_2op43")
 
-[node name="ThighL" type="MeshInstance3D" parent="human_with_ak_FINITO/ViewModel" unique_id=872250049]
-transform = Transform3D(0.8746144, -0.46996158, 0.11910321, 0.47035554, 0.8820774, 0.026554026, -0.11753762, 0.032796323, 0.99252665, -0.054621417, 0.009, -0.11923282)
+[node name="ThighL" type="MeshInstance3D" parent="Player2/AK47/ViewModel" unique_id=1992338623]
+transform = Transform3D(0.8749354, -0.46936312, 0.11910592, 0.46985576, 0.8823696, 0.02567729, -0.11714743, 0.033496637, 0.9925493, -0.05428992, 0.010472006, -0.112015024)
 mesh = SubResource("ArrayMesh_jg0cr")
 
-[node name="ShinL" type="MeshInstance3D" parent="human_with_ak_FINITO/ViewModel" unique_id=1528231591]
-transform = Transform3D(0.9927856, 0.013832817, 0.11910319, -0.017112035, 0.99950093, 0.026554022, -0.11867644, -0.028400548, 0.99252665, 0.20526731, -0.4787888, -0.13736917)
+[node name="ShinL" type="MeshInstance3D" parent="Player2/AK47/ViewModel" unique_id=1691639955]
+transform = Transform3D(0.9909486, -0.061923884, 0.11910593, 0.05927274, 0.99791145, 0.025677292, -0.12044723, -0.01838514, 0.9925493, 0.2052679, -0.4774784, -0.13053867)
 mesh = SubResource("ArrayMesh_br2mj")
 
-[node name="FootL" type="MeshInstance3D" parent="human_with_ak_FINITO/ViewModel" unique_id=330741390]
-transform = Transform3D(0.9935049, -0.11378944, 0, 0.11378944, 0.9935049, 0, 0, 0, 1, 0.19583334, -1.1604484, -0.118)
+[node name="FootL" type="MeshInstance3D" parent="Player2/AK47/ViewModel" unique_id=1172079370]
+transform = Transform3D(0.98480767, -0.17364818, 0, 0.17364818, 0.98480767, 0, 0, 0, 1, 0.2475, -1.1580541, -0.118)
 mesh = SubResource("ArrayMesh_0itsa")
 
-[node name="ThighR" type="MeshInstance3D" parent="human_with_ak_FINITO/ViewModel" unique_id=1326121383]
-transform = Transform3D(0.9744572, -0.19039075, -0.11909812, 0.19498818, 0.9804025, 0.028111728, 0.11141189, -0.050616402, 0.99248433, -0.07027943, 0.009, 0.11624718)
+[node name="ThighR" type="MeshInstance3D" parent="Player2/AK47/ViewModel" unique_id=89942453]
+transform = Transform3D(0.97318774, -0.19675745, -0.11913014, 0.20001341, 0.9796641, 0.015901865, 0.113578714, -0.03930313, 0.99275124, -0.07075095, 0.013653995, 0.12338869)
 mesh = SubResource("ArrayMesh_0emwl")
 
-[node name="ShinR" type="MeshInstance3D" parent="human_with_ak_FINITO/ViewModel" unique_id=1988865948]
-transform = Transform3D(0.8447381, 0.52175945, -0.11909813, -0.5224201, 0.8522246, 0.028111728, 0.11616592, 0.038472217, 0.99248433, 0.035006676, -0.53316265, 0.14423805)
+[node name="ShinR" type="MeshInstance3D" parent="Player2/AK47/ViewModel" unique_id=1364327757]
+transform = Transform3D(0.8848061, 0.45047292, -0.11913015, -0.45194545, 0.8919037, 0.015901865, 0.11341599, 0.03977026, 0.99275124, 0.038055927, -0.52810025, 0.14512332)
 mesh = SubResource("ArrayMesh_rlgxo")
 
-[node name="FootR" type="MeshInstance3D" parent="human_with_ak_FINITO/ViewModel" unique_id=1487158554]
-transform = Transform3D(0.94133717, 0.3374675, 0, -0.3374675, 0.94133717, 0, 0, 0, 1, -0.32083333, -1.1143799, 0.118)
+[node name="FootR" type="MeshInstance3D" parent="Player2/AK47/ViewModel" unique_id=1256064487]
+transform = Transform3D(0.9816271, 0.19080898, 0, -0.19080898, 0.9816271, 0, 0, 0, 1, -0.26916668, -1.1363786, 0.118)
 mesh = SubResource("ArrayMesh_oe3rj")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="human_with_ak_FINITO" unique_id=118451322]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Player2/AK47" unique_id=203107773]
 libraries/ = SubResource("AnimationLibrary_dcmru")
 script = ExtResource("13_08lwh")
 
-[node name="Mündungsfeuer" type="MeshInstance3D" parent="human_with_ak_FINITO" unique_id=720437217]
-transform = Transform3D(1.3113173e-08, -0.29999438, 0.0018380076, -0.30000004, -1.3113419e-08, -2.4286147e-18, 8.034081e-11, -0.0018380076, -0.29999438, -26.253757, 2.2246668, -3.5908413)
+[node name="Mündungsfeuer" type="MeshInstance3D" parent="Player2/AK47" unique_id=1000333592]
+transform = Transform3D(-1.1112503e-11, 0.00025422452, -0.2999999, -0.3, -1.3113417e-08, -2.7755576e-18, -1.3113413e-08, 0.2999999, 0.00025422452, 0.11999047, 0.56332386, -1.3355751)
 transparency = 1.0
-mesh = SubResource("CylinderMesh_05blp")
+mesh = SubResource("CylinderMesh_x4dg6")
 script = ExtResource("9_x4dg6")
+
+[node name="LaserUndSchuss" type="RayCast3D" parent="Player2/AK47" unique_id=1600568221]
+transform = Transform3D(-3.4733614e-05, 0, 1, 0, 1, 0, -1, 0, -3.4733614e-05, 0.093737125, 0.57073915, -1.0886536)
+target_position = Vector3(200, 0, 0)
+debug_shape_thickness = 1
+script = ExtResource("10_08lwh")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Player2" unique_id=1208731118]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.011043906, 1.5171322, 0.066417694)
+shape = SubResource("BoxShape3D_5wpy2")
