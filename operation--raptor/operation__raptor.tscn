@@ -4782,6 +4782,9 @@ size = Vector3(0.35595703, 0.24597168, 0.3413086)
 [sub_resource type="BoxShape3D" id="BoxShape3D_5wpy2"]
 size = Vector3(1, 2.5697632, 0.7788086)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_ubgpw"]
+size = Vector3(16.797241, 65.94551, 16.70166)
+
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_05blp"]
 
 [sub_resource type="Sky" id="Sky_lrg8k"]
@@ -4873,7 +4876,7 @@ parameters/looping = true
 
 [node name="Shot" type="AudioStreamPlayer" parent="Player" unique_id=320586467]
 stream = ExtResource("7_1fj8a")
-pitch_scale = 0.78
+pitch_scale = 0.61
 max_polyphony = 5
 
 [node name="Reload" type="AudioStreamPlayer" parent="Player" unique_id=1400409678]
@@ -5001,6 +5004,13 @@ shape = SubResource("BoxShape3D_5wpy2")
 
 [node name="Stadt" parent="." unique_id=1895705749 instance=ExtResource("2_bi2oh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.4585476, -0.0032756329, -2.7339745)
+
+[node name="Gebäude" type="CharacterBody3D" parent="Stadt" unique_id=1914694800]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34.410057, 1.6764429, 2.7339745)
+
+[node name="Buildung1part1_Hitbox" type="CollisionShape3D" parent="Stadt/Gebäude" unique_id=886301781]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.484253, 32.47276, -25.994865)
+shape = SubResource("BoxShape3D_ubgpw")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1457503334]
 environment = SubResource("Environment_05blp")
@@ -5187,6 +5197,6 @@ target_position = Vector3(200, 0, 0)
 debug_shape_thickness = 1
 script = ExtResource("10_08lwh")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Player2" unique_id=1208731118]
+[node name="Hitbox_for_player2" type="CollisionShape3D" parent="Player2" unique_id=1208731118]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.011043906, 1.5171322, 0.066417694)
 shape = SubResource("BoxShape3D_5wpy2")
