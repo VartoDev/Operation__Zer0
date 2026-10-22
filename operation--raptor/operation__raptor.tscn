@@ -695,6 +695,25 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_kn6m5")
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_mwdpx"]
+animation = &"walk-aim-fire-single"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_l36o3"]
+animation = &"walk-aim"
+
+[sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_eivwk"]
+filters = ["ViewModel/Body", "ViewModel/FootL", "ViewModel/FootR", "ViewModel/Gun", "ViewModel/Gun/Handle", "ViewModel/Gun/Mag", "ViewModel/Gun/MuzzleFlash", "ViewModel/Head", "ViewModel/L_Fore", "ViewModel/L_Hand", "ViewModel/L_Upper", "ViewModel/R_Fore", "ViewModel/R_Hand", "ViewModel/R_Upper", "ViewModel/ShinL", "ViewModel/ShinR", "ViewModel/ThighL", "ViewModel/ThighR", "ViewModel/Torso"]
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_05blp"]
+graph_offset = Vector2(-279.52142, 23.922184)
+nodes/Animation/node = SubResource("AnimationNodeAnimation_l36o3")
+nodes/Animation/position = Vector2(-150, 50)
+"nodes/Animation 2/node" = SubResource("AnimationNodeAnimation_mwdpx")
+"nodes/Animation 2/position" = Vector2(-160, 270)
+nodes/Blend2/node = SubResource("AnimationNodeBlend2_eivwk")
+nodes/Blend2/position = Vector2(70, 50)
+node_connections = [&"output", 0, &"Blend2", &"Blend2", 0, &"Animation", &"Blend2", 1, &"Animation 2"]
+
 [sub_resource type="Animation" id="Animation_fu8oi"]
 resource_name = "aim-fire"
 length = 1.32
@@ -4815,7 +4834,7 @@ fog_light_energy = 0.0
 fog_sun_scatter = 1.0
 fog_density = 0.1646
 volumetric_fog_enabled = true
-volumetric_fog_density = 0.1925
+volumetric_fog_density = 0.1125
 volumetric_fog_emission_energy = 1024.0
 volumetric_fog_gi_inject = 0.5
 volumetric_fog_anisotropy = 0.65
@@ -4876,7 +4895,7 @@ parameters/looping = true
 
 [node name="Shot" type="AudioStreamPlayer" parent="Player" unique_id=320586467]
 stream = ExtResource("7_1fj8a")
-pitch_scale = 0.61
+pitch_scale = 0.78
 max_polyphony = 5
 
 [node name="Reload" type="AudioStreamPlayer" parent="Player" unique_id=1400409678]
@@ -4890,7 +4909,7 @@ max_polyphony = 32
 
 [node name="Hitmarker" type="AudioStreamPlayer" parent="Player" unique_id=1992175471]
 stream = SubResource("AudioStreamMP3_mwdpx")
-volume_db = 3.324
+volume_db = 16.552
 
 [node name="AK47" type="Node3D" parent="Player" unique_id=631223262]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.9600424, 0)
@@ -4899,11 +4918,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.9600424, 0)
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, -0.39426112, 0)
 
 [node name="Body" type="MeshInstance3D" parent="Player/AK47/ViewModel" unique_id=1419983236]
-transform = Transform3D(0.9975641, 0.0009405266, -0.06975013, -2.910383e-11, 0.9999091, 0.013483002, 0.06975647, -0.013450159, 0.9974734, -0.00023851698, -0.057930637, 0.010988123)
+transform = Transform3D(0.9977966, 0, -0.0663475, 0, 1, 0, 0.0663475, 0, 0.9977966, -8.8136905e-05, -0.061, 0.0026538998)
 mesh = SubResource("ArrayMesh_o61qs")
 
 [node name="Gun" type="MeshInstance3D" parent="Player/AK47/ViewModel" unique_id=1112312639]
-transform = Transform3D(0.9945882, -0.058479384, -0.08587431, 0.05832712, 0.99828833, -0.00428319, 0.0859778, -0.00074879173, 0.99629676, 0.31464523, 0.79246986, 0.1362421)
+transform = Transform3D(0.99410444, -0.06383297, -0.08764437, 0.0640225, 0.99794817, -0.0006497097, 0.08750601, -0.004965333, 0.99615157, 0.3103718, 0.7919442, 0.13325083)
 mesh = SubResource("ArrayMesh_1fj8a")
 
 [node name="Mag" type="MeshInstance3D" parent="Player/AK47/ViewModel/Gun" unique_id=880550023]
@@ -4915,7 +4934,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.20418629, 0.135, 0.01994959
 mesh = SubResource("ArrayMesh_08lwh")
 
 [node name="MuzzleFlash" type="MeshInstance3D" parent="Player/AK47/ViewModel/Gun" unique_id=1217799686]
-transform = Transform3D(9.9188066e-05, 0, 1.2847074e-05, 0, 0.000100016594, 0, -1.2847074e-05, 0, 9.9188066e-05, 0.79, 0.113, -0.099)
+transform = Transform3D(9.9188066e-05, 1.0839512e-05, 6.8958184e-06, 0, 5.3685082e-05, -8.4387386e-05, -1.2847074e-05, 8.368833e-05, 5.3240357e-05, 0.79, 0.113, -0.099)
 mesh = SubResource("ArrayMesh_mwdpx")
 
 [node name="LaserMain" type="MeshInstance3D" parent="Player/AK47/ViewModel/Gun" unique_id=68385601]
@@ -4923,60 +4942,66 @@ transform = Transform3D(-0.0002984908, -0.009902392, -0.0013614434, -0.007279210
 mesh = SubResource("CylinderMesh_5wpy2")
 
 [node name="R_Upper" type="MeshInstance3D" parent="Player/AK47/ViewModel" unique_id=1695207622]
-transform = Transform3D(0.9918213, -0.11943127, -0.045018706, 0.10953839, 0.9775377, -0.18005958, 0.065512225, 0.17365566, 0.98262495, -0.12723498, 0.69988894, 0.2853274)
+transform = Transform3D(0.9914956, -0.121207066, -0.04738288, 0.11117061, 0.978126, -0.1758143, 0.06765636, 0.16905154, 0.98328227, -0.12853311, 0.6979731, 0.2818202)
 mesh = SubResource("ArrayMesh_l36o3")
 
 [node name="R_Fore" type="MeshInstance3D" parent="Player/AK47/ViewModel" unique_id=1585010446]
-transform = Transform3D(0.9689245, -0.24115472, 0.055041987, 0.2473361, 0.9474081, -0.20308341, -0.003172703, 0.21038638, 0.97761315, 0.17308964, 0.48262587, 0.3483521)
+transform = Transform3D(0.96656054, -0.24968086, 0.058482897, 0.25638023, 0.9457433, -0.19959633, -0.005474422, 0.20791581, 0.97813135, 0.1719154, 0.48139608, 0.34659153)
 mesh = SubResource("ArrayMesh_eivwk")
 
 [node name="R_Hand" type="MeshInstance3D" parent="Player/AK47/ViewModel" unique_id=1034224028]
-transform = Transform3D(0.9945882, -0.058479384, -0.08587431, 0.05832712, 0.99828833, -0.00428319, 0.0859778, -0.00074879173, 0.99629676, 0.33154568, 0.78043824, 0.16428165)
+transform = Transform3D(0.99410444, -0.06383297, -0.08764437, 0.0640225, 0.99794817, -0.0006497097, 0.08750601, -0.004965333, 0.99615157, 0.327286, 0.7801189, 0.16136973)
 mesh = SubResource("ArrayMesh_g8tqx")
 
 [node name="L_Upper" type="MeshInstance3D" parent="Player/AK47/ViewModel" unique_id=1111524883]
-transform = Transform3D(0.75934434, 0.5904677, 0.27339324, -0.30195558, -0.05241479, 0.95188, 0.57638425, -0.80535734, 0.13849416, 0.0032111274, 0.70232576, -0.28436565)
+transform = Transform3D(0.75689447, 0.5925347, 0.2757049, -0.30222785, -0.05669186, 0.9515484, 0.5794557, -0.80354744, 0.13617076, 0.002885792, 0.6981693, -0.28765443)
 mesh = SubResource("ArrayMesh_s2t4x")
 
 [node name="L_Fore" type="MeshInstance3D" parent="Player/AK47/ViewModel" unique_id=1076113933]
-transform = Transform3D(0.7527311, 0.6583171, 0.0038061778, -0.008513055, 0.00395255, 0.99995595, 0.658273, -0.7527303, 0.008579497, 0.3355081, 0.6970246, -0.10852243)
+transform = Transform3D(0.74799466, 0.66364855, -0.00862595, 0.008339535, 0.0035977843, 0.99995875, 0.66365224, -0.7480357, -0.0028433984, 0.33468035, 0.69250005, -0.110876404)
 mesh = SubResource("ArrayMesh_o6uix")
 
 [node name="L_Hand" type="MeshInstance3D" parent="Player/AK47/ViewModel" unique_id=1395843525]
-transform = Transform3D(0.9945882, -0.058479384, -0.08587431, 0.05832712, 0.99828833, -0.00428319, 0.0859778, -0.00074879173, 0.99629676, 0.5818334, 0.9013953, 0.08246254)
+transform = Transform3D(0.99410444, -0.06383297, -0.08764437, 0.0640225, 0.99794817, -0.0006497097, 0.08750601, -0.004965333, 0.99615157, 0.57706815, 0.9020816, 0.0794984)
 mesh = SubResource("ArrayMesh_e3gmg")
 
 [node name="Head" type="MeshInstance3D" parent="Player/AK47/ViewModel" unique_id=560129339]
-transform = Transform3D(0.9822624, 0.12817048, -0.1368684, -0.1566639, 0.9620509, -0.2234154, 0.10303913, 0.2408949, 0.9650661, -0.008757083, 0.85691625, 0.02599483)
+transform = Transform3D(0.98286796, 0.12358208, -0.13674074, -0.15208045, 0.96291065, -0.222878, 0.10412541, 0.23985526, 0.9652084, -0.012686984, 0.85417855, 0.022143112)
 mesh = SubResource("ArrayMesh_0lsxm")
 
 [node name="Torso" type="MeshInstance3D" parent="Player/AK47/ViewModel" unique_id=1929134962]
-transform = Transform3D(0.99939084, 0.00015058008, 0.03489917, 0, 0.9999907, -0.004314678, -0.034899496, 0.0043120496, 0.99938154, -0.059669122, 0.39202845, 0.00075016316)
+transform = Transform3D(0.9994482, -0.0013057137, 0.033192035, 0.0013064335, 0.99999917, 0, -0.03319201, 4.3363187e-05, 0.999449, -0.060033496, 0.389, -0.001324374)
 mesh = SubResource("ArrayMesh_2op43")
 
 [node name="ThighL" type="MeshInstance3D" parent="Player/AK47/ViewModel" unique_id=1771879653]
-transform = Transform3D(0.8749354, -0.46936315, 0.11910593, 0.46985576, 0.88236964, 0.025677292, -0.11714743, 0.03349664, 0.99254936, -0.05428992, 0.010472006, -0.112015024)
+transform = Transform3D(0.8746144, -0.46996155, 0.1191032, 0.47035554, 0.88207734, 0.026554024, -0.11753762, 0.03279632, 0.9925266, -0.054621417, 0.009, -0.11923282)
 mesh = SubResource("ArrayMesh_jg0cr")
 
 [node name="ShinL" type="MeshInstance3D" parent="Player/AK47/ViewModel" unique_id=405079951]
-transform = Transform3D(0.9909486, -0.061923888, 0.119105935, 0.05927274, 0.9979115, 0.025677294, -0.12044723, -0.018385142, 0.99254936, 0.2052679, -0.4774784, -0.13053867)
+transform = Transform3D(0.9927856, 0.013832816, 0.119103186, -0.017112035, 0.9995009, 0.02655402, -0.11867644, -0.028400546, 0.9925266, 0.20526731, -0.4787888, -0.13736917)
 mesh = SubResource("ArrayMesh_br2mj")
 
 [node name="FootL" type="MeshInstance3D" parent="Player/AK47/ViewModel" unique_id=1608297048]
-transform = Transform3D(0.9848077, -0.1736482, 0, 0.1736482, 0.9848077, 0, 0, 0, 1, 0.2475, -1.1580541, -0.118)
+transform = Transform3D(0.9935048, -0.11378943, 0, 0.11378943, 0.9935048, 0, 0, 0, 1, 0.19583334, -1.1604484, -0.118)
 mesh = SubResource("ArrayMesh_0itsa")
 
 [node name="ThighR" type="MeshInstance3D" parent="Player/AK47/ViewModel" unique_id=295278590]
-transform = Transform3D(0.97318774, -0.19675745, -0.11913014, 0.20001341, 0.9796641, 0.015901865, 0.113578714, -0.03930313, 0.99275124, -0.07075095, 0.013653995, 0.12338869)
+transform = Transform3D(0.9744572, -0.19039075, -0.11909812, 0.19498818, 0.9804025, 0.028111728, 0.11141189, -0.050616402, 0.99248433, -0.07027943, 0.009, 0.11624718)
 mesh = SubResource("ArrayMesh_0emwl")
 
 [node name="ShinR" type="MeshInstance3D" parent="Player/AK47/ViewModel" unique_id=1564067950]
-transform = Transform3D(0.88480616, 0.45047295, -0.11913015, -0.45194548, 0.89190376, 0.015901865, 0.113415994, 0.03977026, 0.99275124, 0.038055927, -0.52810025, 0.14512332)
+transform = Transform3D(0.84473807, 0.52175945, -0.11909813, -0.5224201, 0.8522245, 0.028111728, 0.11616591, 0.038472217, 0.99248433, 0.035006676, -0.53316265, 0.14423805)
 mesh = SubResource("ArrayMesh_rlgxo")
 
 [node name="FootR" type="MeshInstance3D" parent="Player/AK47/ViewModel" unique_id=1220288340]
-transform = Transform3D(0.98162717, 0.190809, 0, -0.190809, 0.98162717, 0, 0, 0, 1, -0.26916668, -1.1363786, 0.118)
+transform = Transform3D(0.9413371, 0.33746746, 0, -0.33746746, 0.9413371, 0, 0, 0, 1, -0.32083333, -1.1143799, 0.118)
 mesh = SubResource("ArrayMesh_oe3rj")
+
+[node name="AnimationTree" type="AnimationTree" parent="Player/AK47" unique_id=918027686]
+root_node = NodePath("../../../Player2/AK47")
+tree_root = SubResource("AnimationNodeBlendTree_05blp")
+anim_player = NodePath("../../../Player2/AK47/AnimationPlayer")
+parameters/Blend2/blend_amount = 0.5
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Player/AK47" unique_id=499993909]
 libraries/ = SubResource("AnimationLibrary_dcmru")
@@ -5102,11 +5127,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.9600424, 0)
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, -0.39426112, 0)
 
 [node name="Body" type="MeshInstance3D" parent="Player2/AK47/ViewModel" unique_id=272215927]
-transform = Transform3D(0.9975641, 0.0009405266, -0.06975013, -2.910383e-11, 0.9999091, 0.013483002, 0.06975647, -0.013450159, 0.9974734, -0.00023851698, -0.057930637, 0.010988123)
+transform = Transform3D(0.9975641, 0.0009405266, -0.06975013, 2.910383e-11, 0.9999091, 0.013483002, 0.06975647, -0.013450159, 0.9974734, -0.00023851698, -0.057930637, 0.010988123)
 mesh = SubResource("ArrayMesh_o61qs")
 
 [node name="Gun" type="MeshInstance3D" parent="Player2/AK47/ViewModel" unique_id=1702614261]
-transform = Transform3D(0.9945882, -0.05847938, -0.08587431, 0.05832712, 0.9982883, -0.00428319, 0.0859778, -0.0007487917, 0.99629676, 0.31464523, 0.79246986, 0.1362421)
+transform = Transform3D(0.9945882, -0.05847938, -0.08587432, 0.058327124, 0.9982882, -0.0042831902, 0.08597781, -0.0007487921, 0.99629676, 0.31464523, 0.79246986, 0.1362421)
 mesh = SubResource("ArrayMesh_1fj8a")
 
 [node name="Mag" type="MeshInstance3D" parent="Player2/AK47/ViewModel/Gun" unique_id=1234417212]
@@ -5118,7 +5143,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.20418629, 0.135, 0.01994959
 mesh = SubResource("ArrayMesh_08lwh")
 
 [node name="MuzzleFlash" type="MeshInstance3D" parent="Player2/AK47/ViewModel/Gun" unique_id=1401701509]
-transform = Transform3D(9.9188066e-05, 0, 1.2847074e-05, 0, 0.000100016594, 0, -1.2847074e-05, 0, 9.9188066e-05, 0.79, 0.113, -0.099)
+transform = Transform3D(9.909268e-05, 1.35469945e-05, 6.622413e-07, -4.3851533e-06, 3.6620935e-05, -9.296772e-05, -1.2834722e-05, 9.2079885e-05, 3.6876605e-05, 0.79, 0.113, -0.099)
 mesh = SubResource("ArrayMesh_mwdpx")
 
 [node name="LaserMain" type="MeshInstance3D" parent="Player2/AK47/ViewModel/Gun" unique_id=224773840]
@@ -5126,27 +5151,27 @@ transform = Transform3D(0.0005832709, -0.009945884, 0.00085977826, 0.009982888, 
 mesh = SubResource("CylinderMesh_5wpy2")
 
 [node name="R_Upper" type="MeshInstance3D" parent="Player2/AK47/ViewModel" unique_id=1835196910]
-transform = Transform3D(0.9918212, -0.11943127, -0.045018703, 0.109538384, 0.9775377, -0.18005957, 0.06551222, 0.17365566, 0.9826249, -0.12723498, 0.69988894, 0.2853274)
+transform = Transform3D(0.99182117, -0.11943128, -0.045018706, 0.109538384, 0.9775377, -0.18005958, 0.06551223, 0.17365567, 0.9826248, -0.12723498, 0.69988894, 0.2853274)
 mesh = SubResource("ArrayMesh_l36o3")
 
 [node name="R_Fore" type="MeshInstance3D" parent="Player2/AK47/ViewModel" unique_id=1606431983]
-transform = Transform3D(0.9689245, -0.24115472, 0.055041984, 0.2473361, 0.9474081, -0.2030834, -0.003172703, 0.21038638, 0.9776131, 0.17308964, 0.48262587, 0.3483521)
+transform = Transform3D(0.9689245, -0.24115472, 0.05504198, 0.2473361, 0.9474081, -0.20308338, -0.003172703, 0.21038638, 0.97761303, 0.17308964, 0.48262587, 0.3483521)
 mesh = SubResource("ArrayMesh_eivwk")
 
 [node name="R_Hand" type="MeshInstance3D" parent="Player2/AK47/ViewModel" unique_id=2027651388]
-transform = Transform3D(0.9945882, -0.05847938, -0.08587431, 0.05832712, 0.9982883, -0.00428319, 0.0859778, -0.0007487917, 0.99629676, 0.33154568, 0.78043824, 0.16428165)
+transform = Transform3D(0.9945882, -0.05847938, -0.08587432, 0.058327124, 0.9982882, -0.0042831902, 0.08597781, -0.0007487921, 0.99629676, 0.33154568, 0.78043824, 0.16428165)
 mesh = SubResource("ArrayMesh_g8tqx")
 
 [node name="L_Upper" type="MeshInstance3D" parent="Player2/AK47/ViewModel" unique_id=1628517123]
-transform = Transform3D(0.7593443, 0.5904677, 0.2733932, -0.30195558, -0.052414786, 0.9518799, 0.57638425, -0.8053573, 0.13849415, 0.0032111274, 0.70232576, -0.28436565)
+transform = Transform3D(0.7593444, 0.59046763, 0.27339318, -0.30195558, -0.05241464, 0.9518799, 0.57638407, -0.80535734, 0.13849425, 0.0032111274, 0.70232576, -0.28436565)
 mesh = SubResource("ArrayMesh_s2t4x")
 
 [node name="L_Fore" type="MeshInstance3D" parent="Player2/AK47/ViewModel" unique_id=372060289]
-transform = Transform3D(0.752731, 0.658317, 0.0038061778, -0.008513054, 0.0039525493, 0.99995595, 0.6582729, -0.75273025, 0.008579497, 0.3355081, 0.6970246, -0.10852243)
+transform = Transform3D(0.75273097, 0.658317, 0.0038061778, -0.008513054, 0.0039525493, 0.99995595, 0.6582729, -0.7527302, 0.008579497, 0.3355081, 0.6970246, -0.10852243)
 mesh = SubResource("ArrayMesh_o6uix")
 
 [node name="L_Hand" type="MeshInstance3D" parent="Player2/AK47/ViewModel" unique_id=199668813]
-transform = Transform3D(0.9945882, -0.05847938, -0.08587431, 0.05832712, 0.9982883, -0.00428319, 0.0859778, -0.0007487917, 0.99629676, 0.5818334, 0.9013953, 0.08246254)
+transform = Transform3D(0.9945882, -0.05847938, -0.08587432, 0.058327124, 0.9982882, -0.0042831902, 0.08597781, -0.0007487921, 0.99629676, 0.5818334, 0.9013953, 0.08246254)
 mesh = SubResource("ArrayMesh_e3gmg")
 
 [node name="Head" type="MeshInstance3D" parent="Player2/AK47/ViewModel" unique_id=1290574471]
@@ -5158,15 +5183,15 @@ transform = Transform3D(0.99939084, 0.00015058008, 0.03489917, 0, 0.9999907, -0.
 mesh = SubResource("ArrayMesh_2op43")
 
 [node name="ThighL" type="MeshInstance3D" parent="Player2/AK47/ViewModel" unique_id=1992338623]
-transform = Transform3D(0.8749354, -0.46936312, 0.11910592, 0.46985576, 0.8823696, 0.02567729, -0.11714743, 0.033496637, 0.9925493, -0.05428992, 0.010472006, -0.112015024)
+transform = Transform3D(0.8749354, -0.46936312, 0.11910593, 0.4698558, 0.8823695, 0.025677294, -0.11714745, 0.033496644, 0.99254924, -0.05428992, 0.010472006, -0.112015024)
 mesh = SubResource("ArrayMesh_jg0cr")
 
 [node name="ShinL" type="MeshInstance3D" parent="Player2/AK47/ViewModel" unique_id=1691639955]
-transform = Transform3D(0.9909486, -0.061923884, 0.11910593, 0.05927274, 0.99791145, 0.025677292, -0.12044723, -0.01838514, 0.9925493, 0.2052679, -0.4774784, -0.13053867)
+transform = Transform3D(0.9909486, -0.06192388, 0.11910593, 0.05927274, 0.9979114, 0.025677292, -0.12044724, -0.01838514, 0.99254924, 0.2052679, -0.4774784, -0.13053867)
 mesh = SubResource("ArrayMesh_br2mj")
 
 [node name="FootL" type="MeshInstance3D" parent="Player2/AK47/ViewModel" unique_id=1172079370]
-transform = Transform3D(0.98480767, -0.17364818, 0, 0.17364818, 0.98480767, 0, 0, 0, 1, 0.2475, -1.1580541, -0.118)
+transform = Transform3D(0.9848076, -0.17364816, 0, 0.17364816, 0.9848076, 0, 0, 0, 1, 0.2475, -1.1580541, -0.118)
 mesh = SubResource("ArrayMesh_0itsa")
 
 [node name="ThighR" type="MeshInstance3D" parent="Player2/AK47/ViewModel" unique_id=89942453]
@@ -5174,11 +5199,11 @@ transform = Transform3D(0.97318774, -0.19675745, -0.11913014, 0.20001341, 0.9796
 mesh = SubResource("ArrayMesh_0emwl")
 
 [node name="ShinR" type="MeshInstance3D" parent="Player2/AK47/ViewModel" unique_id=1364327757]
-transform = Transform3D(0.8848061, 0.45047292, -0.11913015, -0.45194545, 0.8919037, 0.015901865, 0.11341599, 0.03977026, 0.99275124, 0.038055927, -0.52810025, 0.14512332)
+transform = Transform3D(0.88480604, 0.45047292, -0.11913015, -0.45194542, 0.8919037, 0.015901865, 0.11341598, 0.03977026, 0.99275124, 0.038055927, -0.52810025, 0.14512332)
 mesh = SubResource("ArrayMesh_rlgxo")
 
 [node name="FootR" type="MeshInstance3D" parent="Player2/AK47/ViewModel" unique_id=1256064487]
-transform = Transform3D(0.9816271, 0.19080898, 0, -0.19080898, 0.9816271, 0, 0, 0, 1, -0.26916668, -1.1363786, 0.118)
+transform = Transform3D(0.98162705, 0.19080895, 0, -0.19080895, 0.98162705, 0, 0, 0, 1, -0.26916668, -1.1363786, 0.118)
 mesh = SubResource("ArrayMesh_oe3rj")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Player2/AK47" unique_id=203107773]

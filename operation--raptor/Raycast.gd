@@ -24,7 +24,7 @@ func _process(delta: float) -> void:
 				await get_tree().create_timer(0.1).timeout
 				Schuss_auf_Metall.play()
 			elif collider == gegner:
-				await get_tree().create_timer(0.1).timeout
+				await get_tree().create_timer(0.4).timeout
 				hintmarker_sound.play()			
 		print("Nichts getroffen.")
 	

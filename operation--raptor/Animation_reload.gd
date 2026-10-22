@@ -73,23 +73,8 @@ func _process(delta: float) -> void:
 			reload = false
 		if not Reload.playing:
 			reload_sound_gespielt = false
-	# aim - single shot - walk patrol
-	if (Input.is_key_pressed(KEY_W) or  Input.is_key_pressed(KEY_S) or Input.is_key_pressed(KEY_D) \
-	or Input.is_key_pressed(KEY_A)) and walk_patrol and not idle_to_aim \
-	and not reload and not walk_aim and not walk_aim_fire and not walk_fire and not walk_reload and Input.is_action_just_pressed("Schießen"):
-		reload_node.play("walk-aim-fire-single")
-		walk_aim_fire = true
-		
-	else:
-		if reload_node.current_animation == "walk-aim-fire-single":
-			await get_tree().create_timer(0.2).timeout
+	
 
-			reload_node.pause()
-		walk_aim_fire = false
-	
-	
-		
-	  
 		
 		
 		

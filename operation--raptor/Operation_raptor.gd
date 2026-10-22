@@ -80,6 +80,7 @@ func _process(delta: float) -> void:
 	
 	if Input.is_action_just_pressed("Schießen"):
 		$Shot.play()
+		await get_tree().create_timer(0.4).timeout  
 		$Shell_drop.play()                 #ändere es noch um das shell drop random.radiant (1,4) ist 
 							
 		 
