@@ -1,7 +1,11 @@
 [gd_scene format=3 uid="uid://csq13oulvumxj"]
 
-[ext_resource type="VideoStream" uid="uid://b1b7m4irgl3kl" path="res://1001.mp4" id="1_3b2b5"]
-[ext_resource type="Script" uid="uid://bem0mcb12460f" path="res://VIDEO_UI.gd" id="2_3b2b5"]
+[ext_resource type="VideoStream" uid="uid://csf7hifekl4rn" path="res://videos/1001.mp4" id="1_3b2b5"]
+[ext_resource type="Script" uid="uid://bem0mcb12460f" path="res://Script/VIDEO_UI.gd" id="2_3b2b5"]
+[ext_resource type="Script" uid="uid://boc2s8wifv7hg" path="res://Script/Button_Play.gd" id="3_vrfts"]
+[ext_resource type="Script" uid="uid://dvyl2bx21e4sx" path="res://Script/Button_Exit.gd" id="4_0mc3e"]
+[ext_resource type="Script" uid="uid://bcsymscvv84nm" path="res://Script/Button_Settings.gd" id="5_2n5f6"]
+[ext_resource type="AudioStream" uid="uid://6fpvwhvetsuc" path="res://Sounds/operation_zero_mouse_click.mp3" id="6_0mc3e"]
 
 [node name="Control" type="Control" unique_id=1260267113]
 layout_mode = 3
@@ -25,7 +29,7 @@ expand = true
 loop = true
 script = ExtResource("2_3b2b5")
 
-[node name="Button" type="Button" parent="." unique_id=1655952321]
+[node name="Button_Play" type="Button" parent="." unique_id=1655952321]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 0.384
@@ -34,3 +38,35 @@ offset_left = 2358.0
 offset_top = 623.0
 offset_right = 1610.024
 offset_bottom = 634.302
+flat = true
+script = ExtResource("3_vrfts")
+
+[node name="Button_Exit" type="Button" parent="." unique_id=1884502093]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.384
+anchor_bottom = 0.093
+offset_left = 2337.0
+offset_top = 1390.0
+offset_right = 1589.024
+offset_bottom = 1434.302
+flat = true
+script = ExtResource("4_0mc3e")
+
+[node name="Button_Settings" type="Button" parent="." unique_id=70055269]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.384
+anchor_bottom = 0.093
+offset_left = 2173.0
+offset_top = 963.0
+offset_right = 1748.024
+offset_bottom = 1067.302
+flat = true
+script = ExtResource("5_2n5f6")
+
+[node name="Button_Sound" type="AudioStreamPlayer2D" parent="." unique_id=1952969502]
+stream = ExtResource("6_0mc3e")
+volume_db = 10.206
+
+[connection signal="pressed" from="Button_Play" to="Button_Play" method="_on_pressed"]
