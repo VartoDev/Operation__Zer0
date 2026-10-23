@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://5qhnecji8tpi"
+path="res://.godot/imported/freesound_community-radio-static-6382 (mp3cut.net).mp3-8eb600329c4b618188c3445b17e3c68a.mp3str"
+
+[deps]
+
+source_file="res://Sounds/freesound_community-radio-static-6382 (mp3cut.net).mp3"
+dest_files=["res://.godot/imported/freesound_community-radio-static-6382 (mp3cut.net).mp3-8eb600329c4b618188c3445b17e3c68a.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

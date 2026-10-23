@@ -6,6 +6,13 @@
 [ext_resource type="Script" uid="uid://dvyl2bx21e4sx" path="res://Script/Button_Exit.gd" id="4_0mc3e"]
 [ext_resource type="Script" uid="uid://bcsymscvv84nm" path="res://Script/Button_Settings.gd" id="5_2n5f6"]
 [ext_resource type="AudioStream" uid="uid://6fpvwhvetsuc" path="res://Sounds/operation_zero_mouse_click.mp3" id="6_0mc3e"]
+[ext_resource type="Script" uid="uid://bue4f2g8rtfe0" path="res://Script/Button_Varto.gd" id="6_27c8x"]
+[ext_resource type="AudioStream" uid="uid://5qhnecji8tpi" path="res://Sounds/freesound_community-radio-static-6382 (mp3cut.net).mp3" id="7_2n5f6"]
+[ext_resource type="AudioStream" uid="uid://dfd05y7s75ih4" path="res://Sounds/kave_msri-ak47-machine-gun-burst-sfx-332103.mp3" id="9_i1vam"]
+[ext_resource type="AudioStream" uid="uid://1b2dfwojatoe" path="res://Sounds/u_wxn5lzrjy3-military-radio-communication-222904.mp3" id="10_q77pa"]
+[ext_resource type="AudioStream" uid="uid://c6ckn8nxuu0su" path="res://Sounds/flutie8211-ff-military-jet-flying-left-to-right-3-603844.mp3" id="11_n8582"]
+[ext_resource type="AudioStream" uid="uid://h2pm3ja20txg" path="res://Sounds/freesound_community-old-radio-noise-46734.mp3" id="12_c6dx3"]
+[ext_resource type="AudioStream" uid="uid://nwvkweub2qhp" path="res://Sounds/ribhavagrawal-gunshots-from-far-away-230563.mp3" id="13_jqn02"]
 
 [node name="Control" type="Control" unique_id=1260267113]
 layout_mode = 3
@@ -65,8 +72,49 @@ offset_bottom = 1067.302
 flat = true
 script = ExtResource("5_2n5f6")
 
+[node name="Button_Varto" type="Button" parent="." unique_id=502383041]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.384
+anchor_bottom = 0.093
+offset_left = 2238.0
+offset_top = 1696.0
+offset_right = 1638.024
+offset_bottom = 1599.302
+flat = true
+script = ExtResource("6_27c8x")
+
 [node name="Button_Sound" type="AudioStreamPlayer2D" parent="." unique_id=1952969502]
 stream = ExtResource("6_0mc3e")
+volume_db = 20.206
+
+[node name="Static_radio_Backgroundmusic" type="AudioStreamPlayer2D" parent="." unique_id=1178062050]
+stream = ExtResource("7_2n5f6")
+volume_db = 15.833
+autoplay = true
+parameters/looping = true
+
+[node name="Gun" type="AudioStreamPlayer2D" parent="." unique_id=777570067]
+position = Vector2(2238, 1696)
+stream = ExtResource("9_i1vam")
+volume_db = 4.804
+
+[node name="Radio" type="AudioStreamPlayer2D" parent="." unique_id=485719686]
+stream = ExtResource("10_q77pa")
+volume_db = 9.514
+
+[node name="Jet" type="AudioStreamPlayer2D" parent="." unique_id=1247883326]
+stream = ExtResource("11_n8582")
+volume_db = 9.72
+
+[node name="Radio_old" type="AudioStreamPlayer2D" parent="." unique_id=230696986]
+stream = ExtResource("12_c6dx3")
 volume_db = 10.206
 
+[node name="Shots_from_far_away" type="AudioStreamPlayer2D" parent="." unique_id=1299505942]
+stream = ExtResource("13_jqn02")
+
 [connection signal="pressed" from="Button_Play" to="Button_Play" method="_on_pressed"]
+[connection signal="pressed" from="Button_Exit" to="Button_Exit" method="_on_pressed"]
+[connection signal="pressed" from="Button_Settings" to="Button_Settings" method="_on_pressed"]
+[connection signal="pressed" from="Button_Varto" to="Button_Varto" method="_on_pressed"]

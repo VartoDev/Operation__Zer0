@@ -5,5 +5,5 @@ extends Button
 @onready var Button_Sound = $"../Button_Sound"
 
 func _on_pressed():
-	print("Spielen wurde gedrückt!")
+	print("Button-Spielen wurde gedrückt!")
 	Button_Sound.play()
