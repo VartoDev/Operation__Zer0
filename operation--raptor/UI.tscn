@@ -101,7 +101,7 @@ volume_db = 4.804
 
 [node name="Radio" type="AudioStreamPlayer2D" parent="." unique_id=485719686]
 stream = ExtResource("10_q77pa")
-volume_db = 9.514
+volume_db = 11.514
 
 [node name="Jet" type="AudioStreamPlayer2D" parent="." unique_id=1247883326]
 stream = ExtResource("11_n8582")
@@ -109,10 +109,11 @@ volume_db = 9.72
 
 [node name="Radio_old" type="AudioStreamPlayer2D" parent="." unique_id=230696986]
 stream = ExtResource("12_c6dx3")
-volume_db = 10.206
+volume_db = 15.066
 
 [node name="Shots_from_far_away" type="AudioStreamPlayer2D" parent="." unique_id=1299505942]
 stream = ExtResource("13_jqn02")
+volume_db = 17.009
 
 [connection signal="pressed" from="Button_Play" to="Button_Play" method="_on_pressed"]
 [connection signal="pressed" from="Button_Exit" to="Button_Exit" method="_on_pressed"]

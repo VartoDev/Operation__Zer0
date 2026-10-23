@@ -1,18 +1,18 @@
 [gd_scene format=4 uid="uid://c4qh5fhviwbra"]
 
-[ext_resource type="Script" uid="uid://s88ngx3csetj" path="res://Operation_raptor.gd" id="1_bi2oh"]
-[ext_resource type="PackedScene" uid="uid://c81o3yhbwp21b" path="res://Untitled.blend" id="1_lrg8k"]
-[ext_resource type="PackedScene" uid="uid://drnith5t28ndc" path="res://procedural_city_5-2.glb" id="2_bi2oh"]
+[ext_resource type="Script" uid="uid://s88ngx3csetj" path="res://Script/Operation_raptor.gd" id="1_bi2oh"]
+[ext_resource type="PackedScene" uid="uid://c81o3yhbwp21b" path="res://Models/Untitled.blend" id="1_lrg8k"]
+[ext_resource type="PackedScene" uid="uid://drnith5t28ndc" path="res://Models/procedural_city_5-2.glb" id="2_bi2oh"]
 [ext_resource type="AudioStream" uid="uid://dbgyiq5b1w6c6" path="res://Sounds/freesound_community-wind-ambience-14720.mp3" id="5_4ss8y"]
 [ext_resource type="AudioStream" uid="uid://2kk15j1shfn7" path="res://Sounds/footsteps-walking-on-concrete-glitchedtones-slow-3-00-17.mp3" id="5_q3rc5"]
-[ext_resource type="Shader" uid="uid://dkxxdwqlhi4r4" path="res://operation__raptor.gdshader" id="6_2u7n7"]
+[ext_resource type="Shader" uid="uid://dkxxdwqlhi4r4" path="res://Script/operation__raptor.gdshader" id="6_2u7n7"]
 [ext_resource type="AudioStream" uid="uid://cgt12nvannk0v" path="res://Sounds/mrfriends-pistol-shot-233473.mp3" id="7_1fj8a"]
 [ext_resource type="AudioStream" uid="uid://ue7vlrapbcd0" path="res://Sounds/Reload.mp3" id="7_x4dg6"]
 [ext_resource type="AudioStream" uid="uid://dy2vognjfoc74" path="res://Sounds/Shell_Casing.mp3" id="8_08lwh"]
-[ext_resource type="PackedScene" uid="uid://crxuyfbksua2c" path="res://gmc_yukon_xl_presidential_state_car.glb" id="9_4ss8y"]
-[ext_resource type="Script" uid="uid://dw6hyfbl8pl01" path="res://Mündungsfeuer.gd" id="9_x4dg6"]
-[ext_resource type="Script" uid="uid://dq68r7aw5eebx" path="res://Raycast.gd" id="10_08lwh"]
-[ext_resource type="Script" uid="uid://df1j83dmtmkna" path="res://Animation_reload.gd" id="13_08lwh"]
+[ext_resource type="PackedScene" uid="uid://crxuyfbksua2c" path="res://Assets of Models/gmc_yukon_xl_presidential_state_car.glb" id="9_4ss8y"]
+[ext_resource type="Script" uid="uid://dw6hyfbl8pl01" path="res://Script/Mündungsfeuer.gd" id="9_x4dg6"]
+[ext_resource type="Script" uid="uid://dq68r7aw5eebx" path="res://Script/Raycast.gd" id="10_08lwh"]
+[ext_resource type="Script" uid="uid://df1j83dmtmkna" path="res://Script/Animation_reload.gd" id="13_08lwh"]
 [ext_resource type="AudioStream" uid="uid://da6q7celgyh26" path="res://Sounds/bullet_hit_metal_002_(1).mp3" id="14_mwdpx"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_5wpy2"]
@@ -4869,9 +4869,9 @@ volume_db = 39.135
 max_polyphony = 10
 parameters/looping = true
 
-[node name="Wind" type="AudioStreamPlayer3D" parent="Player" unique_id=412667247]
+[node name="Wind" type="AudioStreamPlayer" parent="Player" unique_id=2051040866]
 stream = ExtResource("5_4ss8y")
-volume_db = 80.0
+volume_db = 8.947
 autoplay = true
 parameters/looping = true
 

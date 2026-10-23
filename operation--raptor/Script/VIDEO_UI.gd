@@ -18,9 +18,11 @@ func _ready():
 	Random_Zahl_generieren() # <---- Loop für die Sounds wird in rollen gebracht 
 	while 1 == 1:
 		Sound_play(Communication_Sound)
-		await get_tree().create_timer(3).timeout 
-		Sound_play(Jet_Sound)
-		await get_tree().create_timer(30).timeout 
+		await get_tree().create_timer(3).timeout  # Wiederholend |
+		Sound_play(Jet_Sound)                     # abspielende  |
+		await get_tree().create_timer(3).timeout  # sounds       |
+		Sound_play(Shots_distance)                # für          |
+		await get_tree().create_timer(30).timeout # menü         |
 
 	
 	
@@ -38,10 +40,10 @@ func Random_Zahl_generieren():
 	
 func Sound_Abspielen(frequenz):
 	await get_tree().create_timer(frequenz).timeout
-	Gun_Sound.play()
-	Radio_old_sound.play()
+	Gun_Sound.play() # <--- weitere Menü background sounds
+	Radio_old_sound.play() # <--- weitere Menü background sounds
 	await get_tree().create_timer(15).timeout 
-	Random_Zahl_generieren()
+	Random_Zahl_generieren() # <---- Schleifenerzeuger
 	 
 
 	
