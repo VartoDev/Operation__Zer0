@@ -1,9 +1,36 @@
 [gd_scene format=3 uid="uid://csq13oulvumxj"]
 
+[ext_resource type="VideoStream" uid="uid://b1b7m4irgl3kl" path="res://1001.mp4" id="1_3b2b5"]
+[ext_resource type="Script" uid="uid://bem0mcb12460f" path="res://VIDEO_UI.gd" id="2_3b2b5"]
+
 [node name="Control" type="Control" unique_id=1260267113]
 layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchor_right = 0.294
+anchor_bottom = 0.26200002
+offset_right = 2061.4
+offset_bottom = 1462.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="." unique_id=1414345457]
+layout_mode = 0
+offset_left = -3.0
+offset_top = -95.0
+offset_right = 3173.0
+offset_bottom = 2000.0
+audio_track = 1
+stream = ExtResource("1_3b2b5")
+autoplay = true
+expand = true
+loop = true
+script = ExtResource("2_3b2b5")
+
+[node name="Button" type="Button" parent="." unique_id=1655952321]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.384
+anchor_bottom = 0.093
+offset_left = 2358.0
+offset_top = 623.0
+offset_right = 1610.024
+offset_bottom = 634.302

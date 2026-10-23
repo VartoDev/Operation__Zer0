@@ -70,7 +70,7 @@ func _process(delta: float) -> void:
 		breathing3 = sin(1.5 * time_passed ) * 0.04 
 	
 	$".".position.y = breathing3 
-	$AK47.position.y = breathing + 1
+	$AK47.position.y = breathing + 1.5
 	$AK47.position.x = breathing2
 	
 	# Richtig stellung des laserpointes 
