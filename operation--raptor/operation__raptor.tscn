@@ -4843,11 +4843,11 @@ cap_top = false
 [node name="Operation_Raptor" type="Node3D" unique_id=625757802]
 
 [node name="Player" type="CharacterBody3D" parent="." unique_id=854813816]
-transform = Transform3D(-3.4733614e-05, 0, -1, 0, 1, 0, 1, 0, -3.4733614e-05, -34.821968, -0.10399747, -1.8053987)
+transform = Transform3D(0.99812096, 0, 0.061276734, 0, 1, 0, -0.061276734, 0, 0.99812096, -51.797115, -0.10399747, -1.8053987)
 script = ExtResource("1_bi2oh")
 
 [node name="Camera3D" type="Camera3D" parent="Player" unique_id=175659033]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.222, 2.6, -0.097)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.222, 2.4713569, -0.09700012)
 current = true
 fov = 111.6
 
@@ -5068,6 +5068,7 @@ Munition: 15/15
 
 [node name="Player2" type="CharacterBody3D" parent="." unique_id=2136447417]
 transform = Transform3D(-3.4733614e-05, 0, -1, 0, 1, 0, 1, 0, -3.4733614e-05, -31.550243, -0.10399747, -3.6403272)
+visible = false
 
 [node name="Walking_Sound" type="AudioStreamPlayer3D" parent="Player2" unique_id=1180140085]
 transform = Transform3D(-3.4733614e-05, 0, 1, 0, 1, 0, -1, 0, -3.4733614e-05, 1.804593, -0.53105855, -23.198183)
