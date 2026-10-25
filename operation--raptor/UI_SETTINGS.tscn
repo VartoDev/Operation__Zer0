@@ -10,6 +10,8 @@
 [ext_resource type="AudioStream" uid="uid://h2pm3ja20txg" path="res://Sounds/freesound_community-old-radio-noise-46734.mp3" id="8_nwjgv"]
 [ext_resource type="AudioStream" uid="uid://nwvkweub2qhp" path="res://Sounds/ribhavagrawal-gunshots-from-far-away-230563.mp3" id="9_p051w"]
 [ext_resource type="Script" uid="uid://d0fkm5k7uya1c" path="res://Script/Go_Back.gd" id="10_5ixev"]
+[ext_resource type="Script" uid="uid://d4gak38sln5ib" path="res://Volume_Buttons.gd" id="10_kfddy"]
+[ext_resource type="Script" uid="uid://by5k7v607ebgo" path="res://Script/Found_a_Bug_Button.gd" id="10_ki5r6"]
 
 [node name="Control" type="Control" unique_id=220277187]
 layout_mode = 3
@@ -61,35 +63,53 @@ volume_db = 15.066
 stream = ExtResource("9_p051w")
 volume_db = 17.009
 
-[node name="Button" type="Button" parent="." unique_id=1368731034]
+[node name="Low_Sound" type="Button" parent="." unique_id=1368731034]
 layout_mode = 0
-offset_right = 8.0
-offset_bottom = 8.0
+offset_left = 517.0
+offset_top = 492.0
+offset_right = 927.0
+offset_bottom = 679.0
+flat = true
+script = ExtResource("10_kfddy")
 
-[node name="Button2" type="Button" parent="." unique_id=28374769]
+[node name="Medium_Sound" type="Button" parent="." unique_id=28374769]
 layout_mode = 0
-offset_right = 8.0
-offset_bottom = 8.0
+offset_left = 1424.0
+offset_top = 547.0
+offset_right = 1772.0
+offset_bottom = 701.0
+flat = true
+script = ExtResource("10_kfddy")
 
-[node name="Button3" type="Button" parent="." unique_id=1483343935]
+[node name="High_Sound" type="Button" parent="." unique_id=1483343935]
 layout_mode = 0
-offset_right = 8.0
-offset_bottom = 8.0
+offset_left = 2201.0
+offset_top = 541.0
+offset_right = 2502.0
+offset_bottom = 673.0
+flat = true
+script = ExtResource("10_kfddy")
 
-[node name="Button4" type="Button" parent="." unique_id=1936346152]
+[node name="Low_Glitch" type="Button" parent="." unique_id=1936346152]
 layout_mode = 0
-offset_right = 8.0
-offset_bottom = 8.0
+offset_left = 434.0
+offset_top = 1387.0
+offset_right = 804.0
+offset_bottom = 1536.0
 
-[node name="Button5" type="Button" parent="." unique_id=1824580244]
+[node name="Medium_Glitch" type="Button" parent="." unique_id=1824580244]
 layout_mode = 0
-offset_right = 8.0
-offset_bottom = 8.0
+offset_left = 1312.0
+offset_top = 1390.0
+offset_right = 1766.0
+offset_bottom = 1567.0
 
-[node name="Button6" type="Button" parent="." unique_id=76055612]
+[node name="High_Glitch" type="Button" parent="." unique_id=76055612]
 layout_mode = 0
-offset_right = 8.0
-offset_bottom = 8.0
+offset_left = 2112.0
+offset_top = 1375.0
+offset_right = 2520.0
+offset_bottom = 1576.0
 
 [node name="Found_a_Bug" type="Button" parent="." unique_id=1977274310]
 layout_mode = 0
@@ -98,6 +118,7 @@ offset_top = 1832.0
 offset_right = 3170.0
 offset_bottom = 1983.0
 flat = true
+script = ExtResource("10_ki5r6")
 
 [node name="Go_Back" type="Button" parent="." unique_id=1640326396]
 layout_mode = 0
@@ -108,4 +129,8 @@ offset_bottom = 1986.0
 flat = true
 script = ExtResource("10_5ixev")
 
+[connection signal="pressed" from="Low_Sound" to="Low_Sound" method="_on_pressed"]
+[connection signal="pressed" from="Medium_Sound" to="Medium_Sound" method="_on_pressed_medium"]
+[connection signal="pressed" from="High_Sound" to="High_Sound" method="_on_pressed_high"]
+[connection signal="pressed" from="Found_a_Bug" to="Found_a_Bug" method="_on_pressed"]
 [connection signal="pressed" from="Go_Back" to="Go_Back" method="_on_pressed"]
