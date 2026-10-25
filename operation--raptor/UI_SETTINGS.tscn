@@ -10,8 +10,9 @@
 [ext_resource type="AudioStream" uid="uid://h2pm3ja20txg" path="res://Sounds/freesound_community-old-radio-noise-46734.mp3" id="8_nwjgv"]
 [ext_resource type="AudioStream" uid="uid://nwvkweub2qhp" path="res://Sounds/ribhavagrawal-gunshots-from-far-away-230563.mp3" id="9_p051w"]
 [ext_resource type="Script" uid="uid://d0fkm5k7uya1c" path="res://Script/Go_Back.gd" id="10_5ixev"]
-[ext_resource type="Script" uid="uid://d4gak38sln5ib" path="res://Volume_Buttons.gd" id="10_kfddy"]
+[ext_resource type="Script" uid="uid://d4gak38sln5ib" path="res://Script/Volume_Buttons.gd" id="10_kfddy"]
 [ext_resource type="Script" uid="uid://by5k7v607ebgo" path="res://Script/Found_a_Bug_Button.gd" id="10_ki5r6"]
+[ext_resource type="Script" uid="uid://ceuglxm5btcmr" path="res://Script/Glitch_Sensi_Buttons.gd" id="11_dtmyu"]
 
 [node name="Control" type="Control" unique_id=220277187]
 layout_mode = 3
@@ -92,24 +93,30 @@ script = ExtResource("10_kfddy")
 
 [node name="Low_Glitch" type="Button" parent="." unique_id=1936346152]
 layout_mode = 0
-offset_left = 434.0
-offset_top = 1387.0
-offset_right = 804.0
-offset_bottom = 1536.0
+offset_left = 572.0
+offset_top = 1545.0
+offset_right = 942.0
+offset_bottom = 1694.0
+flat = true
+script = ExtResource("11_dtmyu")
 
 [node name="Medium_Glitch" type="Button" parent="." unique_id=1824580244]
 layout_mode = 0
 offset_left = 1312.0
-offset_top = 1390.0
-offset_right = 1766.0
-offset_bottom = 1567.0
+offset_top = 1543.0
+offset_right = 1795.0
+offset_bottom = 1720.0
+flat = true
+script = ExtResource("11_dtmyu")
 
 [node name="High_Glitch" type="Button" parent="." unique_id=76055612]
 layout_mode = 0
-offset_left = 2112.0
-offset_top = 1375.0
-offset_right = 2520.0
-offset_bottom = 1576.0
+offset_left = 2121.0
+offset_top = 1541.0
+offset_right = 2529.0
+offset_bottom = 1742.0
+flat = true
+script = ExtResource("11_dtmyu")
 
 [node name="Found_a_Bug" type="Button" parent="." unique_id=1977274310]
 layout_mode = 0
@@ -132,5 +139,8 @@ script = ExtResource("10_5ixev")
 [connection signal="pressed" from="Low_Sound" to="Low_Sound" method="_on_pressed"]
 [connection signal="pressed" from="Medium_Sound" to="Medium_Sound" method="_on_pressed_medium"]
 [connection signal="pressed" from="High_Sound" to="High_Sound" method="_on_pressed_high"]
+[connection signal="pressed" from="Low_Glitch" to="Low_Glitch" method="_on_pressed_low_glitch"]
+[connection signal="pressed" from="Medium_Glitch" to="Medium_Glitch" method="on_pressed_medium_glitch"]
+[connection signal="pressed" from="High_Glitch" to="High_Glitch" method="_on_pressed_high_glitch"]
 [connection signal="pressed" from="Found_a_Bug" to="Found_a_Bug" method="_on_pressed"]
 [connection signal="pressed" from="Go_Back" to="Go_Back" method="_on_pressed"]

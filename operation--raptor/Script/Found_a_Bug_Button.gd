@@ -3,7 +3,7 @@ extends Node
 
 # ....---- Wurzeln ----....
 
-@onready var Button_Sound = $Button_Sound
+@onready var Button_Sound = $"../Button_Sound"
 
 
 # Called when the node enters the scene tree for the first time.
