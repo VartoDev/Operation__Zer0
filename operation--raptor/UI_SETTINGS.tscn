@@ -91,10 +91,13 @@ layout_mode = 0
 offset_right = 8.0
 offset_bottom = 8.0
 
-[node name="Button7" type="Button" parent="." unique_id=1977274310]
+[node name="Found_a_Bug" type="Button" parent="." unique_id=1977274310]
 layout_mode = 0
-offset_right = 8.0
-offset_bottom = 8.0
+offset_left = 2702.0
+offset_top = 1832.0
+offset_right = 3170.0
+offset_bottom = 1983.0
+flat = true
 
 [node name="Go_Back" type="Button" parent="." unique_id=1640326396]
 layout_mode = 0
