@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Operation: Raptor"
-run/main_scene="uid://c4qh5fhviwbra"
+run/main_scene="uid://csq13oulvumxj"
 config/features=PackedStringArray("4.7", "Forward Plus")
 config/icon="res://icon.svg"
 

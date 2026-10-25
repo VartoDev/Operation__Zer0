@@ -1,5 +1,16 @@
 [gd_scene format=3 uid="uid://bg8qejpn6nkgd"]
 
+[ext_resource type="VideoStream" uid="uid://b3hetm5nokgyf" path="res://videos/1001-Kopie.mp4" id="1_uyg10"]
+[ext_resource type="Script" uid="uid://b4b18hihplvah" path="res://Script/VIDEO_UI2.gd" id="2_tciom"]
+[ext_resource type="AudioStream" uid="uid://6fpvwhvetsuc" path="res://Sounds/operation_zero_mouse_click.mp3" id="3_5ixev"]
+[ext_resource type="AudioStream" uid="uid://5qhnecji8tpi" path="res://Sounds/freesound_community-radio-static-6382 (mp3cut.net).mp3" id="4_ki5r6"]
+[ext_resource type="AudioStream" uid="uid://dfd05y7s75ih4" path="res://Sounds/kave_msri-ak47-machine-gun-burst-sfx-332103.mp3" id="5_kfddy"]
+[ext_resource type="AudioStream" uid="uid://1b2dfwojatoe" path="res://Sounds/u_wxn5lzrjy3-military-radio-communication-222904.mp3" id="6_dtmyu"]
+[ext_resource type="AudioStream" uid="uid://c6ckn8nxuu0su" path="res://Sounds/flutie8211-ff-military-jet-flying-left-to-right-3-603844.mp3" id="7_flto6"]
+[ext_resource type="AudioStream" uid="uid://h2pm3ja20txg" path="res://Sounds/freesound_community-old-radio-noise-46734.mp3" id="8_nwjgv"]
+[ext_resource type="AudioStream" uid="uid://nwvkweub2qhp" path="res://Sounds/ribhavagrawal-gunshots-from-far-away-230563.mp3" id="9_p051w"]
+[ext_resource type="Script" uid="uid://d0fkm5k7uya1c" path="res://Script/Go_Back.gd" id="10_5ixev"]
+
 [node name="Control" type="Control" unique_id=220277187]
 layout_mode = 3
 anchors_preset = 15
@@ -10,5 +21,88 @@ grow_vertical = 2
 
 [node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="." unique_id=57573685]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = -5.0
+offset_right = 3190.0
+offset_bottom = 2027.0
+stream = ExtResource("1_uyg10")
+autoplay = true
+expand = true
+loop = true
+script = ExtResource("2_tciom")
+
+[node name="Button_Sound" type="AudioStreamPlayer2D" parent="." unique_id=2088414539]
+stream = ExtResource("3_5ixev")
+volume_db = 20.206
+
+[node name="Static_radio_Backgroundmusic" type="AudioStreamPlayer2D" parent="." unique_id=602473939]
+stream = ExtResource("4_ki5r6")
+volume_db = 15.833
+autoplay = true
+parameters/looping = true
+
+[node name="Gun" type="AudioStreamPlayer2D" parent="." unique_id=242772850]
+position = Vector2(2238, 1696)
+stream = ExtResource("5_kfddy")
+volume_db = 4.804
+
+[node name="Radio" type="AudioStreamPlayer2D" parent="." unique_id=729877939]
+stream = ExtResource("6_dtmyu")
+volume_db = 11.514
+
+[node name="Jet" type="AudioStreamPlayer2D" parent="." unique_id=903006780]
+stream = ExtResource("7_flto6")
+volume_db = 9.72
+
+[node name="Radio_old" type="AudioStreamPlayer2D" parent="." unique_id=851292743]
+stream = ExtResource("8_nwjgv")
+volume_db = 15.066
+
+[node name="Shots_from_far_away" type="AudioStreamPlayer2D" parent="." unique_id=2013042782]
+stream = ExtResource("9_p051w")
+volume_db = 17.009
+
+[node name="Button" type="Button" parent="." unique_id=1368731034]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+
+[node name="Button2" type="Button" parent="." unique_id=28374769]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+
+[node name="Button3" type="Button" parent="." unique_id=1483343935]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+
+[node name="Button4" type="Button" parent="." unique_id=1936346152]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+
+[node name="Button5" type="Button" parent="." unique_id=1824580244]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+
+[node name="Button6" type="Button" parent="." unique_id=76055612]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+
+[node name="Button7" type="Button" parent="." unique_id=1977274310]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+
+[node name="Go_Back" type="Button" parent="." unique_id=1640326396]
+layout_mode = 0
+offset_left = 35.0
+offset_top = 1800.0
+offset_right = 488.0
+offset_bottom = 1986.0
+flat = true
+script = ExtResource("10_5ixev")
+
+[connection signal="pressed" from="Go_Back" to="Go_Back" method="_on_pressed"]
