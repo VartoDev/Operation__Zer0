@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Operation: Raptor"
-run/main_scene="uid://csq13oulvumxj"
+run/main_scene="uid://c4qh5fhviwbra"
 config/features=PackedStringArray("4.7", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -21,9 +21,8 @@ Global="*uid://2i7elhdd3j3q"
 
 [display]
 
-window/size/viewport_width=2900
-window/size/viewport_height=2000
-window/size/mode=3
+window/size/viewport_width=1900
+window/size/viewport_height=1080
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
 

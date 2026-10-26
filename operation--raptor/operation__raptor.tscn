@@ -4784,7 +4784,7 @@ size = Vector3(0.35595703, 0.24597168, 0.3413086)
 size = Vector3(1, 2.5697632, 0.7788086)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ubgpw"]
-size = Vector3(16.797241, 65.94551, 16.70166)
+size = Vector3(12.812347, 72.30168, 16.70166)
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_05blp"]
 
@@ -5011,6 +5011,18 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34.410057, 1.6764429, 2.7339
 
 [node name="Buildung1part1_Hitbox" type="CollisionShape3D" parent="Stadt/Gebäude" unique_id=886301781]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.484253, 32.47276, -25.994865)
+shape = SubResource("BoxShape3D_ubgpw")
+
+[node name="Buildung1part2_Hitbox2" type="CollisionShape3D" parent="Stadt/Gebäude" unique_id=1732430574]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.1430798, 32.47276, -26.272842)
+shape = SubResource("BoxShape3D_ubgpw")
+
+[node name="Buildung1part3_Hitbox2" type="CollisionShape3D" parent="Stadt/Gebäude" unique_id=1488317841]
+transform = Transform3D(-0.0032753132, 0, -0.99999464, 0, 1, 0, 0.99999464, 0, -0.0032753132, -1.5939388, 28.984058, -40.65698)
+shape = SubResource("BoxShape3D_ubgpw")
+
+[node name="Buildung1part4_Hitbox3" type="CollisionShape3D" parent="Stadt/Gebäude" unique_id=468714039]
+transform = Transform3D(-0.0032753132, 0, -0.99999464, 0, 1, 0, 0.99999464, 0, -0.0032753132, -9.247023, 29.625034, -40.65698)
 shape = SubResource("BoxShape3D_ubgpw")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1457503334]
