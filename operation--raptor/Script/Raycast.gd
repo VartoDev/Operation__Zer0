@@ -26,8 +26,9 @@ func _ready() -> void:
 
 
 func _process(delta: float) -> void:
+	health_text.text = "Health: " + str(health) + " | Munition: " + str(Munition)
 	if Input.is_key_pressed(KEY_R):
-		await get_tree().create_timer(2).timeout
+		await get_tree().create_timer(2.9).timeout
 		Munition = 15
 	if Munition == 0:
 		Global.allowed_to_shoot = false

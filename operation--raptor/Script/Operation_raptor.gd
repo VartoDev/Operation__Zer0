@@ -18,6 +18,7 @@ var Sound_gespielt = false
 @onready var reload_animation = $ViewModel2/human_with_ak_reload/Reload_animation
 @onready var laser_pointer = $"../Player2/AK47/ViewModel/Gun/MuzzleFlash/LaserMain"
 @onready var main_charakter = $"."
+@onready var No_ammo = $No_Ammo
 
 
 
@@ -75,12 +76,13 @@ func _process(delta: float) -> void:
 	
 
 	
-	if Input.is_action_just_pressed("Schießen"):
+	if Input.is_action_just_pressed("Schießen") and Global.allowed_to_shoot:
 		$Shot.play()
 		await get_tree().create_timer(0.4).timeout  
 		$Shell_drop.play()                 #ändere es noch um das shell drop random.radiant (1,4) ist 
 							
-		 
+	elif Input.is_action_just_pressed("Schießen") and not Global.allowed_to_shoot:
+		No_ammo.play()
 		
 		
 		

@@ -47,7 +47,7 @@ func _process(delta: float) -> void:
 	# fire - single
 	if not Input.is_key_pressed(KEY_W) and not Input.is_key_pressed(KEY_S) and not Input.is_key_pressed(KEY_D) \
 	and not Input.is_key_pressed(KEY_A) and not walk_patrol and not idle_to_aim \
-	and not reload and not walk_aim and not walk_aim_fire and not walk_fire and not walk_reload and Input.is_action_just_pressed("Schießen"):
+	and not reload and not walk_aim and not walk_aim_fire and not walk_fire and not walk_reload and Global.allowed_to_shoot and Input.is_action_just_pressed("Schießen"):
 		reload_node.play("aim-fire-single")
 		aim_fire = true
 		
@@ -77,7 +77,7 @@ func _process(delta: float) -> void:
 	# aim - single shot - walk patrol
 	if (Input.is_key_pressed(KEY_W) or  Input.is_key_pressed(KEY_S) or Input.is_key_pressed(KEY_D) \
 	or Input.is_key_pressed(KEY_A)) and walk_patrol and not idle_to_aim \
-	and not reload and not walk_aim and not walk_aim_fire and not walk_fire and not walk_reload and Input.is_action_just_pressed("Schießen"):
+	and not reload and not walk_aim and not walk_aim_fire and not walk_fire and not walk_reload and   Global.allowed_to_shoot and Input.is_action_just_pressed("Schießen"):
 		reload_node.play("walk-aim-fire-single")
 		walk_aim_fire = true
 		

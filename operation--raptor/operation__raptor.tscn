@@ -9,6 +9,7 @@
 [ext_resource type="AudioStream" uid="uid://cgt12nvannk0v" path="res://Sounds/mrfriends-pistol-shot-233473.mp3" id="7_1fj8a"]
 [ext_resource type="AudioStream" uid="uid://ue7vlrapbcd0" path="res://Sounds/Reload.mp3" id="7_x4dg6"]
 [ext_resource type="AudioStream" uid="uid://dy2vognjfoc74" path="res://Sounds/Shell_Casing.mp3" id="8_08lwh"]
+[ext_resource type="AudioStream" uid="uid://ptifxvxqlcb3" path="res://Sounds/Operation_Zero_NoAmmo_Realistic.wav" id="8_eivwk"]
 [ext_resource type="PackedScene" uid="uid://crxuyfbksua2c" path="res://Assets of Models/gmc_yukon_xl_presidential_state_car.glb" id="9_4ss8y"]
 [ext_resource type="Script" uid="uid://dw6hyfbl8pl01" path="res://Script/Mündungsfeuer.gd" id="9_x4dg6"]
 [ext_resource type="Script" uid="uid://dq68r7aw5eebx" path="res://Script/Raycast.gd" id="10_08lwh"]
@@ -4892,6 +4893,11 @@ max_polyphony = 32
 [node name="Hitmarker" type="AudioStreamPlayer" parent="Player" unique_id=1992175471]
 stream = SubResource("AudioStreamMP3_mwdpx")
 volume_db = 16.552
+
+[node name="No_Ammo" type="AudioStreamPlayer3D" parent="Player" unique_id=989173695]
+transform = Transform3D(0.9981207, 0, -0.06127672, 0, 1, 0, 0.06127672, 0, 0.9981207, 51.589146, 0.10399747, 4.975963)
+stream = ExtResource("8_eivwk")
+volume_db = 10.0
 
 [node name="AK47" type="Node3D" parent="Player" unique_id=631223262]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.9600424, 0)
