@@ -7,10 +7,19 @@ extends RayCast3D
 @onready var GMC_Modell = $"../../../GMC"
 @onready var main_player = $"../.."
 @onready var gegner = $"../../../Player2"
-@onready var hintmarker_sound = $"../../Hitmarker"
+@onready var hintmarker_sound = $"../Hitmarker"
+
+#...---- Commander Voicelines ----...
+
+@onready var Watch_Your_Ammo = $"/root/Operation_Raptor/Player/Watch_Your_Ammo"
+@onready var Walkie_Talkie = $"/root/Operation_Raptor/Player/Walkie_Talkie"
+
+# ...--- Variablen ----....
+
+@onready var Sound_play = false
 
 
-# Munition und Health system
+# ...----Munition und Health system---...
 @onready var health_text: Label = get_node("/root/Operation_Raptor/Text_Health")
 var Munition := 15
 var health := 100
@@ -34,6 +43,12 @@ func _process(delta: float) -> void:
 		Global.allowed_to_shoot = false
 	else:
 		Global.allowed_to_shoot = true
+	if Munition == 7 and not Sound_play:
+		Sound_play = true
+		Walkie_Talkie.play()
+		Watch_Your_Ammo.play()
+	if Munition == 15:
+		Sound_play = false	
 	if Input.is_action_just_pressed("Schießen") and Global.allowed_to_shoot:
 		if Schusslinie.is_colliding():
 			var collider = Schusslinie.get_collider()

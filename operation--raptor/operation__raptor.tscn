@@ -11,8 +11,10 @@
 [ext_resource type="AudioStream" uid="uid://dy2vognjfoc74" path="res://Sounds/Shell_Casing.mp3" id="8_08lwh"]
 [ext_resource type="AudioStream" uid="uid://ptifxvxqlcb3" path="res://Sounds/Operation_Zero_NoAmmo_Realistic.wav" id="8_eivwk"]
 [ext_resource type="PackedScene" uid="uid://crxuyfbksua2c" path="res://Assets of Models/gmc_yukon_xl_presidential_state_car.glb" id="9_4ss8y"]
+[ext_resource type="AudioStream" uid="uid://cbjhsaem8u0g" path="res://Sounds/audiofx_a237912_fx_radio_100 (mp3cut.net)-3.mp3" id="9_g8tqx"]
 [ext_resource type="Script" uid="uid://dw6hyfbl8pl01" path="res://Script/Mündungsfeuer.gd" id="9_x4dg6"]
 [ext_resource type="Script" uid="uid://dq68r7aw5eebx" path="res://Script/Raycast.gd" id="10_08lwh"]
+[ext_resource type="AudioStream" uid="uid://fc6ag1d6fonw" path="res://Sounds/freesound_community-088524_walkie-talkie-83500.mp3" id="10_s2t4x"]
 [ext_resource type="Script" uid="uid://df1j83dmtmkna" path="res://Script/Animation_reload.gd" id="13_08lwh"]
 [ext_resource type="AudioStream" uid="uid://da6q7celgyh26" path="res://Sounds/bullet_hit_metal_002_(1).mp3" id="14_mwdpx"]
 [ext_resource type="Script" uid="uid://drmlhku6wb6aq" path="res://Script/UI_TEXT.gd" id="15_l36o3"]
@@ -4894,10 +4896,19 @@ max_polyphony = 32
 stream = SubResource("AudioStreamMP3_mwdpx")
 volume_db = 16.552
 
-[node name="No_Ammo" type="AudioStreamPlayer3D" parent="Player" unique_id=989173695]
-transform = Transform3D(0.9981207, 0, -0.06127672, 0, 1, 0, 0.06127672, 0, 0.9981207, 51.589146, 0.10399747, 4.975963)
+[node name="No_Ammo" type="AudioStreamPlayer" parent="Player" unique_id=440969584]
 stream = ExtResource("8_eivwk")
 volume_db = 10.0
+
+[node name="Watch_Your_Ammo" type="AudioStreamPlayer3D" parent="Player" unique_id=1638959183]
+transform = Transform3D(0.9981207, 0, -0.06127672, 0, 1, 0, 0.06127672, 0, 0.9981207, 0.008647919, 2.426097, -0.26229334)
+stream = ExtResource("9_g8tqx")
+volume_db = 59.813
+
+[node name="Walkie_Talkie" type="AudioStreamPlayer3D" parent="Player" unique_id=2144123117]
+transform = Transform3D(0.9981207, 0, -0.06127672, 0, 1, 0, 0.06127672, 0, 0.9981207, 0.008647919, 2.426097, -0.26229334)
+stream = ExtResource("10_s2t4x")
+volume_db = 80.0
 
 [node name="AK47" type="Node3D" parent="Player" unique_id=631223262]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.9600424, 0)

@@ -79,10 +79,10 @@ func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("Schießen") and Global.allowed_to_shoot:
 		$Shot.play()
 		await get_tree().create_timer(0.4).timeout  
-		$Shell_drop.play()                 #ändere es noch um das shell drop random.radiant (1,4) ist 
+		$Shell_drop.play()  # <---- ändere es noch um das shell drop random.radiant (1,4) ist 
 							
 	elif Input.is_action_just_pressed("Schießen") and not Global.allowed_to_shoot:
-		No_ammo.play()
+		No_ammo.play() # <---- Wenn keine Muntion drin ist dann kommt ein sound hinweis
 		
 		
 		
