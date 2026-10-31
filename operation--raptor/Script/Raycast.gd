@@ -7,7 +7,7 @@ extends RayCast3D
 @onready var GMC_Modell = $"../../../GMC"
 @onready var main_player = $"../.."
 @onready var gegner = $"../../../Player2"
-@onready var hintmarker_sound = $"../Hitmarker"
+@onready var hintmarker_sound = $"/root/Operation_Raptor/Player/Hitmarker"
 
 #...---- Commander Voicelines ----...
 
@@ -43,8 +43,9 @@ func _process(delta: float) -> void:
 		Global.allowed_to_shoot = false
 	else:
 		Global.allowed_to_shoot = true
-	if Munition == 7 and not Sound_play:
+	if Munition == 4 and not Sound_play:
 		Sound_play = true
+		await get_tree().create_timer(0.7).timeout
 		Walkie_Talkie.play()
 		Watch_Your_Ammo.play()
 	if Munition == 15:
