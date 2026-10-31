@@ -6,4 +6,4 @@ extends Button
 
 func _on_pressed():
 	print("Button-Spielen wurde gedrückt!")
-	Button_Sound.play()
+	get_tree().change_scene_to_file("res://Play.tscn")

@@ -1,0 +1,59 @@
+[gd_scene format=3 uid="uid://ct4nicrlk2wvr"]
+
+[ext_resource type="Script" uid="uid://b4b18hihplvah" path="res://Script/VIDEO_UI2.gd" id="2_2peyt"]
+[ext_resource type="AudioStream" uid="uid://6fpvwhvetsuc" path="res://Sounds/operation_zero_mouse_click.mp3" id="3_kks7w"]
+[ext_resource type="AudioStream" uid="uid://5qhnecji8tpi" path="res://Sounds/freesound_community-radio-static-6382 (mp3cut.net).mp3" id="4_jhal8"]
+[ext_resource type="AudioStream" uid="uid://dfd05y7s75ih4" path="res://Sounds/kave_msri-ak47-machine-gun-burst-sfx-332103.mp3" id="5_4ev6u"]
+[ext_resource type="AudioStream" uid="uid://1b2dfwojatoe" path="res://Sounds/u_wxn5lzrjy3-military-radio-communication-222904.mp3" id="6_uqvsg"]
+[ext_resource type="AudioStream" uid="uid://c6ckn8nxuu0su" path="res://Sounds/flutie8211-ff-military-jet-flying-left-to-right-3-603844.mp3" id="7_mcr0o"]
+[ext_resource type="AudioStream" uid="uid://h2pm3ja20txg" path="res://Sounds/freesound_community-old-radio-noise-46734.mp3" id="8_6cojp"]
+[ext_resource type="AudioStream" uid="uid://nwvkweub2qhp" path="res://Sounds/ribhavagrawal-gunshots-from-far-away-230563.mp3" id="9_p2bjg"]
+
+[node name="Control" type="Control" unique_id=1413779658]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="." unique_id=349549274]
+layout_mode = 0
+offset_left = -5.0
+offset_right = 3190.0
+offset_bottom = 2027.0
+autoplay = true
+expand = true
+loop = true
+script = ExtResource("2_2peyt")
+
+[node name="Button_Sound" type="AudioStreamPlayer2D" parent="." unique_id=5637607]
+stream = ExtResource("3_kks7w")
+volume_db = 20.206
+
+[node name="Static_radio_Backgroundmusic" type="AudioStreamPlayer2D" parent="." unique_id=186323237]
+stream = ExtResource("4_jhal8")
+volume_db = 15.833
+autoplay = true
+parameters/looping = true
+
+[node name="Gun" type="AudioStreamPlayer2D" parent="." unique_id=1808758211]
+position = Vector2(2238, 1696)
+stream = ExtResource("5_4ev6u")
+volume_db = 4.804
+
+[node name="Radio" type="AudioStreamPlayer2D" parent="." unique_id=1484849958]
+stream = ExtResource("6_uqvsg")
+volume_db = 11.514
+
+[node name="Jet" type="AudioStreamPlayer2D" parent="." unique_id=280732381]
+stream = ExtResource("7_mcr0o")
+volume_db = 9.72
+
+[node name="Radio_old" type="AudioStreamPlayer2D" parent="." unique_id=1260606225]
+stream = ExtResource("8_6cojp")
+volume_db = 15.066
+
+[node name="Shots_from_far_away" type="AudioStreamPlayer2D" parent="." unique_id=544631410]
+stream = ExtResource("9_p2bjg")
+volume_db = 17.009

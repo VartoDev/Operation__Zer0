@@ -3,11 +3,12 @@ extends VideoStreamPlayer
 # ....---- Wurzeln ----....
 
 @onready var Gun_Sound = $"../Gun"
-@onready var Button_Sound = $"../Button_Sound"
 @onready var Communication_Sound = $"../Radio"
 @onready var Jet_Sound = $"../Jet"
 @onready var Radio_old_sound = $"../Radio_old"
 @onready var Shots_distance = $"../Shots_from_far_away"
+@onready var Car_Sound = $"../Car"
+@onready var Button_Sound = $"../Button_Sound"
 
 # ....---- Variablen ----....
 
@@ -18,20 +19,23 @@ func _ready():
 	Button_Sound.play()
 	Random_Zahl_generieren() # <---- Loop für die Sounds wird in rollen gebracht 
 	while 1 == 1:
-		Sound_play(Communication_Sound)
-		await get_tree().create_timer(3).timeout  # Wiederholend |
-		Sound_play(Jet_Sound)                     # abspielende  |
-		await get_tree().create_timer(3).timeout  # sounds       |
-		Sound_play(Shots_distance)                # für          |
-		await get_tree().create_timer(30).timeout # menü         |
+		Sound_play(Communication_Sound, 3, 15)
+		await get_tree().create_timer(3).timeout 
+		Sound_play(Jet_Sound, 3, 15)                     
+		await get_tree().create_timer(3).timeout  
+		Sound_play(Shots_distance, 3, 15)                
+		await get_tree().create_timer(3).timeout
+		Sound_play(Car_Sound, 10, 22)
+		await get_tree().create_timer(30).timeout 
 
 	
 	
 	
 	
-func Sound_play(Name_of_song):
-	var Random_Zahl = randi_range(3, 15)
+func Sound_play(Name_of_song, Anfang, Ende):
+	var Random_Zahl = randi_range(Anfang, Ende)
 	await get_tree().create_timer(Random_Zahl).timeout  # Eine Funktion die ein Sound nach einer gewissen Zeit abspielt
+	print("Sound:", Name_of_song)
 	Name_of_song.play()
 
 
@@ -47,6 +51,9 @@ func Sound_Abspielen(frequenz):
 	Random_Zahl_generieren() # <---- Schleifenerzeuger
 	 
 
+	
+	
+	
 	
 	
 	
