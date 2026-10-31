@@ -10,14 +10,16 @@ extends RayCast3D
 @onready var hintmarker_sound = $"../../Hitmarker"
 
 
-@onready var health_text: Label = get_node("/root/Operation_Raptor/Text")
+# Munition und Health system
+@onready var health_text: Label = get_node("/root/Operation_Raptor/Text_Health")
+var Munition := 15
 var health := 100
-
 
 # ----- Main Code ------ 
 func _ready() -> void:
 	print("SYSTEM [Raycast] FUNKTIONIERT")  
-	health_text.text = "Health:" + str(health)
+	health_text.text = "Health: " + str(health) + " | Munition: " + str(Munition)
+	
 
 
 
@@ -33,9 +35,12 @@ func _process(delta: float) -> void:
 				health -= 25
 				health = max(health, 0)
 				# Text ändern zu aktuelle health!
-				health_text.text = "Health: " + str(health)
+				health_text.text = "Health: " + str(health) + " | Munition: " + str(Munition)
 				await get_tree().create_timer(0.4).timeout
-				hintmarker_sound.play()			
+				hintmarker_sound.play()		
+		Munition -= 1
+		Munition = max(Munition, 0)
+		health_text.text = "Health: " + str(health) + " | Munition: " + str(Munition)
 		print("Nichts getroffen.")
 	
 	

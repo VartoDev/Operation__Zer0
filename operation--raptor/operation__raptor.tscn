@@ -5049,7 +5049,7 @@ shape = SubResource("BoxShape3D_ntaqt")
 stream = ExtResource("14_mwdpx")
 max_polyphony = 10
 
-[node name="Text" type="Label" parent="." unique_id=2094355004]
+[node name="Text_Health" type="Label" parent="." unique_id=2094355004]
 offset_left = 1.0
 offset_right = 1481.0
 offset_bottom = 1370.0
