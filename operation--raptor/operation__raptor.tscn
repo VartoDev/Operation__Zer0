@@ -14,6 +14,7 @@
 [ext_resource type="Script" uid="uid://dq68r7aw5eebx" path="res://Script/Raycast.gd" id="10_08lwh"]
 [ext_resource type="Script" uid="uid://df1j83dmtmkna" path="res://Script/Animation_reload.gd" id="13_08lwh"]
 [ext_resource type="AudioStream" uid="uid://da6q7celgyh26" path="res://Sounds/bullet_hit_metal_002_(1).mp3" id="14_mwdpx"]
+[ext_resource type="Script" uid="uid://drmlhku6wb6aq" path="res://Script/UI_TEXT.gd" id="15_l36o3"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_5wpy2"]
 shader = ExtResource("6_2u7n7")
@@ -5056,6 +5057,7 @@ theme_override_font_sizes/font_size = 56
 text = "Health: 100%
 Munition: 15/15
 "
+script = ExtResource("15_l36o3")
 
 [node name="Player2" type="CharacterBody3D" parent="." unique_id=2136447417]
 transform = Transform3D(-3.4733614e-05, 0, -1, 0, 1, 0, 1, 0, -3.4733614e-05, -31.550243, -0.10399747, -3.6403272)
