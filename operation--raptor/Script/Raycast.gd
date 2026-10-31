@@ -9,9 +9,15 @@ extends RayCast3D
 @onready var gegner = $"../../../Player2"
 @onready var hintmarker_sound = $"../../Hitmarker"
 
+
+@onready var health_text: Label = get_node("/root/Operation_Raptor/Text")
+var health := 100
+
+
 # ----- Main Code ------ 
 func _ready() -> void:
 	print("SYSTEM [Raycast] FUNKTIONIERT")  
+	health_text.text = "Health:" + str(health)
 
 
 
@@ -24,6 +30,10 @@ func _process(delta: float) -> void:
 				await get_tree().create_timer(0.1).timeout
 				Schuss_auf_Metall.play()
 			elif collider == gegner:
+				health -= 25
+				health = max(health, 0)
+				# Text ändern zu aktuelle health!
+				health_text.text = "Health: " + str(health)
 				await get_tree().create_timer(0.4).timeout
 				hintmarker_sound.play()			
 		print("Nichts getroffen.")
