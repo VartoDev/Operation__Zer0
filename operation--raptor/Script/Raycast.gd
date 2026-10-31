@@ -20,11 +20,20 @@ func _ready() -> void:
 	print("SYSTEM [Raycast] FUNKTIONIERT")  
 	health_text.text = "Health: " + str(health) + " | Munition: " + str(Munition)
 	
-
+	if Global.allowed_move:
+		print("Du darfst dich nicht bewegen")
+	print("Du darfst dich bewegen")
 
 
 func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("Schießen"):
+	if Input.is_key_pressed(KEY_R):
+		await get_tree().create_timer(2).timeout
+		Munition = 15
+	if Munition == 0:
+		Global.allowed_to_shoot = false
+	else:
+		Global.allowed_to_shoot = true
+	if Input.is_action_just_pressed("Schießen") and Global.allowed_to_shoot:
 		if Schusslinie.is_colliding():
 			var collider = Schusslinie.get_collider()
 			print("Getroffen: ", collider.name)
@@ -40,6 +49,7 @@ func _process(delta: float) -> void:
 				hintmarker_sound.play()		
 		Munition -= 1
 		Munition = max(Munition, 0)
+		print("DEBUG: Health = ", health)
 		health_text.text = "Health: " + str(health) + " | Munition: " + str(Munition)
 		print("Nichts getroffen.")
 	

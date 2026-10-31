@@ -5055,14 +5055,10 @@ offset_right = 1481.0
 offset_bottom = 1370.0
 theme_override_fonts/font = SubResource("FontVariation_l36o3")
 theme_override_font_sizes/font_size = 56
-text = "Health: 100%
-Munition: 15/15
-"
 script = ExtResource("15_l36o3")
 
 [node name="Player2" type="CharacterBody3D" parent="." unique_id=2136447417]
 transform = Transform3D(-3.4733614e-05, 0, -1, 0, 1, 0, 1, 0, -3.4733614e-05, -31.550243, -0.10399747, -3.6403272)
-visible = false
 
 [node name="Walking_Sound" type="AudioStreamPlayer3D" parent="Player2" unique_id=1180140085]
 transform = Transform3D(-3.4733614e-05, 0, 1, 0, 1, 0, -1, 0, -3.4733614e-05, 1.804593, -0.53105855, -23.198183)

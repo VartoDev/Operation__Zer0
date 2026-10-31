@@ -63,7 +63,7 @@ func _process(delta: float) -> void:
 	and not walk_aim and not walk_aim_fire and not walk_fire and not walk_reload and Input.is_action_just_pressed("Reload"):
 		reload_node.play("reload-stance")
 		reload = true	
-		Player2.visible = true
+		
 		if not reload_sound_gespielt:
 			await get_tree().create_timer(1.2).timeout
 
