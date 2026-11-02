@@ -4930,6 +4930,21 @@ transform = Transform3D(0.9924903, 0, -0.12232315, 0, 1, 0, 0.12232315, 0, 0.992
 stream = ExtResource("12_0lsxm")
 volume_db = 35.0
 
+[node name="Extraction_point" type="AudioStreamPlayer3D" parent="Player" unique_id=1227441751]
+transform = Transform3D(0.970074, 0, -0.24280907, 0, 1, 0, 0.24280907, 0, 0.970074, 0.13049698, 4.9205227, -1.0391164)
+stream = ExtResource("12_0lsxm")
+volume_db = 35.0
+
+[node name="Hostils_inbound" type="AudioStreamPlayer3D" parent="Player" unique_id=1521897599]
+transform = Transform3D(0.93308794, 0, -0.35964817, 0, 1, 0, 0.35964817, 0, 0.93308794, 0.28997803, 7.380784, -1.5389142)
+stream = ExtResource("12_0lsxm")
+volume_db = 35.0
+
+[node name="Parameter" type="AudioStreamPlayer3D" parent="Player" unique_id=121026443]
+transform = Transform3D(0.88208747, 0, -0.47108555, 0, 1, 0, 0.47108555, 0, 0.88208747, 0.5093994, 9.841045, -2.01545)
+stream = ExtResource("12_0lsxm")
+volume_db = 35.0
+
 [node name="AK47" type="Node3D" parent="Player" unique_id=631223262]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.9600424, 0)
 
