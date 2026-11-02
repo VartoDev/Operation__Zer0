@@ -15,6 +15,8 @@
 [ext_resource type="Script" uid="uid://dw6hyfbl8pl01" path="res://Script/Mündungsfeuer.gd" id="9_x4dg6"]
 [ext_resource type="Script" uid="uid://dq68r7aw5eebx" path="res://Script/Raycast.gd" id="10_08lwh"]
 [ext_resource type="AudioStream" uid="uid://fc6ag1d6fonw" path="res://Sounds/freesound_community-088524_walkie-talkie-83500.mp3" id="10_s2t4x"]
+[ext_resource type="AudioStream" uid="uid://do2jjk3vqfth" path="res://Sounds/HOLY_YOUR_POSITION.mp3" id="11_e3gmg"]
+[ext_resource type="AudioStream" uid="uid://8in4yc401sre" path="res://Sounds/Start.mp3" id="12_0lsxm"]
 [ext_resource type="Script" uid="uid://df1j83dmtmkna" path="res://Script/Animation_reload.gd" id="13_08lwh"]
 [ext_resource type="AudioStream" uid="uid://da6q7celgyh26" path="res://Sounds/bullet_hit_metal_002_(1).mp3" id="14_mwdpx"]
 [ext_resource type="Script" uid="uid://drmlhku6wb6aq" path="res://Script/UI_TEXT.gd" id="15_l36o3"]
@@ -224,7 +226,16 @@ anisotropy = 1.0
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_5wpy2"]
 material = SubResource("StandardMaterial3D_x4dg6")
-height = 4701.144
+height = 4684.1074
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0lsxm"]
+albedo_color = Color(1, 0.21176471, 0.3254902, 1)
+emission_enabled = true
+emission_energy_multiplier = 2.0
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_05blp"]
+material = SubResource("StandardMaterial3D_0lsxm")
+height = 105.21954
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_555ar"]
 _surfaces = [{
@@ -4871,7 +4882,7 @@ parameters/looping = true
 
 [node name="Wind" type="AudioStreamPlayer" parent="Player" unique_id=2051040866]
 stream = ExtResource("5_4ss8y")
-volume_db = 8.947
+volume_db = 13.508
 autoplay = true
 parameters/looping = true
 
@@ -4909,6 +4920,16 @@ transform = Transform3D(0.9981207, 0, -0.06127672, 0, 1, 0, 0.06127672, 0, 0.998
 stream = ExtResource("10_s2t4x")
 volume_db = 80.0
 
+[node name="HOLD_YOUR_POSITION" type="AudioStreamPlayer3D" parent="Player" unique_id=1433912891]
+transform = Transform3D(0.9924903, 0, -0.12232315, 0, 1, 0, 0.12232315, 0, 0.9924903, 0.0333519, 2.4602613, -0.52356386)
+stream = ExtResource("11_e3gmg")
+volume_db = 80.0
+
+[node name="Good_Luck" type="AudioStreamPlayer3D" parent="Player" unique_id=582681817]
+transform = Transform3D(0.9924903, 0, -0.12232315, 0, 1, 0, 0.12232315, 0, 0.9924903, 0.0333519, 2.4602613, -0.52356386)
+stream = ExtResource("12_0lsxm")
+volume_db = 35.0
+
 [node name="AK47" type="Node3D" parent="Player" unique_id=631223262]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.9600424, 0)
 
@@ -4936,8 +4957,13 @@ transform = Transform3D(9.9188066e-05, 0, 1.2847074e-05, 0, 0.000100016594, 0, -
 mesh = SubResource("ArrayMesh_mwdpx")
 
 [node name="LaserMain" type="MeshInstance3D" parent="Player/AK47/ViewModel/Gun" unique_id=68385601]
-transform = Transform3D(-0.0002984908, -0.009902392, -0.0013614434, -0.0072792103, -0.0007181647, 0.0068194754, -0.0068505188, 0.0011945177, -0.007186483, 24.058098, 1.7997775, -2.9086616)
+transform = Transform3D(-0.0008062, -0.009947756, -0.0006262245, -0.0072476487, 0.00015363816, 0.006888857, -0.0068430696, 0.0010091931, -0.0072218953, 24.026327, -0.2053777, -2.8809776)
+visible = false
 mesh = SubResource("CylinderMesh_5wpy2")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Player/AK47/ViewModel/Gun" unique_id=1482548049]
+transform = Transform3D(0.00035307917, -1.0062578, 0.00078421214, 0.009993897, 0.035406113, -4.595182e-05, 1.8290077e-05, 0.07931982, 0.009969097, 53.722336, -1.7464024, -4.2756386)
+mesh = SubResource("CylinderMesh_05blp")
 
 [node name="R_Upper" type="MeshInstance3D" parent="Player/AK47/ViewModel" unique_id=1695207622]
 transform = Transform3D(0.9918212, -0.11943127, -0.045018703, 0.109538384, 0.9775377, -0.18005957, 0.06551222, 0.17365566, 0.9826249, -0.12723498, 0.69988894, 0.2853274)

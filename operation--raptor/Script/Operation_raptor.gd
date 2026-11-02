@@ -39,7 +39,7 @@ func _input(event: InputEvent) -> void:
 		
 		# Drehung hoch/runter (X-Achse)
 		rotation_x -= event.relative.y * mouse_sensitivity
-		rotation_x = clamp(rotation_x, -PI / 12, PI / 4)
+		rotation_x = clamp(rotation_x, -PI / 16, PI / 4)
 		camera.rotation.x = rotation_x
 		
 		
