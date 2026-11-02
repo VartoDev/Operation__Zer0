@@ -18,10 +18,13 @@
 [ext_resource type="AudioStream" uid="uid://fc6ag1d6fonw" path="res://Sounds/freesound_community-088524_walkie-talkie-83500.mp3" id="10_s2t4x"]
 [ext_resource type="AudioStream" uid="uid://do2jjk3vqfth" path="res://Sounds/HOLY_YOUR_POSITION.mp3" id="11_e3gmg"]
 [ext_resource type="AudioStream" uid="uid://8in4yc401sre" path="res://Sounds/Start.mp3" id="12_0lsxm"]
+[ext_resource type="AudioStream" uid="uid://bhp1bo12j44yh" path="res://Sounds/ENEMY_ON_THE_MOVE.mp3" id="13_0emwl"]
 [ext_resource type="Script" uid="uid://df1j83dmtmkna" path="res://Script/Animation_reload.gd" id="13_08lwh"]
-[ext_resource type="AudioStream" uid="uid://cue8rsb5pmotc" path="res://Sounds/Fast_run.mp3" id="13_jg0cr"]
+[ext_resource type="AudioStream" uid="uid://b5th7msyjgbt3" path="res://Sounds/Sprint.mp3" id="13_jg0cr"]
+[ext_resource type="AudioStream" uid="uid://bpy1k5tq4icnh" path="res://Sounds/HOSTLOS INBOUND.mp3" id="14_0emwl"]
 [ext_resource type="AudioStream" uid="uid://da6q7celgyh26" path="res://Sounds/bullet_hit_metal_002_(1).mp3" id="14_mwdpx"]
 [ext_resource type="Script" uid="uid://drmlhku6wb6aq" path="res://Script/UI_TEXT.gd" id="15_l36o3"]
+[ext_resource type="AudioStream" uid="uid://c57kw4injq44a" path="res://Sounds/SECURE_THE_PEREMETER.mp3" id="15_rlgxo"]
 [ext_resource type="FontFile" uid="uid://wdff7d7igxdd" path="res://ll-detechno-glitch/LLDEtechnoGlitch-Bold100.ttf" id="18_o6uix"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_5wpy2"]
@@ -4933,24 +4936,25 @@ stream = ExtResource("12_0lsxm")
 volume_db = 18.0
 
 [node name="Extraction_point" type="AudioStreamPlayer3D" parent="Player" unique_id=1227441751]
-transform = Transform3D(0.970074, 0, -0.24280907, 0, 1, 0, 0.24280907, 0, 0.970074, 0.13049698, 4.9205227, -1.0391164)
-stream = ExtResource("12_0lsxm")
+transform = Transform3D(0.970074, 0, -0.24280909, 0, 1, 0, 0.24280909, 0, 0.970074, 0.106163025, 2.3044288, -0.6427026)
+stream = ExtResource("13_0emwl")
 volume_db = 35.0
 
 [node name="Hostils_inbound" type="AudioStreamPlayer3D" parent="Player" unique_id=1521897599]
-transform = Transform3D(0.93308794, 0, -0.35964817, 0, 1, 0, 0.35964817, 0, 0.93308794, 0.28997803, 7.380784, -1.5389142)
-stream = ExtResource("12_0lsxm")
+transform = Transform3D(0.93308794, 0, -0.35964817, 0, 1, 0, 0.35964817, 0, 0.93308794, 0.26742554, 2.5372422, -1.1715798)
+stream = ExtResource("14_0emwl")
 volume_db = 35.0
 
 [node name="Parameter" type="AudioStreamPlayer3D" parent="Player" unique_id=121026443]
-transform = Transform3D(0.88208747, 0, -0.47108555, 0, 1, 0, 0.47108555, 0, 0.88208747, 0.5093994, 9.841045, -2.01545)
-stream = ExtResource("12_0lsxm")
+transform = Transform3D(0.88208747, 0, -0.4710855, 0, 1, 0, 0.4710855, 0, 0.88208747, 0.3911667, 2.3055017, -0.08955145)
+stream = ExtResource("15_rlgxo")
 volume_db = 35.0
 
 [node name="Sprint" type="AudioStreamPlayer3D" parent="Player" unique_id=1710273295]
-transform = Transform3D(0.55615675, 0, -0.83107734, 0, 1, 0, 0.83107734, 0, 0.55615675, 1.9081802, 19.682093, -3.5532823)
+transform = Transform3D(0.5561569, 0, -0.8310772, 0, 1, 0, 0.8310772, 0, 0.5561569, 0.61473465, 0.4790485, -0.5929346)
 stream = ExtResource("13_jg0cr")
 volume_db = 35.0
+parameters/looping = true
 
 [node name="AK47" type="Node3D" parent="Player" unique_id=631223262]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.9600424, 0)
@@ -4969,6 +4973,13 @@ mesh = SubResource("ArrayMesh_1fj8a")
 [node name="Mag" type="MeshInstance3D" parent="Player/AK47/ViewModel/Gun" unique_id=880550023]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.25082475, -0.019613827, -0.03604238)
 mesh = SubResource("ArrayMesh_x4dg6")
+
+[node name="Light" type="DirectionalLight3D" parent="Player/AK47/ViewModel/Gun/Mag" unique_id=98327288]
+transform = Transform3D(-0.05257589, 0.058327097, 0.99691194, -0.0012127376, 0.9982884, -0.05847157, -0.99861604, -0.004283188, -0.052415162, 0.6965116, 0.65565205, -3.122589)
+visible = false
+light_energy = 0.129
+light_indirect_energy = 0.525
+light_volumetric_fog_energy = 0.05
 
 [node name="Handle" type="MeshInstance3D" parent="Player/AK47/ViewModel/Gun" unique_id=1300044258]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.20418629, 0.135, 0.019949598)

@@ -72,6 +72,7 @@ func _process(delta: float) -> void:
 			Reload.play()
 			
 	else:
+		await get_tree().create_timer(0.1).timeout
 		if not reload_node.current_animation == "reload-stance":
 			reload = false
 			reload_sound_gespielt = false

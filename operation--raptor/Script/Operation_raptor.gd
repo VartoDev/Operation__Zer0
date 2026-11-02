@@ -55,19 +55,37 @@ func _process(delta: float) -> void:
 	time_passed += delta                                            
 	 # Atemverhalten bis Z. 71  
 	# ----------------->
+	
 	var breathing = sin(0.5 * time_passed ) * 0.02                 
 	var breathing2 = sin(0.5 * time_passed ) * 0.02 
 	var breathing3 = sin(0.5 * time_passed ) * 0.04 
+	
+	
+	var is_moving = (
+	Input.is_key_pressed(KEY_W)
+	or Input.is_key_pressed(KEY_S)
+	or Input.is_key_pressed(KEY_A)
+	or Input.is_key_pressed(KEY_D)
+	)
+	
+	var is_Sprint =  Input.is_action_pressed("Sprint")
+	var is_gehen = is_moving and not is_Sprint
 
-	
-	if Input.is_key_pressed(KEY_W) or Input.is_key_pressed(KEY_S)\
-	 or Input.is_key_pressed(KEY_D) or Input.is_key_pressed(KEY_A) :
-		breathing3 = sin(7 * time_passed ) * 0.07 
-		breathing = sin(5 * time_passed ) * 0.01 
-		breathing2 = sin(5 * time_passed ) * 0.01 
+	if is_Sprint:
+		breathing3 = sin(13 * time_passed) * 0.13
+		breathing = sin(13 * time_passed) * 0.13
+		breathing2 = sin(9 * time_passed) * 0.08
+
+	elif is_gehen:
+		breathing3 = sin(7 * time_passed) * 0.07
+		breathing = sin(5 * time_passed) * 0.01
+		breathing2 = sin(5 * time_passed) * 0.01
+
 	else:
-		breathing3 = sin(1.5 * time_passed ) * 0.04 
-	
+		breathing = sin(0.5 * time_passed) * 0.02
+		breathing2 = sin(0.5 * time_passed) * 0.02
+		breathing3 = sin(0.5 * time_passed) * 0.04
+		
 	$".".position.y = breathing3 
 	$AK47.position.y = breathing + 1.5
 	$AK47.position.x = breathing2
@@ -110,7 +128,8 @@ func _physics_process(_delta: float) -> void:
 
 	if Input.is_key_pressed(KEY_W) or Input.is_action_pressed("ui_up") and Global.allowed_move and not Sprinting:
 		if Input.is_key_pressed(KEY_SHIFT):
-			input_dir -= transform.basis.z * 5
+			input_dir -= transform.basis.z 
+			speed = 10
 			Sprinting = true
 			if not sound_played:
 				sound_played = true
@@ -121,8 +140,9 @@ func _physics_process(_delta: float) -> void:
 				Sprinting = false
 				Sprint.stop()
 				sound_played = false
+				speed = 5
 		input_dir -= transform.basis.z
-		if not Sound_gespielt:
+		if not Sound_gespielt and not sound_played:
 			Walking.play()
 			Sound_gespielt = true
 			
@@ -131,21 +151,21 @@ func _physics_process(_delta: float) -> void:
 		
 	if Input.is_key_pressed(KEY_S) or Input.is_action_pressed("ui_down") and Global.allowed_move and not Sprinting:
 		input_dir += transform.basis.z
-		if not Sound_gespielt:
+		if not Sound_gespielt and not sound_played:
 			Walking.play()
 			Sound_gespielt = true
 	
 	# A steuert fest nach -X (Westen)
 	if Input.is_key_pressed(KEY_A) or Input.is_action_pressed("ui_left") and Global.allowed_move and not Sprinting:
 		input_dir -= transform.basis.x
-		if not Sound_gespielt:
+		if not Sound_gespielt and not sound_played:
 			Walking.play()
 			Sound_gespielt = true
 	
 	# D steuert fest nach +X (Osten)
 	if Input.is_key_pressed(KEY_D) or Input.is_action_pressed("ui_right") and Global.allowed_move and not Sprinting:
 		input_dir += transform.basis.x
-		if not Sound_gespielt:
+		if not Sound_gespielt and not sound_played:
 			Walking.play()
 			Sound_gespielt = true
 	

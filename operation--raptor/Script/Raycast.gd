@@ -15,11 +15,15 @@ extends RayCast3D
 @onready var Walkie_Talkie = $"/root/Operation_Raptor/Player/Walkie_Talkie"
 @onready var Hold_your_position = $"/root/Operation_Raptor/Player/HOLD_YOUR_POSITION"
 @onready var Your_on_your_own =  $"/root/Operation_Raptor/Player/Good_Luck"
+@onready var Extra = $"/root/Operation_Raptor/Player/Extraction_point"
 # ...--- Variablen ----....
 
 @onready var Sound_play = false
 @onready var sound_play2 = false
 @onready var is_reloading = false
+
+@onready var Chance = 0
+var Extra_Sound_played = false
 
 #...--- Liste für Sound system ----....
 
@@ -73,7 +77,15 @@ func _process(delta: float) -> void:
 		Walkie_Talkie.play()
 		Watch_Your_Ammo.play()
 	if Munition == 15:
-		Sound_play = false	
+		Sound_play = false
+		Chance = randi_range(1,2)
+		if not is_any_sound_playing() and Chance == 2 and not Extra_Sound_played:
+			Walkie_Talkie.play()
+			Extra_Sound_played = true
+			Extra.play()
+		await get_tree().create_timer(60).timeout	
+		Extra_Sound_played = false
+		
 	# <----health system and its effects for different Situation---->
 	if health == 50 and not sound_play2 and not is_any_sound_playing():
 		sound_play2 = true
