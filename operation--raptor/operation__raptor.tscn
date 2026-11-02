@@ -25,6 +25,7 @@
 [ext_resource type="AudioStream" uid="uid://da6q7celgyh26" path="res://Sounds/bullet_hit_metal_002_(1).mp3" id="14_mwdpx"]
 [ext_resource type="Script" uid="uid://drmlhku6wb6aq" path="res://Script/UI_TEXT.gd" id="15_l36o3"]
 [ext_resource type="AudioStream" uid="uid://c57kw4injq44a" path="res://Sounds/SECURE_THE_PEREMETER.mp3" id="15_rlgxo"]
+[ext_resource type="Script" uid="uid://cih6jmaq3kcbi" path="res://Script/Flash_Light.gd" id="17_rlgxo"]
 [ext_resource type="FontFile" uid="uid://wdff7d7igxdd" path="res://ll-detechno-glitch/LLDEtechnoGlitch-Bold100.ttf" id="18_o6uix"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_5wpy2"]
@@ -4979,6 +4980,7 @@ transform = Transform3D(-0.05257589, 0.058327097, 0.99691194, -0.0012127376, 0.9
 light_energy = 0.129
 light_indirect_energy = 0.525
 light_volumetric_fog_energy = 0.05
+script = ExtResource("17_rlgxo")
 
 [node name="Handle" type="MeshInstance3D" parent="Player/AK47/ViewModel/Gun" unique_id=1300044258]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.20418629, 0.135, 0.019949598)

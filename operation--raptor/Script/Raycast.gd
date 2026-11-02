@@ -119,9 +119,12 @@ func _process(delta: float) -> void:
 		print("Nichts getroffen.")
 	
 	# Taschsenlampe ein und ausschalten -------------->
-	if Input.is_key_pressed(KEY_F):
-		Flash_Light.visible = !Flash_Light.visible
-		print("Taschenlampe an!")
+	
+func _input(event: InputEvent) -> void:
+	if event is InputEventKey:
+		if event.keycode == KEY_F and event.pressed and not event.echo:
+			Flash_Light.visible = !Flash_Light.visible
+
 		
 	
 # Wichtige Notizen:
