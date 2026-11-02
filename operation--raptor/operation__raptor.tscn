@@ -4976,7 +4976,6 @@ mesh = SubResource("ArrayMesh_x4dg6")
 
 [node name="Light" type="DirectionalLight3D" parent="Player/AK47/ViewModel/Gun/Mag" unique_id=98327288]
 transform = Transform3D(-0.05257589, 0.058327097, 0.99691194, -0.0012127376, 0.9982884, -0.05847157, -0.99861604, -0.004283188, -0.052415162, 0.6965116, 0.65565205, -3.122589)
-visible = false
 light_energy = 0.129
 light_indirect_energy = 0.525
 light_volumetric_fog_energy = 0.05
@@ -5105,10 +5104,10 @@ shadow_bias = 1.4
 transform = Transform3D(0.61823714, 0, 0.7859916, 0, 1, 0, -0.7859916, 0, 0.61823714, -5.04228, 21.256565, -2.234479)
 
 [node name="Licht2" parent="." unique_id=1446585405 instance=ExtResource("1_lrg8k")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -73.68997, 20.085936, -46.04045)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -73.68997, 35.936226, -46.04045)
 
 [node name="Licht3" parent="." unique_id=779141519 instance=ExtResource("1_lrg8k")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.0569115, 20.085936, -63.515675)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.0569115, 64.789894, -63.515675)
 
 [node name="GMC" type="CharacterBody3D" parent="." unique_id=1061129904]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.6293945e-06, 0, 0)
@@ -5130,7 +5129,7 @@ offset_top = 21.0
 offset_right = 3111.0
 offset_bottom = 2071.0
 theme_override_fonts/font = ExtResource("18_o6uix")
-theme_override_font_sizes/font_size = 110
+theme_override_font_sizes/font_size = 81
 script = ExtResource("15_l36o3")
 
 [node name="Player2" type="CharacterBody3D" parent="." unique_id=2136447417]

@@ -71,12 +71,12 @@ func _process(delta: float) -> void:
 	var is_Sprint =  Input.is_action_pressed("Sprint")
 	var is_gehen = is_moving and not is_Sprint
 
-	if is_Sprint:
-		breathing3 = sin(13 * time_passed) * 0.13
-		breathing = sin(13 * time_passed) * 0.13
-		breathing2 = sin(9 * time_passed) * 0.08
+	#if is_Sprint:
+		#breathing3 = sin(10 * time_passed) * 0.13
+		#breathing = sin(8 * time_passed) * 0.03
+		#breathing2 = sin(8 * time_passed) * 0.03
 
-	elif is_gehen:
+	if is_gehen:
 		breathing3 = sin(7 * time_passed) * 0.07
 		breathing = sin(5 * time_passed) * 0.01
 		breathing2 = sin(5 * time_passed) * 0.01
@@ -127,20 +127,20 @@ func _physics_process(_delta: float) -> void:
 	var input_dir = Vector3.ZERO
 
 	if Input.is_key_pressed(KEY_W) or Input.is_action_pressed("ui_up") and Global.allowed_move and not Sprinting:
-		if Input.is_key_pressed(KEY_SHIFT):
-			input_dir -= transform.basis.z 
-			speed = 10
-			Sprinting = true
-			if not sound_played:
-				sound_played = true
-				Sprint.play()
-				print("Es spielt!")
+		#if Input.is_key_pressed(KEY_SHIFT):
+			#input_dir -= transform.basis.z 
+			#speed = 7.5
+			#Sprinting = true
+			#if not sound_played:
+				#sound_played = true
+				#Sprint.play()
+				#print("Es spielt!")
 			
-		else:
-				Sprinting = false
-				Sprint.stop()
-				sound_played = false
-				speed = 5
+		#else:
+				#Sprinting = false
+				#Sprint.stop()
+				#sound_played = false
+				#speed = 5
 		input_dir -= transform.basis.z
 		if not Sound_gespielt and not sound_played:
 			Walking.play()

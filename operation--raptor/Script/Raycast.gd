@@ -16,6 +16,7 @@ extends RayCast3D
 @onready var Hold_your_position = $"/root/Operation_Raptor/Player/HOLD_YOUR_POSITION"
 @onready var Your_on_your_own =  $"/root/Operation_Raptor/Player/Good_Luck"
 @onready var Extra = $"/root/Operation_Raptor/Player/Extraction_point"
+@onready var Flash_Light = $"/root/Operation_Raptor/Player/AK47/ViewModel/Gun/Mag/Light"
 # ...--- Variablen ----....
 
 @onready var Sound_play = false
@@ -58,6 +59,7 @@ func is_any_sound_playing() -> bool:
 	return false
 
 
+	
 func _process(delta: float) -> void:
 	health_text.text = "Health: " + str(health) + " | Munition: " + str(Munition)
 	if Input.is_action_just_pressed("Reload") and not is_reloading:
@@ -83,8 +85,8 @@ func _process(delta: float) -> void:
 			Walkie_Talkie.play()
 			Extra_Sound_played = true
 			Extra.play()
-		await get_tree().create_timer(60).timeout	
-		Extra_Sound_played = false
+		# du musst da noch noch code hinzufügen der Extra_Sound_played wieder True setzt
+		
 		
 	# <----health system and its effects for different Situation---->
 	if health == 50 and not sound_play2 and not is_any_sound_playing():
@@ -116,6 +118,11 @@ func _process(delta: float) -> void:
 		health_text.text = "Health: " + str(health) + " | Munition: " + str(Munition)
 		print("Nichts getroffen.")
 	
+	# Taschsenlampe ein und ausschalten -------------->
+	if Input.is_key_pressed(KEY_F):
+		Flash_Light.visible = !Flash_Light.visible
+		print("Taschenlampe an!")
+		
 	
 # Wichtige Notizen:
 # 1. Global System muss noch auf multiplayer modus angespasst werden!!!
