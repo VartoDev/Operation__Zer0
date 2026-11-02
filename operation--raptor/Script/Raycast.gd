@@ -21,6 +21,10 @@ extends RayCast3D
 @onready var sound_play2 = false
 @onready var is_reloading = false
 
+#...--- Liste für Sound system ----....
+
+const SOUND_NAMES = ["Watch_Your_Ammo", "Holy_your_position", "Your_on_your_own"]
+
 # ...----Munition und Health system---...
 @onready var health_text: Label = get_node("/root/Operation_Raptor/Text_Health")
 var Munition := 15
@@ -39,10 +43,16 @@ func _ready() -> void:
 		print("Du darfst dich nicht bewegen")
 	print("Du darfst dich bewegen")
 
+func is_any_sound_playing() -> bool:
+	for player in SOUND_NAMES:
+		if player.playing:
+			return true # Bricht sofort ab und spart Rechenzeit, sobald einer spielt
+	return false
+
 
 func _process(delta: float) -> void:
 	health_text.text = "Health: " + str(health) + " | Munition: " + str(Munition)
-	if Input.is_key_pressed(KEY_R) and not is_reloading:
+	if Input.is_key_pressed(KEY_R) and not is_reloading and not is_any_sound_playing():
 		is_reloading = true
 		await get_tree().create_timer(2.9).timeout
 		Munition = 15
@@ -53,7 +63,7 @@ func _process(delta: float) -> void:
 		Global.allowed_to_shoot = false
 	else:
 		Global.allowed_to_shoot = true
-	if Munition == 4 and not Sound_play:
+	if Munition == 4 and not Sound_play and not is_any_sound_playing():
 		Sound_play = true
 		await get_tree().create_timer(0.7).timeout
 		Walkie_Talkie.play()
@@ -61,7 +71,7 @@ func _process(delta: float) -> void:
 	if Munition == 15:
 		Sound_play = false	
 	# <----health system and its effects for different Situation---->
-	if health == 50 and not sound_play2:
+	if health == 50 and not sound_play2 and not is_any_sound_playing():
 		sound_play2 = true
 		await get_tree().create_timer(0.7).timeout
 		Walkie_Talkie.play()
