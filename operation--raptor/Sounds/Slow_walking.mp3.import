@@ -2,13 +2,13 @@
 
 importer="mp3"
 type="AudioStreamMP3"
-uid="uid://br5lfhdmirclt"
-path="res://.godot/imported/Slow_walking.mp3-7ced87dda7ad4362ee1a98bc301748bc.mp3str"
+uid="uid://br43bltxy2dku"
+path="res://.godot/imported/slow_walking.mp3-ddb9faafcf305e3804f1fe923898cfa1.mp3str"
 
 [deps]
 
-source_file="res://Sounds/Slow_walking.mp3"
-dest_files=["res://.godot/imported/Slow_walking.mp3-7ced87dda7ad4362ee1a98bc301748bc.mp3str"]
+source_file="res://Sounds/slow_walking.mp3"
+dest_files=["res://.godot/imported/slow_walking.mp3-ddb9faafcf305e3804f1fe923898cfa1.mp3str"]
 
 [params]
 

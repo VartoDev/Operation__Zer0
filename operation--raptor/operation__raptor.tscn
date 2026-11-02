@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://s88ngx3csetj" path="res://Script/Operation_raptor.gd" id="1_bi2oh"]
 [ext_resource type="PackedScene" uid="uid://c81o3yhbwp21b" path="res://Models/Untitled.blend" id="1_lrg8k"]
 [ext_resource type="PackedScene" uid="uid://drnith5t28ndc" path="res://Models/procedural_city_5-2.glb" id="2_bi2oh"]
+[ext_resource type="AudioStream" uid="uid://b6ry27o4p6dbl" path="res://Sounds/AAAAAAA.mp3" id="3_2op43"]
 [ext_resource type="AudioStream" uid="uid://dbgyiq5b1w6c6" path="res://Sounds/freesound_community-wind-ambience-14720.mp3" id="5_4ss8y"]
 [ext_resource type="AudioStream" uid="uid://2kk15j1shfn7" path="res://Sounds/footsteps-walking-on-concrete-glitchedtones-slow-3-00-17.mp3" id="5_q3rc5"]
 [ext_resource type="Shader" uid="uid://dkxxdwqlhi4r4" path="res://Script/operation__raptor.gdshader" id="6_2u7n7"]
@@ -18,6 +19,7 @@
 [ext_resource type="AudioStream" uid="uid://do2jjk3vqfth" path="res://Sounds/HOLY_YOUR_POSITION.mp3" id="11_e3gmg"]
 [ext_resource type="AudioStream" uid="uid://8in4yc401sre" path="res://Sounds/Start.mp3" id="12_0lsxm"]
 [ext_resource type="Script" uid="uid://df1j83dmtmkna" path="res://Script/Animation_reload.gd" id="13_08lwh"]
+[ext_resource type="AudioStream" uid="uid://cue8rsb5pmotc" path="res://Sounds/Fast_run.mp3" id="13_jg0cr"]
 [ext_resource type="AudioStream" uid="uid://da6q7celgyh26" path="res://Sounds/bullet_hit_metal_002_(1).mp3" id="14_mwdpx"]
 [ext_resource type="Script" uid="uid://drmlhku6wb6aq" path="res://Script/UI_TEXT.gd" id="15_l36o3"]
 [ext_resource type="FontFile" uid="uid://wdff7d7igxdd" path="res://ll-detechno-glitch/LLDEtechnoGlitch-Bold100.ttf" id="18_o6uix"]
@@ -4875,7 +4877,7 @@ scale = Vector2(10, 10)
 
 [node name="Walking_Sound" type="AudioStreamPlayer3D" parent="Player" unique_id=969772032]
 transform = Transform3D(-3.4734607e-05, 0, 0.9999999, 0, 1, 0, -0.9999999, 0, -3.4734607e-05, 0.3855896, 0.7986586, -0.08447647)
-stream = ExtResource("5_q3rc5")
+stream = ExtResource("3_2op43")
 volume_db = 39.135
 max_polyphony = 10
 parameters/looping = true
@@ -4928,7 +4930,7 @@ volume_db = 80.0
 [node name="Good_Luck" type="AudioStreamPlayer3D" parent="Player" unique_id=582681817]
 transform = Transform3D(0.9924903, 0, -0.12232315, 0, 1, 0, 0.12232315, 0, 0.9924903, 0.0333519, 2.4602613, -0.52356386)
 stream = ExtResource("12_0lsxm")
-volume_db = 35.0
+volume_db = 18.0
 
 [node name="Extraction_point" type="AudioStreamPlayer3D" parent="Player" unique_id=1227441751]
 transform = Transform3D(0.970074, 0, -0.24280907, 0, 1, 0, 0.24280907, 0, 0.970074, 0.13049698, 4.9205227, -1.0391164)
@@ -4943,6 +4945,11 @@ volume_db = 35.0
 [node name="Parameter" type="AudioStreamPlayer3D" parent="Player" unique_id=121026443]
 transform = Transform3D(0.88208747, 0, -0.47108555, 0, 1, 0, 0.47108555, 0, 0.88208747, 0.5093994, 9.841045, -2.01545)
 stream = ExtResource("12_0lsxm")
+volume_db = 35.0
+
+[node name="Sprint" type="AudioStreamPlayer3D" parent="Player" unique_id=1710273295]
+transform = Transform3D(0.55615675, 0, -0.83107734, 0, 1, 0, 0.83107734, 0, 0.55615675, 1.9081802, 19.682093, -3.5532823)
+stream = ExtResource("13_jg0cr")
 volume_db = 35.0
 
 [node name="AK47" type="Node3D" parent="Player" unique_id=631223262]

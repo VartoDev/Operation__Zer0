@@ -8,8 +8,8 @@ var rotation_x: float = 0.0
 
 # -----Booleans--------
 var Sound_gespielt = false
-
-
+var Sprinting = false
+var sound_played = false 
 
 
 # -----Wurzeln--------
@@ -19,6 +19,7 @@ var Sound_gespielt = false
 @onready var laser_pointer = $"../Player2/AK47/ViewModel/Gun/MuzzleFlash/LaserMain"
 @onready var main_charakter = $"."
 @onready var No_ammo = $No_Ammo
+@onready var Sprint = $Sprint
 
 
 
@@ -107,30 +108,42 @@ func _process(delta: float) -> void:
 func _physics_process(_delta: float) -> void:
 	var input_dir = Vector3.ZERO
 
-	if Input.is_key_pressed(KEY_W) or Input.is_action_pressed("ui_up") and Global.allowed_move:
+	if Input.is_key_pressed(KEY_W) or Input.is_action_pressed("ui_up") and Global.allowed_move and not Sprinting:
+		if Input.is_key_pressed(KEY_SHIFT):
+			input_dir -= transform.basis.z * 5
+			Sprinting = true
+			if not sound_played:
+				sound_played = true
+				Sprint.play()
+				print("Es spielt!")
+			
+		else:
+				Sprinting = false
+				Sprint.stop()
+				sound_played = false
 		input_dir -= transform.basis.z
 		if not Sound_gespielt:
 			Walking.play()
 			Sound_gespielt = true
-	
 			
+	
 		
-	if Input.is_key_pressed(KEY_S) or Input.is_action_pressed("ui_down") and Global.allowed_move:
+		
+	if Input.is_key_pressed(KEY_S) or Input.is_action_pressed("ui_down") and Global.allowed_move and not Sprinting:
 		input_dir += transform.basis.z
 		if not Sound_gespielt:
 			Walking.play()
 			Sound_gespielt = true
 	
-		
 	# A steuert fest nach -X (Westen)
-	if Input.is_key_pressed(KEY_A) or Input.is_action_pressed("ui_left") and Global.allowed_move:
+	if Input.is_key_pressed(KEY_A) or Input.is_action_pressed("ui_left") and Global.allowed_move and not Sprinting:
 		input_dir -= transform.basis.x
 		if not Sound_gespielt:
 			Walking.play()
 			Sound_gespielt = true
 	
 	# D steuert fest nach +X (Osten)
-	if Input.is_key_pressed(KEY_D) or Input.is_action_pressed("ui_right") and Global.allowed_move:
+	if Input.is_key_pressed(KEY_D) or Input.is_action_pressed("ui_right") and Global.allowed_move and not Sprinting:
 		input_dir += transform.basis.x
 		if not Sound_gespielt:
 			Walking.play()
@@ -144,6 +157,12 @@ func _physics_process(_delta: float) -> void:
 		if Sound_gespielt:
 			Walking.stop()
 			Sound_gespielt = false
+			
+		if Sprint.playing:
+			Sprint.stop()
+		
+		
+			
 		
 		
 

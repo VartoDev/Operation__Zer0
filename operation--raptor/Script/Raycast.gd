@@ -56,7 +56,7 @@ func is_any_sound_playing() -> bool:
 
 func _process(delta: float) -> void:
 	health_text.text = "Health: " + str(health) + " | Munition: " + str(Munition)
-	if Input.is_action_just_pressed("Reload") and not is_reloading and not is_any_sound_playing():
+	if Input.is_action_just_pressed("Reload") and not is_reloading:
 		is_reloading = true
 		await get_tree().create_timer(2.9).timeout
 		Munition = 15
