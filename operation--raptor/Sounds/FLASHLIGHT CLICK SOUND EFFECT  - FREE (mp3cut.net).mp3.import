@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bp44rtt3lwfeu"
+path="res://.godot/imported/FLASHLIGHT CLICK SOUND EFFECT  - FREE (mp3cut.net).mp3-e7da492953258b3e06b31ecdd1e53ee5.mp3str"
+
+[deps]
+
+source_file="res://Sounds/FLASHLIGHT CLICK SOUND EFFECT  - FREE (mp3cut.net).mp3"
+dest_files=["res://.godot/imported/FLASHLIGHT CLICK SOUND EFFECT  - FREE (mp3cut.net).mp3-e7da492953258b3e06b31ecdd1e53ee5.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

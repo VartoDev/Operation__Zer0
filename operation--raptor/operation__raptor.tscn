@@ -11,6 +11,7 @@
 [ext_resource type="AudioStream" uid="uid://ue7vlrapbcd0" path="res://Sounds/Reload.mp3" id="7_x4dg6"]
 [ext_resource type="AudioStream" uid="uid://dy2vognjfoc74" path="res://Sounds/Shell_Casing.mp3" id="8_08lwh"]
 [ext_resource type="AudioStream" uid="uid://ptifxvxqlcb3" path="res://Sounds/Operation_Zero_NoAmmo_Realistic.wav" id="8_eivwk"]
+[ext_resource type="AudioStream" uid="uid://bp44rtt3lwfeu" path="res://Sounds/FLASHLIGHT CLICK SOUND EFFECT  - FREE (mp3cut.net).mp3" id="8_oe3rj"]
 [ext_resource type="PackedScene" uid="uid://crxuyfbksua2c" path="res://Assets of Models/gmc_yukon_xl_presidential_state_car.glb" id="9_4ss8y"]
 [ext_resource type="AudioStream" uid="uid://cbjhsaem8u0g" path="res://Sounds/audiofx_a237912_fx_radio_100 (mp3cut.net)-3.mp3" id="9_g8tqx"]
 [ext_resource type="Script" uid="uid://dw6hyfbl8pl01" path="res://Script/Mündungsfeuer.gd" id="9_x4dg6"]
@@ -4912,6 +4913,10 @@ max_polyphony = 32
 stream = SubResource("AudioStreamMP3_mwdpx")
 volume_db = 16.552
 
+[node name="Click" type="AudioStreamPlayer" parent="Player" unique_id=353292477]
+stream = ExtResource("8_oe3rj")
+volume_db = 16.552
+
 [node name="No_Ammo" type="AudioStreamPlayer" parent="Player" unique_id=440969584]
 stream = ExtResource("8_eivwk")
 volume_db = 10.0
@@ -4977,9 +4982,11 @@ mesh = SubResource("ArrayMesh_x4dg6")
 
 [node name="Light" type="DirectionalLight3D" parent="Player/AK47/ViewModel/Gun/Mag" unique_id=98327288]
 transform = Transform3D(-0.05257589, 0.058327097, 0.99691194, -0.0012127376, 0.9982884, -0.05847157, -0.99861604, -0.004283188, -0.052415162, 0.6965116, 0.65565205, -3.122589)
-light_energy = 0.129
-light_indirect_energy = 0.525
+light_energy = 0.08
 light_volumetric_fog_energy = 0.05
+light_angular_distance = 1.0
+shadow_enabled = true
+sky_mode = 1
 script = ExtResource("17_rlgxo")
 
 [node name="Handle" type="MeshInstance3D" parent="Player/AK47/ViewModel/Gun" unique_id=1300044258]
@@ -5103,7 +5110,7 @@ shadow_enabled = true
 shadow_bias = 1.4
 
 [node name="Licht" parent="." unique_id=1350113374 instance=ExtResource("1_lrg8k")]
-transform = Transform3D(0.61823714, 0, 0.7859916, 0, 1, 0, -0.7859916, 0, 0.61823714, -5.04228, 21.256565, -2.234479)
+transform = Transform3D(0.61823714, 0, 0.7859916, 0, 1, 0, -0.7859916, 0, 0.61823714, -5.042, 35.153, -2.234)
 
 [node name="Licht2" parent="." unique_id=1446585405 instance=ExtResource("1_lrg8k")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -73.68997, 35.936226, -46.04045)

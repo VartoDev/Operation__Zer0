@@ -1,5 +1,10 @@
 extends DirectionalLight3D
 
+#...--- Sound für flashLight ---....
+
+
+@onready var Click = $"../../../../../Click"
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -10,5 +15,6 @@ func _ready() -> void:
 func _input(event: InputEvent) -> void:
 	if event is InputEventKey:
 		if event.keycode == KEY_F and event.pressed and not event.echo:
+			Click.play()
 			visible = !visible
 			print("Taschenlampe: ", "AN" if visible else "AUS")
