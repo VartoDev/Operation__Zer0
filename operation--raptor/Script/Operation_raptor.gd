@@ -122,6 +122,8 @@ func _process(delta: float) -> void:
 		if Chance == 1 and is_any_sound_playing():
 			Walkie_Talkie.play()
 			Parameter.play()
+		var Rotation_z_camera_shoot = randi_range(0.1,1)
+		camera.rotate_z(Rotation_z_camera_shoot)
 							
 	elif Input.is_action_just_pressed("Schießen") and not Global.allowed_to_shoot:
 		No_ammo.play() # <---- Wenn keine Muntion drin ist dann kommt ein sound hinweis
