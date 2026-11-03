@@ -49,13 +49,10 @@ func _process(delta: float) -> void:
 	and not Input.is_key_pressed(KEY_A) and not walk_patrol and not idle_to_aim \
 	and not reload and not walk_aim and not walk_aim_fire and not walk_fire and not walk_reload and Global.allowed_to_shoot and Input.is_action_just_pressed("Schießen"):
 		reload_node.play("aim-fire-single")
+		reload_node.seek(0)
 		aim_fire = true
 		
 	else:
-		if  reload_node.current_animation == "aim-fire-single":
-			await get_tree().create_timer(0.25).timeout
-
-			reload_node.stop()
 		aim_fire = false
 	# reload
 	if not Input.is_key_pressed(KEY_W) and not Input.is_key_pressed(KEY_S) and not Input.is_key_pressed(KEY_D) \
@@ -82,13 +79,11 @@ func _process(delta: float) -> void:
 	or Input.is_key_pressed(KEY_A)) and walk_patrol and not idle_to_aim \
 	and not reload and not walk_aim and not walk_aim_fire and not walk_fire and not walk_reload and   Global.allowed_to_shoot and Input.is_action_just_pressed("Schießen"):
 		reload_node.play("walk-aim-fire-single")
+		reload_node.seek(0)
 		walk_aim_fire = true
 		
 	else:
-		if reload_node.current_animation == "walk-aim-fire-single":
-			await get_tree().create_timer(0.2).timeout
-
-			reload_node.pause()
+		
 		walk_aim_fire = false
 	
 

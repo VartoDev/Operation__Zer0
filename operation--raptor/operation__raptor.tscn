@@ -4883,8 +4883,7 @@ scale = Vector2(10, 10)
 [node name="Walking_Sound" type="AudioStreamPlayer3D" parent="Player" unique_id=969772032]
 transform = Transform3D(-3.4734607e-05, 0, 0.9999999, 0, 1, 0, -0.9999999, 0, -3.4734607e-05, 0.3855896, 0.7986586, -0.08447647)
 stream = ExtResource("3_2op43")
-volume_db = 39.135
-max_polyphony = 10
+volume_db = 15.0
 parameters/looping = true
 
 [node name="Wind" type="AudioStreamPlayer" parent="Player" unique_id=2051040866]
