@@ -13,7 +13,10 @@
 [ext_resource type="AudioStream" uid="uid://b2hr37mxgmh7h" path="res://Sounds/freesound_community-gun-shots-from-a-distance-10-39819.mp3" id="11_eifbt"]
 [ext_resource type="Script" uid="uid://d0fkm5k7uya1c" path="res://Script/Go_Back.gd" id="12_g56d3"]
 [ext_resource type="Texture2D" uid="uid://bvce02xfq2lfx" path="res://images-2.png" id="12_kwko7"]
+[ext_resource type="Texture2D" uid="uid://csx8end5275k5" path="res://Bildschirmfoto 2026-11-03 um 18.06.01.png" id="13_0c3sc"]
+[ext_resource type="AudioStream" uid="uid://d2hnclxxos1ix" path="res://Sounds/universfield-interface-click-124476.mp3" id="13_7nu0q"]
 [ext_resource type="FontFile" uid="uid://drmg31630aq1q" path="res://ll-detechno-glitch/LLDEtechnoGlitch-Bold0.ttf" id="13_unw7k"]
+[ext_resource type="Script" uid="uid://db21yudycx7qt" path="res://Script/Copy_Button.gd" id="14_qg0ob"]
 
 [node name="Control" type="Control" unique_id=1611970521]
 layout_mode = 3
@@ -75,10 +78,25 @@ position = Vector2(-3, -95)
 stream = ExtResource("11_eifbt")
 volume_db = 11.664
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1448687371]
+[node name="Copy_photo" type="Sprite2D" parent="." unique_id=1448687371]
 position = Vector2(2384.125, 838.125)
 scale = Vector2(0.5139823, 0.45134193)
 texture = ExtResource("12_kwko7")
+
+[node name="Player_photo" type="Sprite2D" parent="." unique_id=1247745088]
+position = Vector2(310, 1394)
+scale = Vector2(2.5376627, 2.3180413)
+texture = ExtResource("13_0c3sc")
+
+[node name="Player_photo2" type="Sprite2D" parent="." unique_id=899334349]
+position = Vector2(314.00003, 1675.9999)
+scale = Vector2(2.5376627, 2.3180413)
+texture = ExtResource("13_0c3sc")
+
+[node name="Copy_sound" type="AudioStreamPlayer2D" parent="." unique_id=1894708366]
+position = Vector2(-5, 0)
+stream = ExtResource("13_7nu0q")
+volume_db = 14.093
 
 [node name="Go_Back" type="Button" parent="." unique_id=63419265]
 layout_mode = 0
@@ -91,11 +109,12 @@ script = ExtResource("12_g56d3")
 
 [node name="Copy_Button" type="Button" parent="." unique_id=840487458]
 layout_mode = 0
-offset_left = 2272.0
-offset_top = 742.0
+offset_left = 2261.0
+offset_top = 729.0
 offset_right = 2492.0
 offset_bottom = 934.0
 flat = true
+script = ExtResource("14_qg0ob")
 
 [node name="Private_lobby" type="Label" parent="." unique_id=1318358146]
 layout_mode = 0
@@ -107,6 +126,17 @@ theme_override_fonts/font = ExtResource("13_unw7k")
 theme_override_font_sizes/font_size = 135
 text = "PRIVATE LOBBY"
 
+[node name="Start_Match" type="Label" parent="." unique_id=1268838533]
+layout_mode = 0
+offset_left = 2361.0
+offset_top = 1806.0
+offset_right = 3072.0
+offset_bottom = 2078.0
+theme_override_colors/font_color = Color(0.5719094, 0.1673443, 0.26820326, 1)
+theme_override_fonts/font = ExtResource("13_unw7k")
+theme_override_font_sizes/font_size = 103
+text = "Start match"
+
 [node name="Online-connected" type="Label" parent="." unique_id=1620936946]
 layout_mode = 0
 offset_left = 277.0
@@ -117,6 +147,28 @@ theme_override_colors/font_color = Color(0.14117648, 1, 0.25882354, 1)
 theme_override_fonts/font = ExtResource("13_unw7k")
 theme_override_font_sizes/font_size = 75
 text = "ONLINE — CONNECTED"
+
+[node name="Online-connected2" type="Label" parent="." unique_id=1036372021]
+layout_mode = 0
+offset_left = 383.0
+offset_top = 1423.0
+offset_right = 1219.0
+offset_bottom = 1649.0
+theme_override_colors/font_color = Color(0.14117648, 1, 0.25882354, 1)
+theme_override_fonts/font = ExtResource("13_unw7k")
+theme_override_font_sizes/font_size = 27
+text = "CONNECTED"
+
+[node name="Online-connected3" type="Label" parent="." unique_id=1251123371]
+layout_mode = 0
+offset_left = 385.0
+offset_top = 1706.0
+offset_right = 1221.0
+offset_bottom = 1932.0
+theme_override_colors/font_color = Color(0.7117993, 0.30733144, 0.31298512, 1)
+theme_override_fonts/font = ExtResource("13_unw7k")
+theme_override_font_sizes/font_size = 27
+text = "Waiting for Player..."
 
 [node name="1_2 Players" type="Label" parent="." unique_id=1978114265]
 layout_mode = 0
@@ -172,4 +224,28 @@ theme_override_fonts/font = ExtResource("13_unw7k")
 theme_override_font_sizes/font_size = 63
 text = "Players"
 
+[node name="Player1" type="Label" parent="." unique_id=1191886511]
+layout_mode = 0
+offset_left = 383.0
+offset_top = 1362.0
+offset_right = 1114.0
+offset_bottom = 1528.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0)
+theme_override_fonts/font = ExtResource("13_unw7k")
+theme_override_font_sizes/font_size = 51
+text = "Player 1"
+
+[node name="Player2" type="Label" parent="." unique_id=116389176]
+layout_mode = 0
+offset_left = 380.0
+offset_top = 1645.0
+offset_right = 1111.0
+offset_bottom = 1811.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0)
+theme_override_fonts/font = ExtResource("13_unw7k")
+theme_override_font_sizes/font_size = 51
+text = "Player 2
+"
+
 [connection signal="pressed" from="Go_Back" to="Go_Back" method="_on_pressed"]
+[connection signal="pressed" from="Copy_Button" to="Copy_Button" method="_on_pressed"]

@@ -108,6 +108,16 @@ offset_bottom = 898.0
 flat = true
 script = ExtResource("14_6cojp")
 
+[node name="Create_lobby2" type="Button" parent="." unique_id=1668254430]
+layout_mode = 0
+offset_left = 1055.0
+offset_top = 1304.0
+offset_right = 2105.0
+offset_bottom = 1544.0
+flat = true
+script = ExtResource("14_6cojp")
+
 [connection signal="pressed" from="Go_Back" to="Go_Back" method="_on_pressed"]
 [connection signal="pressed" from="Found_a_Bug" to="Found_a_Bug" method="_on_pressed"]
 [connection signal="pressed" from="Create_lobby" to="Create_lobby" method="_on_pressed"]
+[connection signal="pressed" from="Create_lobby2" to="Create_lobby2" method="_on_pressed"]
