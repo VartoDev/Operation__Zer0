@@ -12,6 +12,8 @@
 [ext_resource type="AudioStream" uid="uid://btdxop3emcwdg" path="res://Sounds/dragon-studio-car-engine-372477.mp3" id="10_tm5dd"]
 [ext_resource type="AudioStream" uid="uid://b2hr37mxgmh7h" path="res://Sounds/freesound_community-gun-shots-from-a-distance-10-39819.mp3" id="11_eifbt"]
 [ext_resource type="Script" uid="uid://d0fkm5k7uya1c" path="res://Script/Go_Back.gd" id="12_g56d3"]
+[ext_resource type="Texture2D" uid="uid://bvce02xfq2lfx" path="res://images-2.png" id="12_kwko7"]
+[ext_resource type="FontFile" uid="uid://drmg31630aq1q" path="res://ll-detechno-glitch/LLDEtechnoGlitch-Bold0.ttf" id="13_unw7k"]
 
 [node name="Control" type="Control" unique_id=1611970521]
 layout_mode = 3
@@ -73,6 +75,11 @@ position = Vector2(-3, -95)
 stream = ExtResource("11_eifbt")
 volume_db = 11.664
 
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1448687371]
+position = Vector2(2384.125, 838.125)
+scale = Vector2(0.5139823, 0.45134193)
+texture = ExtResource("12_kwko7")
+
 [node name="Go_Back" type="Button" parent="." unique_id=63419265]
 layout_mode = 0
 offset_left = 35.0
@@ -81,5 +88,58 @@ offset_right = 329.0
 offset_bottom = 1986.0
 flat = true
 script = ExtResource("12_g56d3")
+
+[node name="Private_lobby" type="Label" parent="." unique_id=1318358146]
+layout_mode = 0
+offset_left = 273.0
+offset_top = 221.0
+offset_right = 858.0
+offset_bottom = 493.0
+theme_override_fonts/font = ExtResource("13_unw7k")
+theme_override_font_sizes/font_size = 135
+text = "PRIVATE LOBBY"
+
+[node name="Online-connected" type="Label" parent="." unique_id=1620936946]
+layout_mode = 0
+offset_left = 277.0
+offset_top = 404.0
+offset_right = 1113.0
+offset_bottom = 630.0
+theme_override_colors/font_color = Color(0.14117648, 1, 0.25882354, 1)
+theme_override_fonts/font = ExtResource("13_unw7k")
+theme_override_font_sizes/font_size = 75
+text = "ONLINE — CONNECTED"
+
+[node name="1_2 Players" type="Label" parent="." unique_id=1978114265]
+layout_mode = 0
+offset_left = 2419.0
+offset_top = 416.0
+offset_right = 3255.0
+offset_bottom = 642.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0)
+theme_override_fonts/font = ExtResource("13_unw7k")
+theme_override_font_sizes/font_size = 75
+text = "1/2 players"
+
+[node name="Innvation_code" type="Label" parent="." unique_id=2121315670]
+layout_mode = 0
+offset_left = 270.0
+offset_top = 574.0
+offset_right = 1001.0
+offset_bottom = 740.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0)
+theme_override_fonts/font = ExtResource("13_unw7k")
+theme_override_font_sizes/font_size = 63
+text = "INVITATION CODE"
+
+[node name="Innvation_code_generator" type="Label" parent="." unique_id=625347533]
+layout_mode = 0
+offset_left = 1199.0
+offset_top = 798.0
+offset_right = 1930.0
+offset_bottom = 964.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0)
+theme_override_fonts/font = ExtResource("13_unw7k")
+theme_override_font_sizes/font_size = 63
 
 [connection signal="pressed" from="Go_Back" to="Go_Back" method="_on_pressed"]
