@@ -14,6 +14,7 @@
 [ext_resource type="AudioStream" uid="uid://h2pm3ja20txg" path="res://Sounds/freesound_community-old-radio-noise-46734.mp3" id="12_c6dx3"]
 [ext_resource type="AudioStream" uid="uid://nwvkweub2qhp" path="res://Sounds/ribhavagrawal-gunshots-from-far-away-230563.mp3" id="13_jqn02"]
 [ext_resource type="AudioStream" uid="uid://btdxop3emcwdg" path="res://Sounds/dragon-studio-car-engine-372477.mp3" id="14_foiwe"]
+[ext_resource type="AudioStream" uid="uid://b2hr37mxgmh7h" path="res://Sounds/freesound_community-gun-shots-from-a-distance-10-39819.mp3" id="15_3ujc7"]
 
 [node name="Control" type="Control" unique_id=1260267113]
 layout_mode = 3
@@ -119,6 +120,11 @@ volume_db = 17.009
 [node name="Car" type="AudioStreamPlayer2D" parent="." unique_id=2066476309]
 position = Vector2(-3, -95)
 stream = ExtResource("14_foiwe")
+volume_db = 11.664
+
+[node name="Shots" type="AudioStreamPlayer2D" parent="." unique_id=52946517]
+position = Vector2(-3, -95)
+stream = ExtResource("15_3ujc7")
 volume_db = 11.664
 
 [connection signal="pressed" from="Button_Play" to="Button_Play" method="_on_pressed"]

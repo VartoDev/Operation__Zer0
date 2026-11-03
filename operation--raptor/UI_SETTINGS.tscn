@@ -3,6 +3,7 @@
 [ext_resource type="VideoStream" uid="uid://b3hetm5nokgyf" path="res://videos/1001-Kopie.mp4" id="1_uyg10"]
 [ext_resource type="Script" uid="uid://b4b18hihplvah" path="res://Script/VIDEO_UI2.gd" id="2_tciom"]
 [ext_resource type="AudioStream" uid="uid://6fpvwhvetsuc" path="res://Sounds/operation_zero_mouse_click.mp3" id="3_5ixev"]
+[ext_resource type="AudioStream" uid="uid://b2hr37mxgmh7h" path="res://Sounds/freesound_community-gun-shots-from-a-distance-10-39819.mp3" id="3_flto6"]
 [ext_resource type="AudioStream" uid="uid://5qhnecji8tpi" path="res://Sounds/freesound_community-radio-static-6382 (mp3cut.net).mp3" id="4_ki5r6"]
 [ext_resource type="AudioStream" uid="uid://dfd05y7s75ih4" path="res://Sounds/kave_msri-ak47-machine-gun-burst-sfx-332103.mp3" id="5_kfddy"]
 [ext_resource type="AudioStream" uid="uid://1b2dfwojatoe" path="res://Sounds/u_wxn5lzrjy3-military-radio-communication-222904.mp3" id="6_dtmyu"]
@@ -32,6 +33,11 @@ autoplay = true
 expand = true
 loop = true
 script = ExtResource("2_tciom")
+
+[node name="Shots" type="AudioStreamPlayer2D" parent="." unique_id=1323740640]
+position = Vector2(-8, -95)
+stream = ExtResource("3_flto6")
+volume_db = 11.664
 
 [node name="Button_Sound" type="AudioStreamPlayer2D" parent="." unique_id=2088414539]
 stream = ExtResource("3_5ixev")

@@ -9,7 +9,7 @@ extends VideoStreamPlayer
 @onready var Shots_distance = $"../Shots_from_far_away"
 @onready var Car_Sound = $"../Car"
 @onready var Button_Sound = $"../Button_Sound"
-
+@onready var shots_from_far = $"../Shots"
 # ....---- Variablen ----....
 
 
@@ -26,6 +26,8 @@ func _ready():
 		Sound_play(Shots_distance, 3, 15)                
 		await get_tree().create_timer(3).timeout
 		Sound_play(Car_Sound, 10, 22)
+		await get_tree().create_timer(3).timeout
+		Sound_play(shots_from_far, 20, 42)
 		await get_tree().create_timer(30).timeout 
 
 	
