@@ -11,6 +11,9 @@
 [ext_resource type="AudioStream" uid="uid://nwvkweub2qhp" path="res://Sounds/ribhavagrawal-gunshots-from-far-away-230563.mp3" id="9_aopic"]
 [ext_resource type="AudioStream" uid="uid://btdxop3emcwdg" path="res://Sounds/dragon-studio-car-engine-372477.mp3" id="10_r7ncl"]
 [ext_resource type="AudioStream" uid="uid://b2hr37mxgmh7h" path="res://Sounds/freesound_community-gun-shots-from-a-distance-10-39819.mp3" id="11_8naoq"]
+[ext_resource type="Script" uid="uid://d0fkm5k7uya1c" path="res://Script/Go_Back.gd" id="12_h6ivd"]
+[ext_resource type="FontFile" uid="uid://drmg31630aq1q" path="res://ll-detechno-glitch/LLDEtechnoGlitch-Bold0.ttf" id="13_ebkyn"]
+[ext_resource type="Script" uid="uid://dhgr3cppnl6nx" path="res://Script/Lobby_Code.gd" id="14_yp2w7"]
 
 [node name="Control" type="Control" unique_id=2064595104]
 layout_mode = 3
@@ -71,3 +74,73 @@ volume_db = 11.664
 position = Vector2(-3, -95)
 stream = ExtResource("11_8naoq")
 volume_db = 11.664
+
+[node name="Go_Back" type="Button" parent="." unique_id=1401129368]
+layout_mode = 0
+offset_left = 35.0
+offset_top = 1881.0
+offset_right = 329.0
+offset_bottom = 1986.0
+flat = true
+script = ExtResource("12_h6ivd")
+
+[node name="Join_Match" type="Button" parent="." unique_id=99535856]
+layout_mode = 0
+offset_left = 314.0
+offset_top = 978.0
+offset_right = 674.0
+offset_bottom = 1083.0
+flat = true
+
+[node name="Private_lobby" type="Label" parent="." unique_id=1375204533]
+layout_mode = 0
+offset_left = 273.0
+offset_top = 319.0
+offset_right = 858.0
+offset_bottom = 591.0
+theme_override_fonts/font = ExtResource("13_ebkyn")
+theme_override_font_sizes/font_size = 135
+text = "Join lobby"
+
+[node name="Info" type="Label" parent="." unique_id=1458610693]
+layout_mode = 0
+offset_left = 268.0
+offset_top = 488.0
+offset_right = 1746.0
+offset_bottom = 752.0
+theme_override_fonts/font = ExtResource("13_ebkyn")
+theme_override_font_sizes/font_size = 48
+text = "Enter an invitation code to join a private match."
+
+[node name="Invation_code" type="Label" parent="." unique_id=1015195887]
+layout_mode = 0
+offset_left = 328.0
+offset_top = 620.0
+offset_right = 1806.0
+offset_bottom = 884.0
+theme_override_fonts/font = ExtResource("13_ebkyn")
+theme_override_font_sizes/font_size = 48
+text = "INVITATION CODE"
+
+[node name="Invation_code2" type="Label" parent="." unique_id=2112162071]
+layout_mode = 0
+offset_left = 330.0
+offset_top = 970.0
+offset_right = 1808.0
+offset_bottom = 1234.0
+theme_override_fonts/font = ExtResource("13_ebkyn")
+theme_override_font_sizes/font_size = 85
+text = "Join a Match "
+
+[node name="LobbyCodeInput" type="LineEdit" parent="." unique_id=208625173]
+layout_mode = 0
+offset_left = 326.0
+offset_top = 732.0
+offset_right = 1057.0
+offset_bottom = 913.0
+theme_override_fonts/font = ExtResource("13_ebkyn")
+theme_override_font_sizes/font_size = 67
+placeholder_text = "ENTER 6 DIGIT-CODE"
+script = ExtResource("14_yp2w7")
+
+[connection signal="pressed" from="Go_Back" to="Go_Back" method="_on_pressed"]

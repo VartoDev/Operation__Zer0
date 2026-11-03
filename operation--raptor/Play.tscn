@@ -14,7 +14,8 @@
 [ext_resource type="Texture2D" uid="uid://cyxw8dv63ceec" path="res://Bildschirmfoto 2026-11-03 um 16.51.54.png" id="12_p2bjg"]
 [ext_resource type="Script" uid="uid://d0fkm5k7uya1c" path="res://Script/Go_Back.gd" id="12_uqvsg"]
 [ext_resource type="Script" uid="uid://by5k7v607ebgo" path="res://Script/Found_a_Bug_Button.gd" id="13_mcr0o"]
-[ext_resource type="Script" uid="uid://bonvtrejb1bh8" path="res://Script/Network.gd" id="14_6cojp"]
+[ext_resource type="Script" uid="uid://dk8i4knvubykj" path="res://Script/Create_lobby.gd" id="15_ru6a5"]
+[ext_resource type="Script" uid="uid://cyvrobqh4earp" path="res://Script/Join_Lobby.gd" id="16_ru6a5"]
 
 [node name="Control" type="Control" unique_id=1413779658]
 layout_mode = 3
@@ -106,18 +107,18 @@ offset_top = 658.0
 offset_right = 2102.0
 offset_bottom = 898.0
 flat = true
-script = ExtResource("14_6cojp")
+script = ExtResource("15_ru6a5")
 
-[node name="Create_lobby2" type="Button" parent="." unique_id=1668254430]
+[node name="Join_Lobby" type="Button" parent="." unique_id=1668254430]
 layout_mode = 0
-offset_left = 1055.0
-offset_top = 1304.0
-offset_right = 2105.0
-offset_bottom = 1544.0
+offset_left = 1047.0
+offset_top = 1110.0
+offset_right = 2097.0
+offset_bottom = 1350.0
 flat = true
-script = ExtResource("14_6cojp")
+script = ExtResource("16_ru6a5")
 
 [connection signal="pressed" from="Go_Back" to="Go_Back" method="_on_pressed"]
 [connection signal="pressed" from="Found_a_Bug" to="Found_a_Bug" method="_on_pressed"]
 [connection signal="pressed" from="Create_lobby" to="Create_lobby" method="_on_pressed"]
-[connection signal="pressed" from="Create_lobby2" to="Create_lobby2" method="_on_pressed"]
+[connection signal="pressed" from="Join_Lobby" to="Join_Lobby" method="_on_pressed"]
