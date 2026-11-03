@@ -5138,7 +5138,7 @@ offset_top = 21.0
 offset_right = 3111.0
 offset_bottom = 2071.0
 theme_override_fonts/font = ExtResource("18_o6uix")
-theme_override_font_sizes/font_size = 81
+theme_override_font_sizes/font_size = 111
 script = ExtResource("15_l36o3")
 
 [node name="Player2" type="CharacterBody3D" parent="." unique_id=2136447417]

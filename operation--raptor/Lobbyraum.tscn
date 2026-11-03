@@ -1,5 +1,18 @@
 [gd_scene format=3 uid="uid://etmbsrucqdcl"]
 
+[ext_resource type="VideoStream" uid="uid://y8vakr5dl1a0" path="res://videos/Lobby.mp4" id="1_gemq4"]
+[ext_resource type="Script" uid="uid://b4b18hihplvah" path="res://Script/VIDEO_UI2.gd" id="2_pj2oc"]
+[ext_resource type="AudioStream" uid="uid://6fpvwhvetsuc" path="res://Sounds/operation_zero_mouse_click.mp3" id="3_q5h2y"]
+[ext_resource type="AudioStream" uid="uid://5qhnecji8tpi" path="res://Sounds/freesound_community-radio-static-6382 (mp3cut.net).mp3" id="4_g56d3"]
+[ext_resource type="AudioStream" uid="uid://dfd05y7s75ih4" path="res://Sounds/kave_msri-ak47-machine-gun-burst-sfx-332103.mp3" id="5_unw7k"]
+[ext_resource type="AudioStream" uid="uid://1b2dfwojatoe" path="res://Sounds/u_wxn5lzrjy3-military-radio-communication-222904.mp3" id="6_kwko7"]
+[ext_resource type="AudioStream" uid="uid://c6ckn8nxuu0su" path="res://Sounds/flutie8211-ff-military-jet-flying-left-to-right-3-603844.mp3" id="7_qg0ob"]
+[ext_resource type="AudioStream" uid="uid://h2pm3ja20txg" path="res://Sounds/freesound_community-old-radio-noise-46734.mp3" id="8_7nu0q"]
+[ext_resource type="AudioStream" uid="uid://nwvkweub2qhp" path="res://Sounds/ribhavagrawal-gunshots-from-far-away-230563.mp3" id="9_0c3sc"]
+[ext_resource type="AudioStream" uid="uid://btdxop3emcwdg" path="res://Sounds/dragon-studio-car-engine-372477.mp3" id="10_tm5dd"]
+[ext_resource type="AudioStream" uid="uid://b2hr37mxgmh7h" path="res://Sounds/freesound_community-gun-shots-from-a-distance-10-39819.mp3" id="11_eifbt"]
+[ext_resource type="Script" uid="uid://d0fkm5k7uya1c" path="res://Script/Go_Back.gd" id="12_g56d3"]
+
 [node name="Control" type="Control" unique_id=1611970521]
 layout_mode = 3
 anchors_preset = 15
@@ -7,3 +20,66 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="." unique_id=843352827]
+layout_mode = 0
+offset_left = -5.0
+offset_right = 3190.0
+offset_bottom = 2027.0
+stream = ExtResource("1_gemq4")
+autoplay = true
+expand = true
+loop = true
+script = ExtResource("2_pj2oc")
+
+[node name="Button_Sound" type="AudioStreamPlayer2D" parent="." unique_id=1362786589]
+stream = ExtResource("3_q5h2y")
+volume_db = 20.206
+
+[node name="Static_radio_Backgroundmusic" type="AudioStreamPlayer2D" parent="." unique_id=1237518269]
+stream = ExtResource("4_g56d3")
+volume_db = 15.833
+autoplay = true
+parameters/looping = true
+
+[node name="Gun" type="AudioStreamPlayer2D" parent="." unique_id=716698599]
+position = Vector2(2238, 1696)
+stream = ExtResource("5_unw7k")
+volume_db = 4.804
+
+[node name="Radio" type="AudioStreamPlayer2D" parent="." unique_id=1776782652]
+stream = ExtResource("6_kwko7")
+volume_db = 11.514
+
+[node name="Jet" type="AudioStreamPlayer2D" parent="." unique_id=963602908]
+stream = ExtResource("7_qg0ob")
+volume_db = 9.72
+
+[node name="Radio_old" type="AudioStreamPlayer2D" parent="." unique_id=196687614]
+stream = ExtResource("8_7nu0q")
+volume_db = 15.066
+
+[node name="Shots_from_far_away" type="AudioStreamPlayer2D" parent="." unique_id=1813477977]
+stream = ExtResource("9_0c3sc")
+volume_db = 17.009
+
+[node name="Car" type="AudioStreamPlayer2D" parent="." unique_id=1929399011]
+position = Vector2(-3, -95)
+stream = ExtResource("10_tm5dd")
+volume_db = 11.664
+
+[node name="Shots" type="AudioStreamPlayer2D" parent="." unique_id=722033820]
+position = Vector2(-3, -95)
+stream = ExtResource("11_eifbt")
+volume_db = 11.664
+
+[node name="Go_Back" type="Button" parent="." unique_id=63419265]
+layout_mode = 0
+offset_left = 35.0
+offset_top = 1881.0
+offset_right = 329.0
+offset_bottom = 1986.0
+flat = true
+script = ExtResource("12_g56d3")
+
+[connection signal="pressed" from="Go_Back" to="Go_Back" method="_on_pressed"]
