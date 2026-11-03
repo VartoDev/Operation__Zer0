@@ -22,8 +22,18 @@ var sound_played = false
 @onready var Sprint = $Sprint
 @onready var Parameter = $Parameter
 @onready var Walkie_Talkie = $Walkie_Talkie
+@onready var Watch_Your_Ammo = $"/root/Operation_Raptor/Player/Watch_Your_Ammo"
+@onready var Hold_your_position = $"/root/Operation_Raptor/Player/HOLD_YOUR_POSITION"
+@onready var Your_on_your_own =  $"/root/Operation_Raptor/Player/Good_Luck"
+@onready var Extra = $"/root/Operation_Raptor/Player/Extraction_point"
+@onready var Flash_Light = $"/root/Operation_Raptor/Player/AK47/ViewModel/Gun/Mag/Light"
 
 
+@onready var SOUND_NAMES = [
+	Watch_Your_Ammo,
+	Hold_your_position,
+	Your_on_your_own
+]
 
 
 
@@ -32,6 +42,7 @@ var sound_played = false
 func _ready() -> void:
 	print("SYSTEM [Main_Code] FUNKTIONIERT") 
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	
 	
 #------- Main Code-------
 
@@ -48,7 +59,11 @@ func _input(event: InputEvent) -> void:
 		
 		# ALT (Fehlerhaft):
 
-		
+func is_any_sound_playing() -> bool:
+	for player in SOUND_NAMES:
+		if player.playing:
+			return true # Bricht sofort ab und spart Rechenzeit, sobald einer spielt
+	return false	
 		
 		
 	
@@ -104,7 +119,7 @@ func _process(delta: float) -> void:
 		await get_tree().create_timer(0.4).timeout  
 		$Shell_drop.play()  # <---- ändere es noch um das shell drop random.radiant (1,4) ist 
 		var Chance = randi_range(1,50)
-		if Chance == 1:
+		if Chance == 1 and is_any_sound_playing():
 			Walkie_Talkie.play()
 			Parameter.play()
 							
