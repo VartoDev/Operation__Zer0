@@ -20,6 +20,8 @@ var sound_played = false
 @onready var main_charakter = $"."
 @onready var No_ammo = $No_Ammo
 @onready var Sprint = $Sprint
+@onready var Parameter = $Parameter
+@onready var Walkie_Talkie = $Walkie_Talkie
 
 
 
@@ -70,6 +72,7 @@ func _process(delta: float) -> void:
 	
 	var is_Sprint =  Input.is_action_pressed("Sprint")
 	var is_gehen = is_moving and not is_Sprint
+	
 
 	#if is_Sprint:
 		#breathing3 = sin(10 * time_passed) * 0.13
@@ -80,6 +83,7 @@ func _process(delta: float) -> void:
 		breathing3 = sin(7 * time_passed) * 0.07
 		breathing = sin(5 * time_passed) * 0.01
 		breathing2 = sin(5 * time_passed) * 0.01
+		
 
 	else:
 		breathing = sin(0.5 * time_passed) * 0.02
@@ -99,6 +103,10 @@ func _process(delta: float) -> void:
 		$Shot.play()
 		await get_tree().create_timer(0.4).timeout  
 		$Shell_drop.play()  # <---- ändere es noch um das shell drop random.radiant (1,4) ist 
+		var Chance = randi_range(1,50)
+		if Chance == 1:
+			Walkie_Talkie.play()
+			Parameter.play()
 							
 	elif Input.is_action_just_pressed("Schießen") and not Global.allowed_to_shoot:
 		No_ammo.play() # <---- Wenn keine Muntion drin ist dann kommt ein sound hinweis
