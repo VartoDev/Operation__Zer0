@@ -89,6 +89,14 @@ offset_bottom = 1986.0
 flat = true
 script = ExtResource("12_g56d3")
 
+[node name="Copy_Button" type="Button" parent="." unique_id=840487458]
+layout_mode = 0
+offset_left = 2272.0
+offset_top = 742.0
+offset_right = 2492.0
+offset_bottom = 934.0
+flat = true
+
 [node name="Private_lobby" type="Label" parent="." unique_id=1318358146]
 layout_mode = 0
 offset_left = 273.0
@@ -141,5 +149,27 @@ offset_bottom = 964.0
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 0)
 theme_override_fonts/font = ExtResource("13_unw7k")
 theme_override_font_sizes/font_size = 63
+
+[node name="Share_your_code" type="Label" parent="." unique_id=447461554]
+layout_mode = 0
+offset_left = 270.0
+offset_top = 1012.0
+offset_right = 1001.0
+offset_bottom = 1178.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0)
+theme_override_fonts/font = ExtResource("13_unw7k")
+theme_override_font_sizes/font_size = 46
+text = "Share your code with a friend"
+
+[node name="Player" type="Label" parent="." unique_id=983818457]
+layout_mode = 0
+offset_left = 274.0
+offset_top = 1177.0
+offset_right = 1005.0
+offset_bottom = 1343.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0)
+theme_override_fonts/font = ExtResource("13_unw7k")
+theme_override_font_sizes/font_size = 63
+text = "Players"
 
 [connection signal="pressed" from="Go_Back" to="Go_Back" method="_on_pressed"]
