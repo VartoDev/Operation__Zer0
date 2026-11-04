@@ -116,21 +116,22 @@ func _process(delta: float) -> void:
 	
 	if Input.is_action_just_pressed("Schießen") and Global.allowed_to_shoot:
 		$Shot.play()
+		var rotation_deg = randf_range(1, 2) # Zufall nach links oder rechts
+		
+		if rotation_deg == 1:
+			rotation_deg = 1.5
+		else:
+			rotation_deg = -1.5
+		camera.rotate_z(deg_to_rad(rotation_deg))
+		await get_tree().create_timer(0.08).timeout
+		camera.rotation.z = 0 
 		await get_tree().create_timer(0.4).timeout  
 		$Shell_drop.play()  # <---- ändere es noch um das shell drop random.radiant (1,4) ist 
 		var Chance = randi_range(1,50)
 		if Chance == 1 and is_any_sound_playing():
 			Walkie_Talkie.play()
 			Parameter.play()
-		var rotation_deg = randf_range(1, 2) # Zufall nach links oder rechts
 		
-		if rotation_deg == 1:
-			rotation_deg = 1
-		else:
-			rotation_deg = -1
-		camera.rotate_z(deg_to_rad(rotation_deg))
-		await get_tree().create_timer(0.08).timeout
-		camera.rotation.z = 0 
 		
 							
 	elif Input.is_action_just_pressed("Schießen") and not Global.allowed_to_shoot:
