@@ -5,8 +5,9 @@ extends DirectionalLight3D
 
 @onready var Click = $"../../../../../Click"
 @onready var Taschenlampe_an = false # <--- An oder aus Taschenlampe!
-@onready var Battery_life_exp = 1 # <--- Der Delay damit ein Prozent runtergeht
-
+@onready var Battery_life_exp = 0.1 # <--- Der Delay damit ein Prozent runtergeht
+@onready var Percent = 100
+@onready var Anfang = true
 # Batterie Bilder:
 
 @onready var Low_Battery = $"../../../../../../Low_Battery"
@@ -20,12 +21,12 @@ func _ready() -> void:
 	print("SYSTEM [TASCHENLAMPE] FUNKTIONIERT")
 	visible = false # <--- Wichtig damit die Lampe zunächst aus ist 
 	High_Battery.visible = !High_Battery.visible
-	Battery_life(100)
+	
 
 # Check für Batter life und verschiedene Bilder für verschiedene Situationen einsetzen
 func Battery_life(Percent):
-	if Taschenlampe_an:
-		if Percent > 0:
+		if Percent > 0 and Taschenlampe_an:
+			Taschenlampe_an = true
 			if Percent < 50:
 				Middle_Battery.visible = true
 				High_Battery.visible = false
@@ -39,15 +40,29 @@ func Battery_life(Percent):
 				Low_Battery.visible = false
 			
 			Percent -= 1
-			Percent = max(Percent, 0)
+			Percent = clamp(Percent, 0, 100)
 			await get_tree().create_timer(Battery_life_exp).timeout
 			print(Percent)
 			Battery_life(Percent)
 		else:
+			Taschenlampe_an = false
 			visible = false
-	else:
-		await get_tree().create_timer(Battery_life_exp).timeout
-		Battery_life(Percent)
+			await get_tree().create_timer(Battery_life_exp).timeout
+			if Percent < 50:
+				Middle_Battery.visible = true
+				High_Battery.visible = false
+			else:
+				Middle_Battery.visible = false
+				High_Battery.visible = true
+			if Percent < 20:
+				Low_Battery.visible = true
+				Middle_Battery.visible = false
+			else:
+				Low_Battery.visible = false
+			Percent += 1
+			Percent = clamp(Percent, 0, 100)
+			print(Percent)
+			Battery_life(Percent)
 		
 
 func _input(event: InputEvent) -> void:
@@ -56,6 +71,8 @@ func _input(event: InputEvent) -> void:
 			Click.play()
 			Taschenlampe_an = !Taschenlampe_an
 			visible = !visible
-			print("Taschenlampe: ", "AN" if visible else "AUS")
-		
+			print("Taschenlampe: ", "AN" if visible else "AUS")	
+			if Anfang:
+				Battery_life(Percent)
+				Anfang = false
 			
