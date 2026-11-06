@@ -24,6 +24,8 @@ extends RayCast3D
 @onready var is_reloading = false
 
 @onready var Chance = 0
+@onready var Aktuelle_health = 100
+@onready var delta_health = 100
 var Extra_Sound_played = false
 
 #...--- Liste für Sound system ----....
@@ -61,6 +63,7 @@ func is_any_sound_playing() -> bool:
 
 	
 func _process(delta: float) -> void:
+	Check_if_hit(delta)
 	health_text.text = "Health: " + str(health) + " | Munition: " + str(Munition)
 	if Input.is_action_just_pressed("Reload") and not is_reloading:
 		is_reloading = true
@@ -125,7 +128,8 @@ func _input(event: InputEvent) -> void:
 		if event.keycode == KEY_F and event.pressed and not event.echo:
 			Flash_Light.visible = !Flash_Light.visible
 
-		
+func Check_if_hit(delta):
+	pass
 	
 # Wichtige Notizen:
 # 1. Global System muss noch auf multiplayer modus angespasst werden!!!
