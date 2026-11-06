@@ -28,6 +28,7 @@
 [ext_resource type="AudioStream" uid="uid://c57kw4injq44a" path="res://Sounds/SECURE_THE_PEREMETER.mp3" id="15_rlgxo"]
 [ext_resource type="Script" uid="uid://cih6jmaq3kcbi" path="res://Script/Flash_Light.gd" id="17_rlgxo"]
 [ext_resource type="FontFile" uid="uid://wdff7d7igxdd" path="res://ll-detechno-glitch/LLDEtechnoGlitch-Bold100.ttf" id="18_o6uix"]
+[ext_resource type="Texture2D" uid="uid://c7st2ixlbvodf" path="res://Photos/Bildschirmfoto 2026-11-06 um 16.01.39.png" id="28_dcmru"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_5wpy2"]
 shader = ExtResource("6_2u7n7")
@@ -5139,6 +5140,11 @@ offset_bottom = 2071.0
 theme_override_fonts/font = ExtResource("18_o6uix")
 theme_override_font_sizes/font_size = 111
 script = ExtResource("15_l36o3")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1347058752]
+position = Vector2(89, 88)
+scale = Vector2(0.5273973, 0.61176467)
+texture = ExtResource("28_dcmru")
 
 [node name="Player2" type="CharacterBody3D" parent="." unique_id=2136447417]
 transform = Transform3D(-3.4733614e-05, 0, -1, 0, 1, 0, 1, 0, -3.4733614e-05, -31.550243, -0.10399747, -3.6403272)
