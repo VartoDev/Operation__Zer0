@@ -25,23 +25,26 @@ func _ready() -> void:
 # Check für Batter life und verschiedene Bilder für verschiedene Situationen einsetzen
 func Battery_life(Percent):
 	if Taschenlampe_an:
-		if Percent < 50:
-			Middle_Battery.visible = true
-			High_Battery.visible = false
-		else:
-			Middle_Battery.visible = false
-			High_Battery.visible = true
-		if Percent < 20:
-			Low_Battery.visible = true
-			Middle_Battery.visible = false
-		else:
-			Low_Battery.visible = false
+		if Percent > 0:
+			if Percent < 50:
+				Middle_Battery.visible = true
+				High_Battery.visible = false
+			else:
+				Middle_Battery.visible = false
+				High_Battery.visible = true
+			if Percent < 20:
+				Low_Battery.visible = true
+				Middle_Battery.visible = false
+			else:
+				Low_Battery.visible = false
 			
-		Percent -= 1
-		Percent = max(Percent, 0)
-		await get_tree().create_timer(Battery_life_exp).timeout
-		print(Percent)
-		Battery_life(Percent)
+			Percent -= 1
+			Percent = max(Percent, 0)
+			await get_tree().create_timer(Battery_life_exp).timeout
+			print(Percent)
+			Battery_life(Percent)
+		else:
+			visible = false
 	else:
 		await get_tree().create_timer(Battery_life_exp).timeout
 		Battery_life(Percent)
