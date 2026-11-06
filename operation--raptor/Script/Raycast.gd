@@ -24,9 +24,10 @@ extends RayCast3D
 @onready var is_reloading = false
 
 @onready var Chance = 0
-@onready var Aktuelle_health = 100
-@onready var delta_health = 100
 var Extra_Sound_played = false
+
+# Signal 
+signal leben_geaendert(neues_leben)
 
 #...--- Liste für Sound system ----....
 
@@ -50,6 +51,10 @@ func _ready() -> void:
 	Walkie_Talkie.play()
 	Your_on_your_own.play()
 	
+	# Wichtig damit die Signale, wenn Schaden zugefügt wird, weitergegeben werden.
+	leben_geaendert.connect(Check_if_hit)
+	
+	# Debug Check 
 	if Global.allowed_move:
 		print("Du darfst dich nicht bewegen")
 	print("Du darfst dich bewegen")
@@ -130,17 +135,15 @@ func _input(event: InputEvent) -> void:
 
 func Check_if_hit(delta):
 	pass
+	# WICHTIGES PROBLEM: ICH MERKE DASS DIE HEALTH SYSTEM JA AN DEN GEGNER ANGESPASST SIND UND NICHT AN SICH SELBER!
 	
-# Wichtige Notizen:
-# 1. Global System muss noch auf multiplayer modus angespasst werden!!!
-# 2. Dein Health-System sollte beim Gegner gespeichert werden.
-#elif collider == gegner:
-#    health -= 25
-
-
+'''Wichtige Notizen:
+1. Global System muss noch auf multiplayer modus angespasst werden!!!
+2. Dein Health-System sollte beim Gegner gespeichert werden.
+elif collider == gegner:
+   health -= 25
 #Momentan ziehst du hier die Gesundheit des Skripts ab, das gerade schießt. Wenn das Skript am eigenen Spieler hängt, verliert also der Schütze Health statt des Gegners.
-
-#Später sollte jeder Spieler seine eigene Gesundheit verwalten und bei einem Treffer entsprechend aktualisiert werden.
+#Später sollte jeder Spieler seine eigene Gesundheit verwalten und bei einem Treffer entsprechend aktualisiert werden.''' 
 		
 			
 	

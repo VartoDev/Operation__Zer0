@@ -5,8 +5,8 @@ extends DirectionalLight3D
 
 @onready var Click = $"../../../../../Click"
 @onready var Taschenlampe_an = false # <--- An oder aus Taschenlampe!
-@onready var Recharge_speed = 0.5 # <----- Recharge speed of the Flashlight
-@onready var Battery_life_exp = 1 # <--- Der Delay damit ein Prozent runtergeht
+@onready var Recharge_speed = 1 # <----- Recharge speed of the Flashlight
+@onready var Battery_life_exp = 0.5 # <--- Der Delay damit ein Prozent runtergeht
 @onready var Percent = 100
 @onready var Loop_Start = true
 # Batterie Bilder:
