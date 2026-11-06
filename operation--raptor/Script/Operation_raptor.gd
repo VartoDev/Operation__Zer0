@@ -116,7 +116,7 @@ func _process(delta: float) -> void:
 	
 	if Input.is_action_just_pressed("Schießen") and Global.allowed_to_shoot:
 		$Shot.play()
-		var rotation_deg = [-1.5, 1.5].pick_random()
+		var rotation_deg = [-1.75, 1.75].pick_random()
 		camera.rotate_z(deg_to_rad(rotation_deg))
 		await get_tree().create_timer(0.08).timeout
 		camera.rotation.z = 0 
