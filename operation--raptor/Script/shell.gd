@@ -6,6 +6,9 @@ extends MeshInstance3D
 @export var peak_height: float = 3.0
 @export var total_time: float = 10.0
 
+@onready var Shell = self
+@onready var Main_Player = $".."
+
 var is_flying: bool = false
 
 var elapsed_time: float = 0.0
@@ -41,6 +44,7 @@ func Bullet_shell_travel(delta: float) -> void:
 	if elapsed_time >= total_time:
 		is_flying = false
 		visible = false
+		queue_free()
 		print("Angekommen shell am Boden!")
 
 	
@@ -57,4 +61,18 @@ func _process(delta: float) -> void:
 	if is_flying:
 		Bullet_shell_travel(delta)
 			
+	if Input.is_action_just_pressed("Schießen") and not is_in_group("Bullet_duplicated"):
+		# Bullets Duplizieren
+		var Bullet_Kopie = Shell.duplicate()
+		Main_Player.add_child(Bullet_Kopie)
 		
+		# Hinzufügen zu einer Gruppe, bei der die Duplikate nach einer bestimmten Zeit gelöscht werden
+		Bullet_Kopie.add_to_group("Bullet_duplicated")
+		
+		
+		# Attribute setzen
+		Bullet_Kopie.position = start_position
+		Bullet_Kopie.start_position = start_position
+		Bullet_Kopie.elapsed_time = 0.0
+		Bullet_Kopie.is_flying = true
+		Bullet_Kopie.visible = true
