@@ -32,6 +32,7 @@
 [ext_resource type="Texture2D" uid="uid://c7st2ixlbvodf" path="res://Photos/Bildschirmfoto 2026-11-06 um 16.01.39.png" id="28_dcmru"]
 [ext_resource type="Texture2D" uid="uid://pagd81ynocxj" path="res://Photos/Bildschirmfoto 2026-11-06 um 16.01.45.png" id="29_t47hl"]
 [ext_resource type="Texture2D" uid="uid://dt15xm6bbwnhl" path="res://Photos/Bildschirmfoto 2026-11-06 um 16.01.48.png" id="30_qunfm"]
+[ext_resource type="PackedScene" uid="uid://dnpiovmgjkbbu" path="res://Models/tree.glb" id="33_il3lc"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_5wpy2"]
 shader = ExtResource("6_2u7n7")
@@ -4793,7 +4794,7 @@ _data = {
 }
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l36o3"]
-albedo_color = Color(0.99215686, 0.9019608, 0.2901961, 1)
+albedo_color = Color(0.99215686, 0.7764706, 0.2901961, 1)
 emission_enabled = true
 emission_energy_multiplier = 8.05
 emission_on_uv2 = true
@@ -5315,3 +5316,6 @@ transform = Transform3D(-0.023654852, 0.37928802, -0.9249764, -1.859145e-09, 0.9
 visible = false
 mesh = SubResource("CylinderMesh_ntaqt")
 script = ExtResource("22_qunfm")
+
+[node name="Sketchfab_Scene" parent="." unique_id=1823552991 instance=ExtResource("33_il3lc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -46.989388, 0.34922653, -16.789242)
