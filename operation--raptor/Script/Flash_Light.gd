@@ -16,6 +16,9 @@ extends DirectionalLight3D
 @onready var High_Battery = $"../../../../../../High_Battery"
 
 
+@onready var Battery_life_text = $"../../../../../../Battery_life"
+
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -26,6 +29,7 @@ func _ready() -> void:
 
 # Check für Batter life und verschiedene Bilder für verschiedene Situationen einsetzen
 func Battery_life(Percent):
+		Battery_life_text.text = str(Percent) + "%"
 		if Percent > 0 and Taschenlampe_an:
 			Taschenlampe_an = true
 			if Percent < 50:
@@ -63,6 +67,7 @@ func Battery_life(Percent):
 			Percent += 1
 			Percent = clamp(Percent, 0, 100)
 			print(Percent)
+			
 			Battery_life(Percent)
 		
 

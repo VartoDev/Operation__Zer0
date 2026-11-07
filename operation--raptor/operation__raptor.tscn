@@ -28,6 +28,7 @@
 [ext_resource type="AudioStream" uid="uid://c57kw4injq44a" path="res://Sounds/SECURE_THE_PEREMETER.mp3" id="15_rlgxo"]
 [ext_resource type="Script" uid="uid://cih6jmaq3kcbi" path="res://Script/Flash_Light.gd" id="17_rlgxo"]
 [ext_resource type="FontFile" uid="uid://wdff7d7igxdd" path="res://ll-detechno-glitch/LLDEtechnoGlitch-Bold100.ttf" id="18_o6uix"]
+[ext_resource type="PackedScene" uid="uid://c77lmxv6ju2s7" path="res://Models/Operation_Zero_Muzzle_Flash_3D.glb" id="22_65j0b"]
 [ext_resource type="Script" uid="uid://bjmrbufhh6gla" path="res://Script/shell.gd" id="22_qunfm"]
 [ext_resource type="Texture2D" uid="uid://c7st2ixlbvodf" path="res://Photos/Bildschirmfoto 2026-11-06 um 16.01.39.png" id="28_dcmru"]
 [ext_resource type="Texture2D" uid="uid://pagd81ynocxj" path="res://Photos/Bildschirmfoto 2026-11-06 um 16.01.45.png" id="29_t47hl"]
@@ -5079,6 +5080,7 @@ script = ExtResource("13_08lwh")
 
 [node name="Mündungsfeuer" type="MeshInstance3D" parent="Player/AK47" unique_id=1713125173]
 transform = Transform3D(-1.1112503e-11, 0.00025422452, -0.2999999, -0.3, -1.3113417e-08, -2.7755576e-18, -1.3113413e-08, 0.2999999, 0.00025422452, 0.11999047, 0.56332386, -1.3355751)
+visible = false
 transparency = 1.0
 mesh = SubResource("CylinderMesh_eivwk")
 script = ExtResource("9_x4dg6")
@@ -5092,6 +5094,11 @@ script = ExtResource("10_08lwh")
 [node name="Referenzpunkt" type="MeshInstance3D" parent="Player/AK47" unique_id=153878504]
 transform = Transform3D(0.02, 0, 0, 0, 0.02, 0, 0, 0, 0.02, 0.10527778, 0.56230295, -1.0558167)
 mesh = SubResource("BoxMesh_05blp")
+
+[node name="Operation_Zero_Muzzle_Flash_3D" parent="Player/AK47" unique_id=1060001895 instance=ExtResource("22_65j0b")]
+transform = Transform3D(0.2994363, 0, -0.01838302, 0, 0.3, 0, 0.01838302, 0, 0.2994363, 0.106723785, 0.5526792, -1.0495605)
+visible = false
+script = ExtResource("9_x4dg6")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Player" unique_id=1696265390]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.011043906, 1.5171322, 0.066417694)
@@ -5160,10 +5167,13 @@ theme_override_font_sizes/font_size = 111
 script = ExtResource("15_l36o3")
 
 [node name="Battery_life" type="Label" parent="." unique_id=629087172]
-offset_left = 208.0
-offset_top = 21.0
-offset_right = 248.0
-offset_bottom = 44.0
+top_level = true
+z_index = 1
+offset_left = 44.0
+offset_top = 143.0
+offset_right = 202.0
+offset_bottom = 280.0
+theme_override_font_sizes/font_size = 48
 
 [node name="Low_Battery" type="Sprite2D" parent="." unique_id=1347058752]
 visible = false

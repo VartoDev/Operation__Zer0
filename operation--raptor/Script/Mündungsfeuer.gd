@@ -22,9 +22,9 @@ func Check_Reload(status: bool) -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("Schießen") and Global.allowed_to_shoot and not Ist_Reloading:
-		Mündungsfeuer.transparency = 0
+		Mündungsfeuer.visible = true
 		await get_tree().create_timer(0.1).timeout  # <----- Mesh instance
-		Mündungsfeuer.transparency = 1
+		Mündungsfeuer.visible = false
 
 
 		
