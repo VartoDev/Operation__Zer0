@@ -2,9 +2,9 @@ extends MeshInstance3D
 
 # == Parabel ==
 
-@export var speed: float = 10.0      
+@export var speed: float = 2
 @export var peak_height: float = 5.0 
-@export var total_time: float = 2.0  
+@export var total_time: float = 10.0
 
 var elapsed_time: float = 0.0
 var start_position: Vector3
@@ -17,7 +17,7 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("Schießen"):
+	if Input.is_action_pressed("Schießen"):
 		visible = true
 		if elapsed_time < total_time:
 			elapsed_time += delta
@@ -34,4 +34,9 @@ func _process(delta: float) -> void:
 			# 3. Position updaten
 			position = start_position + horizontal_displacement
 			position.y += height
+		
+		
+		else:
+			print(global_position)
+			
 		

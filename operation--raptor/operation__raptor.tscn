@@ -4793,7 +4793,7 @@ _data = {
 }
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l36o3"]
-albedo_color = Color(0.9892258, 0.5125255, 0.2205342, 1)
+albedo_color = Color(0.99215686, 0.9019608, 0.2901961, 1)
 emission_enabled = true
 emission_energy_multiplier = 8.05
 emission_on_uv2 = true
@@ -5097,7 +5097,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.011043906, 1.5171322, 0.06
 shape = SubResource("BoxShape3D_5wpy2")
 
 [node name="Shell" type="MeshInstance3D" parent="Player" unique_id=1959528185]
-transform = Transform3D(0.029943623, 0.0006974412, -0.0017008622, 0, 0.027757054, 0.011381824, 0.0018383026, -0.011360434, 0.027704893, 0.20365143, 2.0375037, -0.41454172)
+transform = Transform3D(-0.0084869955, 0.037802525, -0.092189685, -1.8591449e-10, 0.092523515, 0.03793941, 0.0996392, 0.0032199195, -0.007852466, 0.20365524, 2.0375037, -0.41454172)
 visible = false
 mesh = SubResource("CylinderMesh_ntaqt")
 script = ExtResource("22_qunfm")
