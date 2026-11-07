@@ -2,7 +2,7 @@ extends MeshInstance3D
 
 # == Parabel ==
 
-@export var speed: float = 2
+@export var speed: float = 10
 @export var peak_height: float = 3.0
 @export var total_time: float = 10.0
 
@@ -44,11 +44,13 @@ func Bullet_shell_travel(delta: float) -> void:
 	if elapsed_time >= total_time:
 		is_flying = false
 		visible = false
-		queue_free()
 		print("Angekommen shell am Boden!")
 
 	
-
+func Lösch_alle_instanzen():
+		var alte_bullets = get_tree().get_nodes_in_group("Bullet_duplicated")
+		for Bullet_instanz in alte_bullets:
+			Bullet_instanz.queue_free()
 
 
 func _process(delta: float) -> void:

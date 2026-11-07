@@ -5098,7 +5098,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.011043906, 1.5171322, 0.06
 shape = SubResource("BoxShape3D_5wpy2")
 
 [node name="Shell" type="MeshInstance3D" parent="Player" unique_id=1959528185]
-transform = Transform3D(0.0986917, 0.0061169337, -0.014917473, -1.8591448e-10, 0.092523515, 0.03793941, 0.0161229, -0.037443053, 0.091313034, 0.20365906, 2.0375037, -0.41454172)
+transform = Transform3D(0.02960751, 0.0018350801, -0.0044752415, -5.577434e-11, 0.027757054, 0.0113818245, 0.0048368694, -0.011232916, 0.02739391, 0.20365906, 2.0375037, -0.41454172)
 visible = false
 mesh = SubResource("CylinderMesh_ntaqt")
 script = ExtResource("22_qunfm")
