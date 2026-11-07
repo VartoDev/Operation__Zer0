@@ -8,6 +8,7 @@ extends RayCast3D
 @onready var main_player = $"../.."
 @onready var gegner = $"../../../Player2"
 @onready var hintmarker_sound = $"/root/Operation_Raptor/Player/Hitmarker"
+@onready var Animation_Reload = $"../AnimationPlayer"
 
 #...---- Commander Voicelines ----...
 
@@ -21,8 +22,8 @@ extends RayCast3D
 
 @onready var Sound_play = false
 @onready var sound_play2 = false
+@onready var Ist_Reloading = false
 @onready var is_reloading = false
-
 @onready var Chance = 0
 var Extra_Sound_played = false
 
@@ -60,6 +61,12 @@ func _ready() -> void:
 	if Global.allowed_move:
 		print("Du darfst dich nicht bewegen")
 	print("Du darfst dich bewegen")
+	# Check ob reloading
+	Animation_Reload.Reload_Status.connect(Check_Reload) 
+
+
+func Check_Reload(status: bool) -> void:
+	Ist_Reloading = status
 
 func is_any_sound_playing() -> bool:
 	for player in SOUND_NAMES:
@@ -108,7 +115,7 @@ func _process(delta: float) -> void:
 	elif not health == 50:
 		sound_play2 = false
 	
-	if Input.is_action_just_pressed("Schießen") and Global.allowed_to_shoot:
+	if Input.is_action_just_pressed("Schießen") and Global.allowed_to_shoot and not Ist_Reloading:
 		if Schusslinie.is_colliding():
 			var collider = Schusslinie.get_collider()
 			print("Getroffen: ", collider.name)

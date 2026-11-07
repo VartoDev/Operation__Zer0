@@ -6,6 +6,9 @@ extends MeshInstance3D
 @export var peak_height: float = 3.0
 @export var total_time: float = 10
 @export var raycast_node: RayCast3D
+@onready var Animation_Reload = $"../AK47/AnimationPlayer"
+
+var Ist_Reloading: bool = false
 var Munition_Anzahl: float = 15
 
 @onready var Shell = self
@@ -32,18 +35,24 @@ func _ready() -> void:
 		else:
 			push_error("Diese Shell hat keinen Raycast!")
 		
-
+	Animation_Reload.Reload_Status.connect(Check_Reload)
+		
+func Check_Reload(status: bool) -> void:
+	Ist_Reloading = status
+	
+	
 func _on_schuss() -> void:
-	var Bullet_Kopie = Shell.duplicate()
+	if not Ist_Reloading:
+		var Bullet_Kopie = Shell.duplicate()
 
-	Bullet_Kopie.add_to_group("Bullet_duplicated")
-	Main_Player.add_child(Bullet_Kopie)
+		Bullet_Kopie.add_to_group("Bullet_duplicated")
+		Main_Player.add_child(Bullet_Kopie)
 
-	Bullet_Kopie.position = start_position
-	Bullet_Kopie.start_position = start_position
-	Bullet_Kopie.elapsed_time = 0.0
-	Bullet_Kopie.is_flying = true
-	Bullet_Kopie.visible = true
+		Bullet_Kopie.position = start_position
+		Bullet_Kopie.start_position = start_position
+		Bullet_Kopie.elapsed_time = 0.0
+		Bullet_Kopie.is_flying = true
+		Bullet_Kopie.visible = true
 
 
 func Bullet_shell_travel(delta: float) -> void:
@@ -85,7 +94,7 @@ func Lösch_alle_instanzen():
 
 func _process(delta: float) -> void:
 	
-	if Darf_Schießen:
+	if Darf_Schießen and not Ist_Reloading:
 		if is_flying:
 			Bullet_shell_travel(delta)
 	else:

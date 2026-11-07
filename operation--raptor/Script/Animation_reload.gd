@@ -23,7 +23,7 @@ var animation_active = true in [walk_patrol, aim_fire, fire_single, idle_to_aim,
 
 
 # Signal für ob reload gerade läuft 
-signal Schießt(reload)
+signal Reload_Status(ist_reloading: bool)
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -61,6 +61,7 @@ func _process(delta: float) -> void:
 	and not walk_aim and not walk_aim_fire and not walk_fire and not walk_reload and Input.is_action_just_pressed("Reload"):
 		reload = true	
 		reload_node.play("reload-stance")
+		Reload_Status.emit(true)
 		
 		
 		if not reload_sound_gespielt:
@@ -72,6 +73,7 @@ func _process(delta: float) -> void:
 	else:
 		if not reload_node.current_animation == "reload-stance":
 			reload = false
+			Reload_Status.emit(false)
 			reload_sound_gespielt = false
 			
 	# aim - single shot - walk patrol

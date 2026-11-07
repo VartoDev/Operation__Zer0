@@ -10,7 +10,7 @@ var rotation_x: float = 0.0
 var Sound_gespielt = false
 var Sprinting = false
 var sound_played = false 
-
+var Ist_Reloading: bool = false
 
 # -----Wurzeln--------
 @onready var camera: Camera3D = $Camera3D
@@ -27,7 +27,7 @@ var sound_played = false
 @onready var Your_on_your_own =  $"/root/Operation_Raptor/Player/Good_Luck"
 @onready var Extra = $"/root/Operation_Raptor/Player/Extraction_point"
 @onready var Flash_Light = $"/root/Operation_Raptor/Player/AK47/ViewModel/Gun/Mag/Light"
-
+@onready var Animation_Reload = $AK47/AnimationPlayer
 
 @onready var SOUND_NAMES = [
 	Watch_Your_Ammo,
@@ -42,6 +42,9 @@ var sound_played = false
 func _ready() -> void:
 	print("SYSTEM [Main_Code] FUNKTIONIERT") 
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	# Richtig stellung des laserpointes 
+	Animation_Reload.Reload_Status.connect(Check_Reload) 
+	
 	
 	
 #------- Main Code-------
@@ -64,7 +67,9 @@ func is_any_sound_playing() -> bool:
 		if player.playing:
 			return true # Bricht sofort ab und spart Rechenzeit, sobald einer spielt
 	return false	
-		
+
+func Check_Reload(status: bool) -> void:
+	Ist_Reloading = status	
 		
 	
 func _process(delta: float) -> void:
@@ -109,12 +114,14 @@ func _process(delta: float) -> void:
 	$AK47.position.y = breathing + 1.5
 	$AK47.position.x = breathing2
 	
-	# Richtig stellung des laserpointes 
+	
+
+
 	
 	
 
 	
-	if Input.is_action_just_pressed("Schießen") and Global.allowed_to_shoot:
+	if Input.is_action_just_pressed("Schießen") and Global.allowed_to_shoot and not Ist_Reloading:
 		$Shot.play()
 		var rotation_deg = [-1.75, 1.75].pick_random()
 		camera.rotate_z(deg_to_rad(rotation_deg))
