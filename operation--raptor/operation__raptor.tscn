@@ -4810,13 +4810,6 @@ size = Vector3(0.35595703, 0.24597168, 0.3413086)
 [sub_resource type="BoxShape3D" id="BoxShape3D_5wpy2"]
 size = Vector3(1, 2.5697632, 0.7788086)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qunfm"]
-albedo_color = Color(0.6862745, 0.60784316, 0.09019608, 1)
-emission_energy_multiplier = 0.01
-
-[sub_resource type="CylinderMesh" id="CylinderMesh_ntaqt"]
-material = SubResource("StandardMaterial3D_qunfm")
-
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_05blp"]
 
 [sub_resource type="Sky" id="Sky_lrg8k"]
@@ -4853,7 +4846,6 @@ volumetric_fog_gi_inject = 0.5
 volumetric_fog_anisotropy = 0.65
 volumetric_fog_ambient_inject = 5.8
 adjustment_enabled = true
-adjustment_brightness = 1.12
 adjustment_contrast = 3.15
 adjustment_saturation = 2.0
 
@@ -4868,6 +4860,13 @@ material = SubResource("StandardMaterial3D_mwdpx")
 top_radius = 0.0
 bottom_radius = 0.18
 cap_top = false
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qunfm"]
+albedo_color = Color(0.6862745, 0.60784316, 0.09019608, 1)
+emission_energy_multiplier = 0.01
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_ntaqt"]
+material = SubResource("StandardMaterial3D_qunfm")
 
 [node name="Operation_Raptor" type="Node3D" unique_id=625757802]
 
@@ -4992,7 +4991,7 @@ mesh = SubResource("ArrayMesh_x4dg6")
 
 [node name="Light" type="DirectionalLight3D" parent="Player/AK47/ViewModel/Gun/Mag" unique_id=98327288]
 transform = Transform3D(-0.05257589, 0.058327097, 0.99691194, -0.0012127376, 0.9982884, -0.05847157, -0.99861604, -0.004283188, -0.052415162, 0.6965116, 0.65565205, -3.122589)
-light_energy = 0.08
+light_energy = 0.1
 light_volumetric_fog_energy = 0.05
 light_angular_distance = 1.0
 shadow_enabled = true
@@ -5095,12 +5094,6 @@ mesh = SubResource("BoxMesh_05blp")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Player" unique_id=1696265390]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.011043906, 1.5171322, 0.066417694)
 shape = SubResource("BoxShape3D_5wpy2")
-
-[node name="Shell" type="MeshInstance3D" parent="Player" unique_id=1959528185]
-transform = Transform3D(-0.0084869955, 0.037802525, -0.092189685, -1.8591449e-10, 0.092523515, 0.03793941, 0.0996392, 0.0032199195, -0.007852466, 0.20365524, 2.0375037, -0.41454172)
-visible = false
-mesh = SubResource("CylinderMesh_ntaqt")
-script = ExtResource("22_qunfm")
 
 [node name="Stadt" parent="." unique_id=1895705749 instance=ExtResource("2_bi2oh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.4585476, -0.0032756329, -2.7339745)
@@ -5316,3 +5309,9 @@ script = ExtResource("10_08lwh")
 [node name="Hitbox_for_player2" type="CollisionShape3D" parent="Player2" unique_id=1208731118]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.011043906, 1.5171322, 0.066417694)
 shape = SubResource("BoxShape3D_5wpy2")
+
+[node name="Shell" type="MeshInstance3D" parent="." unique_id=1959528185]
+transform = Transform3D(-0.023654852, 0.37928802, -0.9249764, -1.859145e-09, 0.92523515, 0.3793941, 0.99972034, 0.008974515, -0.0218863, -51.619244, 1.9335063, -2.2316408)
+visible = false
+mesh = SubResource("CylinderMesh_ntaqt")
+script = ExtResource("22_qunfm")

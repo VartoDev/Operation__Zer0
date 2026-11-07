@@ -8,7 +8,7 @@ extends MeshInstance3D
 
 var elapsed_time: float = 0.0
 var start_position: Vector3
-var target_direction: Vector3 = Vector3.FORWARD 
+var target_direction: Vector3 = Vector3.RIGHT
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
