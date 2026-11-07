@@ -85,7 +85,7 @@ func _process(delta: float) -> void:
 	else:
 		
 		walk_aim_fire = false
-	
+		
 
 		
 
