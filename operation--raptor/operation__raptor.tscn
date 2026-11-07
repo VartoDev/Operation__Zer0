@@ -4915,7 +4915,7 @@ stream = ExtResource("7_x4dg6")
 max_polyphony = 2
 
 [node name="Shell_drop" type="AudioStreamPlayer3D" parent="Player" unique_id=744132372]
-transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 0.085624695, 0.7530985, -1.394876)
+transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 2.99646, 0.7530985, -0.4533186)
 stream = ExtResource("8_08lwh")
 volume_db = 52.411
 max_polyphony = 32
@@ -5098,7 +5098,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.011043906, 1.5171322, 0.06
 shape = SubResource("BoxShape3D_5wpy2")
 
 [node name="Shell" type="MeshInstance3D" parent="Player" unique_id=1959528185 node_paths=PackedStringArray("raycast_node")]
-transform = Transform3D(0.02960751, 0.0018350801, -0.0044752415, -5.577434e-11, 0.027757054, 0.0113818245, 0.0048368694, -0.011232916, 0.02739391, 0.20365906, 2.0375037, -0.41454172)
+transform = Transform3D(0.014803755, 0.0009175399, -0.0022376203, -2.788717e-11, 0.013878527, 0.0056909123, 0.0024184342, -0.005616458, 0.013696955, 0.16602707, 2.0375037, -0.41685247)
 visible = false
 mesh = SubResource("CylinderMesh_ntaqt")
 script = ExtResource("22_qunfm")

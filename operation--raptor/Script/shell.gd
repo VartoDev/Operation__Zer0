@@ -2,7 +2,7 @@ extends MeshInstance3D
 
 # == Parabel ==
 
-@export var speed: float = 8
+@export var speed: float = 5
 @export var peak_height: float = 3.0
 @export var total_time: float = 10
 @export var raycast_node: RayCast3D
@@ -62,6 +62,8 @@ func Bullet_shell_travel(delta: float) -> void:
 			# 3. Position updaten
 			position = start_position + horizontal_displacement
 			position.y += height
+			var Sensi_Rotation = randi_range(1, 10)
+			rotation.x += Sensi_Rotation
 			# Debug
 			print(global_position)
 		
@@ -71,6 +73,8 @@ func Bullet_shell_travel(delta: float) -> void:
 		is_flying = false
 		visible = false
 		print("Angekommen shell am Boden!")
+		
+
 
 	
 func Lösch_alle_instanzen():
@@ -84,6 +88,9 @@ func _process(delta: float) -> void:
 	if Darf_Schießen:
 		if is_flying:
 			Bullet_shell_travel(delta)
+	else:
+		await get_tree().create_timer(0.7).timeout
+		Lösch_alle_instanzen()
 			
 	
 		
