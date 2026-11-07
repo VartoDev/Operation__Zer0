@@ -4809,6 +4809,8 @@ size = Vector3(0.35595703, 0.24597168, 0.3413086)
 [sub_resource type="BoxShape3D" id="BoxShape3D_5wpy2"]
 size = Vector3(1, 2.5697632, 0.7788086)
 
+[sub_resource type="CylinderMesh" id="CylinderMesh_ntaqt"]
+
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_05blp"]
 
 [sub_resource type="Sky" id="Sky_lrg8k"]
@@ -5087,6 +5089,10 @@ mesh = SubResource("BoxMesh_05blp")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Player" unique_id=1696265390]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.011043906, 1.5171322, 0.066417694)
 shape = SubResource("BoxShape3D_5wpy2")
+
+[node name="Shell" type="MeshInstance3D" parent="Player" unique_id=1959528185]
+transform = Transform3D(0.099812105, 0.0023248042, -0.0056695407, 0, 0.092523515, 0.037939414, 0.006127677, -0.03786812, 0.09234966, 0.18590164, 2.191708, -0.41563034)
+mesh = SubResource("CylinderMesh_ntaqt")
 
 [node name="Stadt" parent="." unique_id=1895705749 instance=ExtResource("2_bi2oh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.4585476, -0.0032756329, -2.7339745)
