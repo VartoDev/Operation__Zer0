@@ -22,8 +22,15 @@ var target_direction: Vector3 = Vector3.RIGHT
 func _ready() -> void:
 	start_position = position
 	# Wir überprüfen ob es überhaupt Munition gibt damit wir schießen können
+	print("Shell: ", get_path())
+	print("Raycast: ", raycast_node)
+	print("Ist Kopie: ", is_in_group("Bullet_duplicated"))
+
 	if not is_in_group("Bullet_duplicated"):
-		raycast_node.Schuss_abgegeben.connect(_on_schuss)
+		if raycast_node != null:
+			raycast_node.Schuss_abgegeben.connect(_on_schuss)
+		else:
+			push_error("Diese Shell hat keinen Raycast!")
 		
 
 func _on_schuss() -> void:
