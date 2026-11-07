@@ -5325,6 +5325,11 @@ target_position = Vector3(200, 0, 0)
 debug_shape_thickness = 1
 script = ExtResource("10_08lwh")
 
+[node name="Operation_Zero_Muzzle_Flash_3D" parent="Player2/AK47" unique_id=1394264545 instance=ExtResource("22_65j0b")]
+transform = Transform3D(0.2994363, 0, -0.01838302, 0, 0.3, 0, 0.01838302, 0, 0.2994363, 0.106723785, 0.5526792, -1.0495605)
+visible = false
+script = ExtResource("9_x4dg6")
+
 [node name="Hitbox_for_player2" type="CollisionShape3D" parent="Player2" unique_id=1208731118]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.011043906, 1.5171322, 0.066417694)
 shape = SubResource("BoxShape3D_5wpy2")
