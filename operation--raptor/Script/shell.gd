@@ -5,6 +5,7 @@ extends MeshInstance3D
 @export var speed: float = 8
 @export var peak_height: float = 3.0
 @export var total_time: float = 10
+@export var raycast_node: RayCast3D
 var Munition_Anzahl: float = 15
 
 @onready var Shell = self
@@ -20,13 +21,23 @@ var target_direction: Vector3 = Vector3.RIGHT
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	start_position = position
+	# Wir überprüfen ob es überhaupt Munition gibt damit wir schießen können
+	if not is_in_group("Bullet_duplicated"):
+		raycast_node.Schuss_abgegeben.connect(_on_schuss)
+		
 
-func Check_ob_Muni(Munition):
-	Munition_Anzahl = Munition
-	if Munition > 0:
-		Darf_Schießen = true
-	else:
-		Darf_Schießen = false
+func _on_schuss() -> void:
+	var Bullet_Kopie = Shell.duplicate()
+
+	Bullet_Kopie.add_to_group("Bullet_duplicated")
+	Main_Player.add_child(Bullet_Kopie)
+
+	Bullet_Kopie.position = start_position
+	Bullet_Kopie.start_position = start_position
+	Bullet_Kopie.elapsed_time = 0.0
+	Bullet_Kopie.is_flying = true
+	Bullet_Kopie.visible = true
+
 
 func Bullet_shell_travel(delta: float) -> void:
 	if elapsed_time < total_time:
@@ -62,33 +73,10 @@ func Lösch_alle_instanzen():
 
 
 func _process(delta: float) -> void:
-	# Wir überprüfen ob es überhaupt Munition gibt damit wir schießen können
-	$KindNode.Muni_Wert.connect(Check_ob_Muni)
+	
 	if Darf_Schießen:
-		if Input.is_action_just_pressed("Schießen") and not is_flying:
-			is_flying = true
-			elapsed_time = 0.0
-			position = start_position
-			visible = true
-
 		if is_flying:
 			Bullet_shell_travel(delta)
 			
-		if Input.is_action_just_pressed("Schießen") and not is_in_group("Bullet_duplicated"):
-		
-			# Bullets Duplizieren
-			var Bullet_Kopie = Shell.duplicate()
-			Main_Player.add_child(Bullet_Kopie)
-		
-			# Hinzufügen zu einer Gruppe, bei der die Duplikate nach einer bestimmten Zeit gelöscht werden
-			Bullet_Kopie.add_to_group("Bullet_duplicated")
-		
-		
-			# Attribute setzen
-			Bullet_Kopie.position = start_position
-			Bullet_Kopie.start_position = start_position
-			Bullet_Kopie.elapsed_time = 0.0
-			Bullet_Kopie.is_flying = true
-			Bullet_Kopie.visible = true
 	
 		

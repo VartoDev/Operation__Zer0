@@ -5097,14 +5097,12 @@ mesh = SubResource("BoxMesh_05blp")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.011043906, 1.5171322, 0.066417694)
 shape = SubResource("BoxShape3D_5wpy2")
 
-[node name="Shell" type="MeshInstance3D" parent="Player" unique_id=1959528185]
+[node name="Shell" type="MeshInstance3D" parent="Player" unique_id=1959528185 node_paths=PackedStringArray("raycast_node")]
 transform = Transform3D(0.02960751, 0.0018350801, -0.0044752415, -5.577434e-11, 0.027757054, 0.0113818245, 0.0048368694, -0.011232916, 0.02739391, 0.20365906, 2.0375037, -0.41454172)
 visible = false
 mesh = SubResource("CylinderMesh_ntaqt")
 script = ExtResource("22_qunfm")
-speed = null
-peak_height = null
-total_time = null
+raycast_node = NodePath("../AK47/LaserUndSchuss")
 
 [node name="Stadt" parent="." unique_id=1895705749 instance=ExtResource("2_bi2oh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.4585476, -0.0032756329, -2.7339745)
@@ -5326,9 +5324,6 @@ transform = Transform3D(0.02960751, 0.0018350801, -0.0044752415, -5.577434e-11, 
 visible = false
 mesh = SubResource("CylinderMesh_ntaqt")
 script = ExtResource("22_qunfm")
-speed = null
-peak_height = null
-total_time = null
 
 [node name="Tree2" parent="." unique_id=1823552991 instance=ExtResource("33_il3lc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -46.989388, 0.34922653, -16.789242)

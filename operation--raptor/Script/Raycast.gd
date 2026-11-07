@@ -29,6 +29,7 @@ var Extra_Sound_played = false
 # Signal 
 signal leben_geaendert(neues_leben)
 signal Muni_Wert(Munition_Anzahl)
+signal Schuss_abgegeben
 
 #...--- Liste für Sound system ----....
 
@@ -124,6 +125,7 @@ func _process(delta: float) -> void:
 		Munition -= 1
 		Munition = max(Munition, 0)
 		Muni_Wert.emit(Munition)
+		Schuss_abgegeben.emit()
 		print("DEBUG: Health = ", health)
 		health_text.text = "Health: " + str(health) + " | Munition: " + str(Munition)
 		print("Nichts getroffen.")
