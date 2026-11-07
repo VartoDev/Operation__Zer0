@@ -28,6 +28,7 @@ var Extra_Sound_played = false
 
 # Signal 
 signal leben_geaendert(neues_leben)
+signal Muni_Wert(Munition_Anzahl)
 
 #...--- Liste für Sound system ----....
 
@@ -122,6 +123,7 @@ func _process(delta: float) -> void:
 				hintmarker_sound.play()		
 		Munition -= 1
 		Munition = max(Munition, 0)
+		Muni_Wert.emit(Munition)
 		print("DEBUG: Health = ", health)
 		health_text.text = "Health: " + str(health) + " | Munition: " + str(Munition)
 		print("Nichts getroffen.")
