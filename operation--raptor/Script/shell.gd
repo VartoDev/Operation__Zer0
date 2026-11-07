@@ -6,15 +6,17 @@ extends MeshInstance3D
 @export var peak_height: float = 5.0 
 @export var total_time: float = 10.0
 
+@onready var is_flying = false
+
 var elapsed_time: float = 0.0
 var start_position: Vector3
-var target_direction: Vector3 = Vector3.FORWARD
+var target_direction: Vector3 = Vector3.RIGHT
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
 
-func Bullet_shell_travel(delta):
+func Bullet_shell_travel(delta: float) -> void:
 	if elapsed_time < total_time:
 			elapsed_time += delta
 		
@@ -31,10 +33,14 @@ func Bullet_shell_travel(delta):
 			position = start_position + horizontal_displacement
 			position.y += height
 			print(global_position)
+			Bullet_shell_travel(delta)
 		
 		
-	else:
-			print("Angekommen shell am Boden!")
+	if elapsed_time >= total_time:
+		is_flying = false
+		visible = false
+		print("Angekommen shell am Boden!")
+
 	
 
 

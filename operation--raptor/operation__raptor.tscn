@@ -4812,6 +4812,13 @@ size = Vector3(0.35595703, 0.24597168, 0.3413086)
 [sub_resource type="BoxShape3D" id="BoxShape3D_5wpy2"]
 size = Vector3(1, 2.5697632, 0.7788086)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qunfm"]
+albedo_color = Color(0.6862745, 0.60784316, 0.09019608, 1)
+emission_energy_multiplier = 0.01
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_ntaqt"]
+material = SubResource("StandardMaterial3D_qunfm")
+
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_05blp"]
 
 [sub_resource type="Sky" id="Sky_lrg8k"]
@@ -4862,13 +4869,6 @@ material = SubResource("StandardMaterial3D_mwdpx")
 top_radius = 0.0
 bottom_radius = 0.18
 cap_top = false
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qunfm"]
-albedo_color = Color(0.6862745, 0.60784316, 0.09019608, 1)
-emission_energy_multiplier = 0.01
-
-[sub_resource type="CylinderMesh" id="CylinderMesh_ntaqt"]
-material = SubResource("StandardMaterial3D_qunfm")
 
 [node name="Operation_Raptor" type="Node3D" unique_id=625757802]
 
@@ -5097,6 +5097,12 @@ mesh = SubResource("BoxMesh_05blp")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.011043906, 1.5171322, 0.066417694)
 shape = SubResource("BoxShape3D_5wpy2")
 
+[node name="Shell" type="MeshInstance3D" parent="Player" unique_id=1959528185]
+transform = Transform3D(0.98691714, 0.06116934, -0.14917475, -1.859145e-09, 0.92523515, 0.3793941, 0.16122901, -0.3744305, 0.9131304, 0.20365906, 2.0375037, -0.41454172)
+visible = false
+mesh = SubResource("CylinderMesh_ntaqt")
+script = ExtResource("22_qunfm")
+
 [node name="Stadt" parent="." unique_id=1895705749 instance=ExtResource("2_bi2oh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.4585476, -0.0032756329, -2.7339745)
 
@@ -5311,12 +5317,6 @@ script = ExtResource("10_08lwh")
 [node name="Hitbox_for_player2" type="CollisionShape3D" parent="Player2" unique_id=1208731118]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.011043906, 1.5171322, 0.066417694)
 shape = SubResource("BoxShape3D_5wpy2")
-
-[node name="Shell" type="MeshInstance3D" parent="." unique_id=1959528185]
-transform = Transform3D(0.99494225, 0.03811052, -0.09294079, -1.859145e-09, 0.92523515, 0.3793941, 0.100450985, -0.37747517, 0.9205555, -51.619244, 1.9335063, -2.2316408)
-visible = false
-mesh = SubResource("CylinderMesh_ntaqt")
-script = ExtResource("22_qunfm")
 
 [node name="Tree2" parent="." unique_id=1823552991 instance=ExtResource("33_il3lc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -46.989388, 0.34922653, -16.789242)
