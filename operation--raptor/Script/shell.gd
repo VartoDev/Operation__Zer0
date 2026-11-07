@@ -3,14 +3,14 @@ extends MeshInstance3D
 # == Parabel ==
 
 @export var speed: float = 2
-@export var peak_height: float = 5.0 
+@export var peak_height: float = 3.0
 @export var total_time: float = 10.0
 
-@onready var is_flying = false
+var is_flying: bool = false
 
 var elapsed_time: float = 0.0
 var start_position: Vector3
-var target_direction: Vector3 = Vector3.FORWARD
+var target_direction: Vector3 = Vector3.RIGHT
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -33,6 +33,7 @@ func Bullet_shell_travel(delta: float) -> void:
 			# 3. Position updaten
 			position = start_position + horizontal_displacement
 			position.y += height
+			# Debug
 			print(global_position)
 		
 		
