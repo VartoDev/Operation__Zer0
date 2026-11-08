@@ -57,6 +57,23 @@ func _ready() -> void:
 		print("EOS: Encryption Key muss 64 Zeichen haben!")
 		return
 	
+	# Prüfen, ob noch Platzhalter vorhanden sind
+
+	var fields = {
+		"Product ID": create_options.product_id,
+		"Sandbox ID": create_options.sandbox_id,
+		"Deployment ID": create_options.deployment_id,
+		"Client ID": create_options.client_id,
+		"Client Secret": create_options.client_secret
+	}
+
+	for field in fields:
+		var value = fields[field]
+
+		if value.is_empty() or value.contains("DEINE_"):
+			print("EOS: ", field, " ist noch nicht eingerichtet!")
+			return
+	
 	var success = await HPlatform.create_platform_async(create_options)
 
 	if success:
