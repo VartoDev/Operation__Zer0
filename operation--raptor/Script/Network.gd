@@ -34,6 +34,8 @@ func _ready() -> void:
 	create_options.client_id = "CLIENT_ID"
 	create_options.client_secret = "CLIENT_SECRET"
 	create_options.encryption_key = "64_ZEICHEN_LANGER_SCHLUESSEL"
+	
+	
 
 
 	# 3. Plattform erstellen
