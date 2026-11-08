@@ -76,8 +76,18 @@ func _ready() -> void:
 	
 	var success = await HPlatform.create_platform_async(create_options)
 
+	
 	if success:
 		platform_created = true
 		print("EOS Plattform erfolgreich erstellt!")
+
+		# Spieler bei EOS Game Services anmelden
+		var login_success: bool = await HAuth.login_anonymous_async("Player")
+
+		if login_success:
+			print("EOS: Spieler erfolgreich angemeldet!")
+		else:
+			print("EOS: Spieleranmeldung fehlgeschlagen!")
+
 	else:
 		print("EOS Plattform konnte nicht erstellt werden!")
