@@ -35,6 +35,7 @@
 [ext_resource type="Texture2D" uid="uid://dt15xm6bbwnhl" path="res://Photos/Bildschirmfoto 2026-11-06 um 16.01.48.png" id="30_qunfm"]
 [ext_resource type="PackedScene" uid="uid://dnpiovmgjkbbu" path="res://Models/tree.glb" id="33_il3lc"]
 [ext_resource type="PackedScene" uid="uid://bao1j8eiqp2d2" path="res://Models/pine_tree.glb" id="34_xg2ld"]
+[ext_resource type="PackedScene" uid="uid://o2gb7vhuwrit" path="res://Models/lockheed_martin_f-22_raptor.glb" id="36_vga8s"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_5wpy2"]
 shader = ExtResource("6_2u7n7")
@@ -5389,3 +5390,12 @@ transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 15.63999, 1.1507998, -34.7659
 
 [node name="Tree14" parent="." unique_id=785430972 instance=ExtResource("34_xg2ld")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 15.63999, 1.1507998, -34.765987)
+
+[node name="CharacterBody3D" type="CharacterBody3D" parent="." unique_id=438810634]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -256.9912, 29.957932, -63.207962)
+
+[node name="Sketchfab_Scene" parent="CharacterBody3D" unique_id=1116836468 instance=ExtResource("36_vga8s")]
+transform = Transform3D(-0.999399, 0, 0.034663796, 0, 1, 0, -0.034663796, 0, -0.999399, -13.165863, -2.1974354, -0.07922745)
+
+[node name="Sketchfab_Scene" parent="." unique_id=1411540625 instance=ExtResource("36_vga8s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -36.650715, 1.0651536, -58.352905)
