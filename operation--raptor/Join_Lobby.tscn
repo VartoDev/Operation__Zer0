@@ -16,6 +16,7 @@
 [ext_resource type="Script" uid="uid://d0fkm5k7uya1c" path="res://Script/Go_Back.gd" id="12_h6ivd"]
 [ext_resource type="FontFile" uid="uid://drmg31630aq1q" path="res://ll-detechno-glitch/LLDEtechnoGlitch-Bold0.ttf" id="13_ebkyn"]
 [ext_resource type="Script" uid="uid://dhgr3cppnl6nx" path="res://Script/Lobby_Code.gd" id="14_yp2w7"]
+[ext_resource type="Script" uid="uid://6bj4in0wmvkl" path="res://join_match.gd" id="15_xqvim"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_xqvim"]
 shader = ExtResource("3_e2kf7")
@@ -117,6 +118,7 @@ offset_top = 978.0
 offset_right = 674.0
 offset_bottom = 1083.0
 flat = true
+script = ExtResource("15_xqvim")
 
 [node name="Private_lobby" type="Label" parent="." unique_id=1375204533]
 layout_mode = 0

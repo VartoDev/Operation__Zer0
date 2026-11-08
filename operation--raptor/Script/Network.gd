@@ -142,3 +142,41 @@ func create_lobby() -> bool:
 	print("Einladungscode: ", invitation_code)
 
 	return true
+
+
+
+
+func join_lobby(code: String) -> bool:
+
+	
+	if HAuth.product_user_id.is_empty():
+		print("Spieler ist nicht angemeldet!")
+		return false
+
+	
+	var results = await HLobbies.search_by_attribute_async({
+		"key": "JOIN_CODE",
+		"value": code,
+		"comparison": EOS.ComparisonOp.Equal
+	})
+
+	
+	if results == null or results.is_empty():
+		print("Keine Lobby mit diesem Code gefunden!")
+		return false
+
+   
+	var lobby = await HLobbies.join_async(results[0])
+
+	if lobby == null:
+		print("Beitritt zur Lobby fehlgeschlagen!")
+		return false
+
+   
+	current_lobby = lobby
+	invitation_code = code
+
+	print("Lobby erfolgreich beigetreten!")
+	print("Lobby ID: ", lobby.lobby_id)
+
+	return true
