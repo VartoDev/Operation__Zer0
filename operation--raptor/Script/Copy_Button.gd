@@ -12,14 +12,13 @@ var Invataion_Code: String = ""
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
-	Inv_code.Invitation.connect(Code)
+	
 
 
 func _on_pressed() -> void:
-	# Kopieren prozess noch einfügen....
-	Copy_Sound.play()
-	DisplayServer.clipboard_set(Invataion_Code)
-	
+	if Network.invitation_code.is_empty():
+		return
 
-func Code(code: String):
-	Invataion_Code = code
+	DisplayServer.clipboard_set(Network.invitation_code)
+	Copy_Sound.play()
+	

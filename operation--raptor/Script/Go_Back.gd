@@ -7,6 +7,20 @@ extends Button
 
 
 func _on_pressed() -> void:
+	
+	
+	# Vor dem Szenenwechsel Lobby verlassen
+	var success = await Network.leave_lobby()
+
+	if not success:
+		print("Zurückgehen abgebrochen!")
+		disabled = false
+		return
+
+	
+	
+	
+	
 	print("Weiterleitung findet statt!")
 	Button_Sound.play()
 	await get_tree().create_timer(0.1).timeout  # <---- Verzögerung damit der Button Sound spielt

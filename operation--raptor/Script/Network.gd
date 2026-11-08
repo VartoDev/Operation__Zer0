@@ -180,3 +180,36 @@ func join_lobby(code: String) -> bool:
 	print("Lobby ID: ", lobby.lobby_id)
 
 	return true
+	
+func leave_lobby() -> bool:
+
+   
+	if current_lobby == null:
+		return true
+
+   
+	if not current_lobby.is_valid():
+		current_lobby = null
+		invitation_code = ""
+		return true
+
+	var success: bool = false
+
+   
+	if current_lobby.is_owner():
+		success = await current_lobby.destroy_async()
+		return true
+	else:
+		success = await current_lobby.leave_async()
+		return true
+
+   
+	if not success:
+		print("Fehler beim Verlassen der Lobby!")
+		return false
+
+	
+	current_lobby = null
+	invitation_code = ""
+
+	print("Lobby erfolgreich verlassen!")
