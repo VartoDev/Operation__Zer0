@@ -19,6 +19,8 @@
 [ext_resource type="Texture2D" uid="uid://bum4y5uk7wyyo" path="res://Photos/Bildschirmfoto 2026-11-03 um 18.06.01.png" id="13_tm5dd"]
 [ext_resource type="FontFile" uid="uid://drmg31630aq1q" path="res://ll-detechno-glitch/LLDEtechnoGlitch-Bold0.ttf" id="13_unw7k"]
 [ext_resource type="Script" uid="uid://db21yudycx7qt" path="res://Script/Copy_Button.gd" id="14_qg0ob"]
+[ext_resource type="FontFile" uid="uid://nkpmn7w2wh7r" path="res://ll-detechno-glitch/LLDEtechnoGlitch-BoldItalic0.ttf" id="20_d8djr"]
+[ext_resource type="Script" uid="uid://on03vhigmoe1" path="res://innvation_code_generator.gd" id="20_pyel5"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_pyel5"]
 shader = ExtResource("3_eifbt")
@@ -220,13 +222,14 @@ text = "INVITATION CODE"
 
 [node name="Innvation_code_generator" type="Label" parent="." unique_id=625347533]
 layout_mode = 0
-offset_left = 1199.0
-offset_top = 798.0
-offset_right = 1930.0
-offset_bottom = 964.0
+offset_left = 1172.0
+offset_top = 761.0
+offset_right = 1903.0
+offset_bottom = 927.0
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 0)
-theme_override_fonts/font = ExtResource("13_unw7k")
-theme_override_font_sizes/font_size = 63
+theme_override_fonts/font = ExtResource("20_d8djr")
+theme_override_font_sizes/font_size = 100
+script = ExtResource("20_pyel5")
 
 [node name="Share_your_code" type="Label" parent="." unique_id=447461554]
 layout_mode = 0

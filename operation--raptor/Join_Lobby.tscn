@@ -166,7 +166,7 @@ offset_right = 1057.0
 offset_bottom = 913.0
 theme_override_fonts/font = ExtResource("13_ebkyn")
 theme_override_font_sizes/font_size = 67
-placeholder_text = "ENTER 6 DIGIT-CODE"
+placeholder_text = "ENTER 12 DIGIT-CODE"
 script = ExtResource("14_yp2w7")
 
 [connection signal="pressed" from="Go_Back" to="Go_Back" method="_on_pressed"]
