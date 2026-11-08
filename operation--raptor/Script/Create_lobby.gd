@@ -3,9 +3,11 @@ extends Button
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	disabled = HAuth.product_user_id.is_empty()
+	HAuth.logged_in_connect.connect(_on_player_logged_in)
 	
-	
+func _on_player_logged_in() -> void:
+	disabled = false
 
 #--... Button Sound ..---
 

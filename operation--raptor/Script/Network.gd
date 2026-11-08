@@ -112,7 +112,9 @@ func create_lobby() -> bool:
 	lobby_options.max_lobby_members = 2
 	lobby_options.permission_level = EOS.Lobby.LobbyPermissionLevel.PublicAdvertised
 	var lobby = await HLobbies.create_lobby_async(lobby_options)
-	
+	if lobby == null:
+		print("Lobby konnte nicht erstellt werden!")
+		return false
 	
 	# Einladungscode generieren
 	var chars = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789"
@@ -138,17 +140,5 @@ func create_lobby() -> bool:
 
 	print("Lobby erfolgreich erstellt!")
 	print("Einladungscode: ", invitation_code)
-
-	return true
-
-
-	if lobby == null:
-		print("Lobby konnte nicht erstellt werden!")
-		return false
-
-	current_lobby = lobby
-
-	print("Lobby erfolgreich erstellt!")
-	print("Lobby ID: ", lobby.lobby_id)
 
 	return true
