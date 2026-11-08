@@ -4,6 +4,7 @@ extends Node
 var eos_initialized: bool = false
 var platform_created: bool = false
 var current_lobby: HLobby = null
+var invitation_code: String = ""
 
 
 
@@ -109,9 +110,37 @@ func create_lobby() -> bool:
 
 	lobby_options.bucket_id = "operation_zero_1v1"
 	lobby_options.max_lobby_members = 2
-	lobby_options.permission_level = EOS.Lobby.LobbyPermissionLevel.InviteOnly
-
+	lobby_options.permission_level = EOS.Lobby.LobbyPermissionLevel.PublicAdvertised
 	var lobby = await HLobbies.create_lobby_async(lobby_options)
+	
+	
+	# Einladungscode generieren
+	var chars = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789"
+	var code = ""
+
+	for i in range(12):
+		var random_index = randi_range(0, chars.length() - 1)
+		code += chars[random_index]
+
+	# Einladungscode bei EOS speichern
+	lobby.add_attribute("JOIN_CODE", code)
+
+	var saved = await lobby.update_async()
+
+	if not saved:
+		print("Lobby-Code konnte nicht gespeichert werden!")
+		await lobby.destroy_async()
+		return false
+
+	# Erfolgreiche Lobby speichern
+	current_lobby = lobby
+	invitation_code = code
+
+	print("Lobby erfolgreich erstellt!")
+	print("Einladungscode: ", invitation_code)
+
+	return true
+
 
 	if lobby == null:
 		print("Lobby konnte nicht erstellt werden!")
