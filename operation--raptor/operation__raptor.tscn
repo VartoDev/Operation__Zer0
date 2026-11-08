@@ -5394,8 +5394,5 @@ transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 15.63999, 1.1507998, -34.7659
 [node name="CharacterBody3D" type="CharacterBody3D" parent="." unique_id=438810634]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -256.9912, 29.957932, -63.207962)
 
-[node name="Sketchfab_Scene" parent="CharacterBody3D" unique_id=1116836468 instance=ExtResource("36_vga8s")]
-transform = Transform3D(-0.999399, 0, 0.034663796, 0, 1, 0, -0.034663796, 0, -0.999399, -13.165863, -2.1974354, -0.07922745)
-
-[node name="Sketchfab_Scene" parent="." unique_id=1411540625 instance=ExtResource("36_vga8s")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -36.650715, 1.0651536, -58.352905)
+[node name="Jet" parent="CharacterBody3D" unique_id=1116836468 instance=ExtResource("36_vga8s")]
+transform = Transform3D(-1.9987817, -0.062410984, 0.031253092, 0, 0.8955181, 1.7883085, -0.0697989, 1.7872192, -0.8949726, -13.165863, -2.1974354, -0.07922745)

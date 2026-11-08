@@ -13,6 +13,7 @@
 [ext_resource type="AudioStream" uid="uid://b2hr37mxgmh7h" path="res://Sounds/freesound_community-gun-shots-from-a-distance-10-39819.mp3" id="11_eifbt"]
 [ext_resource type="Texture2D" uid="uid://chmr0gotoljaq" path="res://Photos/images-2.png" id="12_0c3sc"]
 [ext_resource type="Script" uid="uid://d0fkm5k7uya1c" path="res://Script/Go_Back.gd" id="12_g56d3"]
+[ext_resource type="AudioStream" uid="uid://ue7vlrapbcd0" path="res://Sounds/Reload.mp3" id="12_tm5dd"]
 [ext_resource type="AudioStream" uid="uid://d2hnclxxos1ix" path="res://Sounds/universfield-interface-click-124476.mp3" id="13_7nu0q"]
 [ext_resource type="Texture2D" uid="uid://bum4y5uk7wyyo" path="res://Photos/Bildschirmfoto 2026-11-03 um 18.06.01.png" id="13_tm5dd"]
 [ext_resource type="FontFile" uid="uid://drmg31630aq1q" path="res://ll-detechno-glitch/LLDEtechnoGlitch-Bold0.ttf" id="13_unw7k"]
@@ -77,6 +78,12 @@ volume_db = 11.664
 position = Vector2(-3, -95)
 stream = ExtResource("11_eifbt")
 volume_db = 11.664
+
+[node name="Reload" type="AudioStreamPlayer2D" parent="." unique_id=1752906544]
+position = Vector2(-3, -95)
+stream = ExtResource("12_tm5dd")
+volume_db = 10.0
+max_polyphony = 2
 
 [node name="Copy_photo" type="Sprite2D" parent="." unique_id=1448687371]
 position = Vector2(2384.125, 838.125)

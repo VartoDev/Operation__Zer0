@@ -14,6 +14,7 @@
 [ext_resource type="Script" uid="uid://d4gak38sln5ib" path="res://Script/Volume_Buttons.gd" id="10_kfddy"]
 [ext_resource type="Script" uid="uid://by5k7v607ebgo" path="res://Script/Found_a_Bug_Button.gd" id="10_ki5r6"]
 [ext_resource type="Script" uid="uid://ceuglxm5btcmr" path="res://Script/Glitch_Sensi_Buttons.gd" id="11_dtmyu"]
+[ext_resource type="AudioStream" uid="uid://ue7vlrapbcd0" path="res://Sounds/Reload.mp3" id="11_nwjgv"]
 
 [node name="Control" type="Control" unique_id=220277187]
 layout_mode = 3
@@ -69,6 +70,11 @@ volume_db = 15.066
 [node name="Shots_from_far_away" type="AudioStreamPlayer2D" parent="." unique_id=2013042782]
 stream = ExtResource("9_p051w")
 volume_db = 17.009
+
+[node name="Reload" type="AudioStreamPlayer2D" parent="." unique_id=653334166]
+stream = ExtResource("11_nwjgv")
+volume_db = 10.0
+max_polyphony = 2
 
 [node name="Low_Sound" type="Button" parent="." unique_id=1368731034]
 layout_mode = 0
