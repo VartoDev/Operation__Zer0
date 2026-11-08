@@ -26,14 +26,25 @@ func _ready() -> void:
 
 	# 2. Plattform konfigurieren
 
+		
+	# Konfigurationsdatei laden
+	var config = ConfigFile.new()
+	var error = config.load("res://eos_local.cfg")
+
+	if error != OK:
+		print("Konfigurationsdatei nicht gefunden!")
+		return
+
+	# EOS-Einstellungen übernehmen
 	var create_options = EOS.Platform.CreateOptions.new()
 
-	create_options.product_id = "PRODUCT_ID"
-	create_options.sandbox_id = "SANDBOX_ID"
-	create_options.deployment_id = "DEPLOYMENT_ID"
-	create_options.client_id = "CLIENT_ID"
-	create_options.client_secret = "CLIENT_SECRET"
-	create_options.encryption_key = "64_ZEICHEN_LANGER_SCHLUESSEL"
+	create_options.product_id = config.get_value("eos", "product_id", "")
+	create_options.sandbox_id = config.get_value("eos", "sandbox_id", "")
+	create_options.deployment_id = config.get_value("eos", "deployment_id", "")
+	create_options.client_id = config.get_value("eos", "client_id", "")
+	create_options.client_secret = config.get_value("eos", "client_secret", "")
+	create_options.encryption_key = config.get_value("eos", "encryption_key", "")
+
 	
 	
 
