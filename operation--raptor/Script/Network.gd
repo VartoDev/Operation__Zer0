@@ -51,6 +51,12 @@ func _ready() -> void:
 
 	# 3. Plattform erstellen
 
+	# Prüfen, ob der Encryption Key gültig ist
+
+	if create_options.encryption_key.length() != 64:	
+		print("EOS: Encryption Key muss 64 Zeichen haben!")
+		return
+	
 	var success = await HPlatform.create_platform_async(create_options)
 
 	if success:
