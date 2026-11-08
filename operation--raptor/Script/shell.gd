@@ -50,12 +50,19 @@ func _on_schuss() -> void:
 
 		Bullet_Kopie.position = start_position
 		Bullet_Kopie.start_position = start_position
+		var random_angle: float = deg_to_rad(randf_range(-15.0, 15.0))
+
+		Bullet_Kopie.target_direction = Vector3.RIGHT.rotated(
+			Vector3.UP, random_angle
+		)
 		Bullet_Kopie.elapsed_time = 0.0
 		Bullet_Kopie.is_flying = true
 		Bullet_Kopie.visible = true
+		print("NEUE SHELL ERSTELLT!")
 
 
 func Bullet_shell_travel(delta: float) -> void:
+	
 	if elapsed_time < total_time:
 			elapsed_time = min(elapsed_time + delta, total_time)
 		

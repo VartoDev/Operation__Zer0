@@ -123,13 +123,16 @@ func _process(delta: float) -> void:
 	
 	if Input.is_action_just_pressed("Schießen") and Global.allowed_to_shoot and not Ist_Reloading:
 		$Shot.play()
-		var rotation_deg = [-1.75, 1.75].pick_random()
-		camera.rotate_z(deg_to_rad(rotation_deg))
-		camera.rotate_x(deg_to_rad(rotation_deg))
+		var rotation_deg_x = [-2.81, 2.81].pick_random()
+		var rotation_deg_z = [-1, 1].pick_random()
+		camera.rotate_z(deg_to_rad(rotation_deg_x))
+		camera.rotate_x(deg_to_rad(rotation_deg_z))
+		camera.rotate_y(deg_to_rad(rotation_deg_z))
 		# Wenn health weniger wird dann werde ich absitlich die rotation_deg erhöhrn
 		#camera.rotate_y(deg_to_rad(rotation_deg))
 		await get_tree().create_timer(0.08).timeout
 		camera.rotation.z = 0 
+		camera.rotation.y = 0 
 		await get_tree().create_timer(0.4).timeout  
 		$Shell_drop.play()  # <---- ändere es noch um das shell drop random.radiant (1,4) ist 
 		var Chance = randi_range(1,50)
