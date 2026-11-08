@@ -5,6 +5,7 @@
 [ext_resource type="Script" uid="uid://boc2s8wifv7hg" path="res://Script/Button_Play.gd" id="3_vrfts"]
 [ext_resource type="Script" uid="uid://dvyl2bx21e4sx" path="res://Script/Button_Exit.gd" id="4_0mc3e"]
 [ext_resource type="Script" uid="uid://bcsymscvv84nm" path="res://Script/Button_Settings.gd" id="5_2n5f6"]
+[ext_resource type="Script" uid="uid://dhauba0ja7j8j" path="res://DEBUG.gd" id="5_d5rvm"]
 [ext_resource type="AudioStream" uid="uid://6fpvwhvetsuc" path="res://Sounds/operation_zero_mouse_click.mp3" id="6_0mc3e"]
 [ext_resource type="Script" uid="uid://bue4f2g8rtfe0" path="res://Script/Button_Varto.gd" id="6_27c8x"]
 [ext_resource type="AudioStream" uid="uid://5qhnecji8tpi" path="res://Sounds/freesound_community-radio-static-6382 (mp3cut.net).mp3" id="7_2n5f6"]
@@ -69,6 +70,19 @@ offset_right = 1610.024
 offset_bottom = 634.302
 flat = true
 script = ExtResource("3_vrfts")
+
+[node name="DEBUG" type="Button" parent="." unique_id=659451544]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.384
+anchor_bottom = 0.093
+offset_left = 1762.0
+offset_top = 255.0
+offset_right = 1014.02405
+offset_bottom = 266.302
+theme_override_font_sizes/font_size = 100
+text = "DRÜCK MICH"
+script = ExtResource("5_d5rvm")
 
 [node name="Button_Exit" type="Button" parent="." unique_id=1884502093]
 layout_mode = 1
@@ -149,10 +163,11 @@ volume_db = 11.664
 
 [node name="Reload" type="AudioStreamPlayer2D" parent="." unique_id=2075872219]
 stream = ExtResource("16_5xurb")
-volume_db = 10.0
+volume_db = 24.0
 max_polyphony = 2
 
 [connection signal="pressed" from="Button_Play" to="Button_Play" method="_on_pressed"]
+[connection signal="pressed" from="DEBUG" to="DEBUG" method="_on_pressed"]
 [connection signal="pressed" from="Button_Exit" to="Button_Exit" method="_on_pressed"]
 [connection signal="pressed" from="Button_Settings" to="Button_Settings" method="_on_pressed"]
 [connection signal="pressed" from="Button_Varto" to="Button_Varto" method="_on_pressed"]

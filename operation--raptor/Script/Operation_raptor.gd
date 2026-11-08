@@ -44,7 +44,7 @@ func _ready() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	# Richtig stellung des laserpointes 
 	Animation_Reload.Reload_Status.connect(Check_Reload) 
-	
+	Engine.max_fps = 30
 	
 	
 #------- Main Code-------
@@ -56,7 +56,7 @@ func _input(event: InputEvent) -> void:
 		
 		# Drehung hoch/runter (X-Achse)
 		rotation_x -= event.relative.y * mouse_sensitivity
-		rotation_x = clamp(rotation_x, -PI / 19, PI / 4)
+		rotation_x = clamp(rotation_x, -PI / 22, PI / 4)
 		camera.rotation.x = rotation_x
 		
 		
@@ -124,10 +124,11 @@ func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("Schießen") and Global.allowed_to_shoot and not Ist_Reloading:
 		$Shot.play()
 		var rotation_deg_x = [-2.81, 2.81].pick_random()
-		var rotation_deg_z = [-1, 1].pick_random()
+		var rotation_deg_z = [-1, 2.81].pick_random()
+		var rotation_deg_y = [-1, 1].pick_random()
 		camera.rotate_z(deg_to_rad(rotation_deg_x))
 		camera.rotate_x(deg_to_rad(rotation_deg_z))
-		camera.rotate_y(deg_to_rad(rotation_deg_z))
+		camera.rotate_y(deg_to_rad(rotation_deg_y))
 		# Wenn health weniger wird dann werde ich absitlich die rotation_deg erhöhrn
 		#camera.rotate_y(deg_to_rad(rotation_deg))
 		await get_tree().create_timer(0.08).timeout
