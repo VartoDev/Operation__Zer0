@@ -3,6 +3,8 @@ extends Node
 
 var eos_initialized: bool = false
 var platform_created: bool = false
+var current_lobby: HLobby = null
+
 
 
 func _ready() -> void:
@@ -91,3 +93,33 @@ func _ready() -> void:
 
 	else:
 		print("EOS Plattform konnte nicht erstellt werden!")
+
+
+func create_lobby() -> bool:
+
+	if not platform_created:
+		print("EOS-Plattform ist nicht bereit!")
+		return false
+
+	if HAuth.product_user_id.is_empty():
+		print("Spieler ist nicht angemeldet!")
+		return false
+
+	var lobby_options = EOS.Lobby.CreateLobbyOptions.new()
+
+	lobby_options.bucket_id = "operation_zero_1v1"
+	lobby_options.max_lobby_members = 2
+	lobby_options.permission_level = EOS.Lobby.LobbyPermissionLevel.InviteOnly
+
+	var lobby = await HLobbies.create_lobby_async(lobby_options)
+
+	if lobby == null:
+		print("Lobby konnte nicht erstellt werden!")
+		return false
+
+	current_lobby = lobby
+
+	print("Lobby erfolgreich erstellt!")
+	print("Lobby ID: ", lobby.lobby_id)
+
+	return true

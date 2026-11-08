@@ -15,6 +15,19 @@ func _ready() -> void:
 	
 	
 func _on_pressed() -> void:
+	
+	disabled = true
+
+	var success = await Network.create_lobby()
+
+	if not success:
+		print("Fehler beim Erstellen der Lobby!")
+		disabled = false
+		return
+
+	
+	
+	
 	print("Join_lobby-Spielen wurde gedrückt!")
 	Button_Sound.play()
 	
