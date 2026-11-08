@@ -27,10 +27,10 @@ func _ready() -> void:
 	print("EOS erfolgreich initialisiert!")
 
 
-	# 2. Plattform konfigurieren
+	
 
 		
-	# Konfigurationsdatei laden
+	
 	var config = ConfigFile.new()
 	var error = config.load("res://eos_local.cfg")
 
@@ -52,15 +52,13 @@ func _ready() -> void:
 	
 
 
-	# 3. Plattform erstellen
-
-	# Prüfen, ob der Encryption Key gültig ist
+	
 
 	if create_options.encryption_key.length() != 64:	
 		print("EOS: Encryption Key muss 64 Zeichen haben!")
 		return
 	
-	# Prüfen, ob noch Platzhalter vorhanden sind
+	
 
 	var fields = {
 		"Product ID": create_options.product_id,
@@ -84,7 +82,7 @@ func _ready() -> void:
 		platform_created = true
 		print("EOS Plattform erfolgreich erstellt!")
 
-		# Spieler bei EOS Game Services anmelden
+		
 		var login_success: bool = await HAuth.login_anonymous_async("Player")
 
 		if login_success:
@@ -178,6 +176,7 @@ func join_lobby(code: String) -> bool:
 
 	print("Lobby erfolgreich beigetreten!")
 	print("Lobby ID: ", lobby.lobby_id)
+	
 
 	return true
 	
