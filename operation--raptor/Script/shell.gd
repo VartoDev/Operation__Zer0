@@ -81,7 +81,7 @@ func Bullet_shell_travel(delta: float) -> void:
 			var Sensi_Rotation = randi_range(1, 10)
 			rotation.x += Sensi_Rotation
 			# Debug
-			print(global_position)
+			#print(global_position)
 		
 		
 		
