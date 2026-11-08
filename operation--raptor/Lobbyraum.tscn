@@ -2,6 +2,7 @@
 
 [ext_resource type="VideoStream" uid="uid://y8vakr5dl1a0" path="res://videos/Lobby.mp4" id="1_gemq4"]
 [ext_resource type="Script" uid="uid://b4b18hihplvah" path="res://Script/VIDEO_UI2.gd" id="2_pj2oc"]
+[ext_resource type="Shader" uid="uid://ba56v33p58k8u" path="res://UI.gdshader" id="3_eifbt"]
 [ext_resource type="AudioStream" uid="uid://6fpvwhvetsuc" path="res://Sounds/operation_zero_mouse_click.mp3" id="3_q5h2y"]
 [ext_resource type="AudioStream" uid="uid://5qhnecji8tpi" path="res://Sounds/freesound_community-radio-static-6382 (mp3cut.net).mp3" id="4_g56d3"]
 [ext_resource type="AudioStream" uid="uid://dfd05y7s75ih4" path="res://Sounds/kave_msri-ak47-machine-gun-burst-sfx-332103.mp3" id="5_unw7k"]
@@ -18,6 +19,10 @@
 [ext_resource type="Texture2D" uid="uid://bum4y5uk7wyyo" path="res://Photos/Bildschirmfoto 2026-11-03 um 18.06.01.png" id="13_tm5dd"]
 [ext_resource type="FontFile" uid="uid://drmg31630aq1q" path="res://ll-detechno-glitch/LLDEtechnoGlitch-Bold0.ttf" id="13_unw7k"]
 [ext_resource type="Script" uid="uid://db21yudycx7qt" path="res://Script/Copy_Button.gd" id="14_qg0ob"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pyel5"]
+shader = ExtResource("3_eifbt")
+shader_parameter/contrast = 2.0
 
 [node name="Control" type="Control" unique_id=1611970521]
 layout_mode = 3
@@ -37,6 +42,20 @@ autoplay = true
 expand = true
 loop = true
 script = ExtResource("2_pj2oc")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="VideoStreamPlayer" unique_id=561098473]
+layer = 5
+
+[node name="ColorRect" type="ColorRect" parent="VideoStreamPlayer/CanvasLayer" unique_id=1946150097]
+material = SubResource("ShaderMaterial_pyel5")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -71.0
+offset_top = -41.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
 
 [node name="Button_Sound" type="AudioStreamPlayer2D" parent="." unique_id=1362786589]
 stream = ExtResource("3_q5h2y")

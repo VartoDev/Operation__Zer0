@@ -20,7 +20,7 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_05blp"]
 shader = ExtResource("16_taqas")
-shader_parameter/contrast = 1.2
+shader_parameter/contrast = 1.80000006175
 
 [node name="Control" type="Control" unique_id=1260267113]
 layout_mode = 3

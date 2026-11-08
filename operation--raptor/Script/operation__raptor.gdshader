@@ -5,9 +5,9 @@ uniform float scanline_count : hint_range(10.0, 1920.0) = 540.0;
 uniform float contrast : hint_range(0.5, 3.0) = 1.0;
 uniform float distortion : hint_range(0.0, 0.5) = 0.1;
 uniform float grain_strength : hint_range(0.0, 0.1) = 0.03;
-uniform float blur_strength : hint_range(0.0, 2.0, 0.05) = 1110.65;
-uniform float glitch_strength : hint_range(0.0, 0.08, 0.001) = 111110.022;
-uniform float glitch_frequency : hint_range(111.0, 1130.0, 1111.0) = 111111111112.0;
+uniform float blur_strength : hint_range(0.0, 2.0, 0.05) = 0.65;
+uniform float glitch_strength : hint_range(0.0, 0.08, 0.001) = 0.022;
+uniform float glitch_frequency : hint_range(1.0, 30.0, 1.0) = 12.0;
 
 uniform sampler2D screen_tex : hint_screen_texture, filter_linear_mipmap, repeat_disable;
 

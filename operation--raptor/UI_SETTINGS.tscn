@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://b4b18hihplvah" path="res://Script/VIDEO_UI2.gd" id="2_tciom"]
 [ext_resource type="AudioStream" uid="uid://6fpvwhvetsuc" path="res://Sounds/operation_zero_mouse_click.mp3" id="3_5ixev"]
 [ext_resource type="AudioStream" uid="uid://b2hr37mxgmh7h" path="res://Sounds/freesound_community-gun-shots-from-a-distance-10-39819.mp3" id="3_flto6"]
+[ext_resource type="Shader" uid="uid://ba56v33p58k8u" path="res://UI.gdshader" id="3_p051w"]
 [ext_resource type="AudioStream" uid="uid://5qhnecji8tpi" path="res://Sounds/freesound_community-radio-static-6382 (mp3cut.net).mp3" id="4_ki5r6"]
 [ext_resource type="AudioStream" uid="uid://dfd05y7s75ih4" path="res://Sounds/kave_msri-ak47-machine-gun-burst-sfx-332103.mp3" id="5_kfddy"]
 [ext_resource type="AudioStream" uid="uid://1b2dfwojatoe" path="res://Sounds/u_wxn5lzrjy3-military-radio-communication-222904.mp3" id="6_dtmyu"]
@@ -15,6 +16,10 @@
 [ext_resource type="Script" uid="uid://by5k7v607ebgo" path="res://Script/Found_a_Bug_Button.gd" id="10_ki5r6"]
 [ext_resource type="Script" uid="uid://ceuglxm5btcmr" path="res://Script/Glitch_Sensi_Buttons.gd" id="11_dtmyu"]
 [ext_resource type="AudioStream" uid="uid://ue7vlrapbcd0" path="res://Sounds/Reload.mp3" id="11_nwjgv"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_u8mfl"]
+shader = ExtResource("3_p051w")
+shader_parameter/contrast = 2.0
 
 [node name="Control" type="Control" unique_id=220277187]
 layout_mode = 3
@@ -34,6 +39,20 @@ autoplay = true
 expand = true
 loop = true
 script = ExtResource("2_tciom")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="VideoStreamPlayer" unique_id=2098941675]
+layer = 5
+
+[node name="ColorRect" type="ColorRect" parent="VideoStreamPlayer/CanvasLayer" unique_id=1860720807]
+material = SubResource("ShaderMaterial_u8mfl")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -71.0
+offset_top = -41.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
 
 [node name="Shots" type="AudioStreamPlayer2D" parent="." unique_id=1323740640]
 position = Vector2(-8, -95)
