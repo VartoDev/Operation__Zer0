@@ -44,6 +44,20 @@ expand = true
 loop = true
 script = ExtResource("2_3b2b5")
 
+[node name="CanvasLayer" type="CanvasLayer" parent="VideoStreamPlayer" unique_id=2029803461]
+layer = 5
+
+[node name="ColorRect" type="ColorRect" parent="VideoStreamPlayer/CanvasLayer" unique_id=1069550608]
+material = SubResource("ShaderMaterial_05blp")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -71.0
+offset_top = -41.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
 [node name="Button_Play" type="Button" parent="." unique_id=1655952321]
 layout_mode = 1
 anchors_preset = -1
@@ -132,18 +146,6 @@ volume_db = 11.664
 position = Vector2(-3, -95)
 stream = ExtResource("15_3ujc7")
 volume_db = 11.664
-
-[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=2029803461]
-layer = 5
-
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer" unique_id=1069550608]
-material = SubResource("ShaderMaterial_05blp")
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
 
 [node name="Reload" type="AudioStreamPlayer2D" parent="." unique_id=2075872219]
 stream = ExtResource("16_5xurb")

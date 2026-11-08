@@ -3,7 +3,7 @@ shader_type canvas_item;
 
 uniform sampler2D screen_texture : hint_screen_texture, repeat_disable, filter_nearest;
 
-uniform float contrast : hint_range(0.5, 2.0) = 1.2;
+uniform float contrast : hint_range(0.5, 2.0) = 20;
 
 void fragment() {
     vec3 color = texture(screen_texture, SCREEN_UV).rgb;
