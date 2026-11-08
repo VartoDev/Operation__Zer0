@@ -8,6 +8,7 @@ extends DirectionalLight3D
 @onready var Recharge_speed = 0.2 # <----- Recharge speed of the Flashlight
 @onready var Battery_life_exp = 1 # <--- Der Delay damit ein Prozent runtergeht
 @onready var Percent = 100
+@onready var Zahl = 0
 @onready var Loop_Start = true
 # Batterie Bilder:
 
@@ -17,6 +18,7 @@ extends DirectionalLight3D
 
 
 @onready var Battery_life_text = $"../../../../../../Battery_life"
+@onready var Uhrzeit_text = $"../../../../../../Uhrzeit"
 
 
 
@@ -69,6 +71,14 @@ func Battery_life(Percent):
 			print(Percent)
 			
 			Battery_life(Percent)
+
+
+func Uhrzeit():
+		Uhrzeit_text.text = "03:0" + str(Zahl)
+		await get_tree().create_timer(60).timeout
+		Zahl += 1
+		Uhrzeit_text.text = "03:0" + str(Zahl)
+		Uhrzeit()
 		
 
 func _input(event: InputEvent) -> void:
@@ -80,5 +90,6 @@ func _input(event: InputEvent) -> void:
 			print("Taschenlampe: ", "AN" if visible else "AUS")	
 			if Loop_Start:
 				Battery_life(Percent)
+				Uhrzeit()
 				Loop_Start = false
 			

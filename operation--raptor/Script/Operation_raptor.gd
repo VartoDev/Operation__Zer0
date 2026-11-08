@@ -126,6 +126,8 @@ func _process(delta: float) -> void:
 		var rotation_deg = [-1.75, 1.75].pick_random()
 		camera.rotate_z(deg_to_rad(rotation_deg))
 		camera.rotate_x(deg_to_rad(rotation_deg))
+		# Wenn health weniger wird dann werde ich absitlich die rotation_deg erhöhrn
+		#camera.rotate_y(deg_to_rad(rotation_deg))
 		await get_tree().create_timer(0.08).timeout
 		camera.rotation.z = 0 
 		await get_tree().create_timer(0.4).timeout  

@@ -5175,6 +5175,13 @@ offset_right = 202.0
 offset_bottom = 280.0
 theme_override_font_sizes/font_size = 48
 
+[node name="Uhrzeit" type="Label" parent="." unique_id=360268310]
+offset_left = 210.0
+offset_top = 147.0
+offset_right = 338.0
+offset_bottom = 210.0
+theme_override_font_sizes/font_size = 56
+
 [node name="Low_Battery" type="Sprite2D" parent="." unique_id=1347058752]
 visible = false
 position = Vector2(89, 88)
