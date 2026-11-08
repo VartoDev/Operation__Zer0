@@ -198,10 +198,10 @@ func leave_lobby() -> bool:
    
 	if current_lobby.is_owner():
 		success = await current_lobby.destroy_async()
-		return true
+		
 	else:
 		success = await current_lobby.leave_async()
-		return true
+		
 
    
 	if not success:
@@ -213,3 +213,5 @@ func leave_lobby() -> bool:
 	invitation_code = ""
 
 	print("Lobby erfolgreich verlassen!")
+	
+	return true

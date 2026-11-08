@@ -9,6 +9,7 @@ extends Button
 func _on_pressed() -> void:
 	
 	
+	disabled = true
 	# Vor dem Szenenwechsel Lobby verlassen
 	var success = await Network.leave_lobby()
 
