@@ -38,7 +38,12 @@ signal Schuss_abgegeben
 	Watch_Your_Ammo,
 	Hold_your_position,
 	Your_on_your_own
+	
 ]
+
+var is_moving: bool:
+	get:
+		return Input.is_key_pressed(KEY_W) or Input.is_key_pressed(KEY_S) or Input.is_key_pressed(KEY_D) or Input.is_key_pressed(KEY_A)
 
 # ...----Munition und Health system---...
 @onready var health_text: Label = get_node("/root/Operation_Raptor/Text_Health")
@@ -79,7 +84,7 @@ func is_any_sound_playing() -> bool:
 func _process(delta: float) -> void:
 	Check_if_hit(delta)
 	health_text.text = "Health: " + str(health) + " | Munition: " + str(Munition)
-	if Input.is_action_just_pressed("Reload") and not is_reloading:
+	if Input.is_action_just_pressed("Reload") and not is_reloading and not is_moving:
 		is_reloading = true
 		await get_tree().create_timer(2.9).timeout
 		Munition = 15

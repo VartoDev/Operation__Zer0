@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://b8u6ij870ynff"
+path="res://.godot/imported/Single-shot (mp3cut.net).mp3-9bcf763f99bb7968ee71ca5f78feb001.mp3str"
+
+[deps]
+
+source_file="res://Sounds/Single-shot (mp3cut.net).mp3"
+dest_files=["res://.godot/imported/Single-shot (mp3cut.net).mp3-9bcf763f99bb7968ee71ca5f78feb001.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

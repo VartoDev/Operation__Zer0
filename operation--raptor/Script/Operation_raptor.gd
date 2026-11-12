@@ -11,6 +11,7 @@ var Sound_gespielt = false
 var Sprinting = false
 var sound_played = false 
 var Ist_Reloading: bool = false
+var pos = false
 
 # -----Wurzeln--------
 @onready var camera: Camera3D = $Camera3D
@@ -28,7 +29,7 @@ var Ist_Reloading: bool = false
 @onready var Extra = $"/root/Operation_Raptor/Player/Extraction_point"
 @onready var Flash_Light = $"/root/Operation_Raptor/Player/AK47/ViewModel/Gun/Mag/Light"
 @onready var Animation_Reload = $AK47/AnimationPlayer
-
+@onready var original_pos = camera.position
 @onready var SOUND_NAMES = [
 	Watch_Your_Ammo,
 	Hold_your_position,
@@ -45,7 +46,6 @@ func _ready() -> void:
 	# Richtig stellung des laserpointes 
 	Animation_Reload.Reload_Status.connect(Check_Reload) 
 	Engine.max_fps = 30
-	
 	
 #------- Main Code-------
 
@@ -119,20 +119,40 @@ func _process(delta: float) -> void:
 
 	
 	
-
+	
 	
 	if Input.is_action_just_pressed("Schießen") and Global.allowed_to_shoot and not Ist_Reloading:
 		$Shot.play()
-		var rotation_deg_x = [-2.81, 2.81].pick_random()
-		var rotation_deg_z = [-1, 2.81].pick_random()
-		var rotation_deg_y = [-1, 1].pick_random()
+		var pos_offset_x = [-0.05, 0.05].pick_random()
+		var pos_offset_y = [-0.03, 0.08].pick_random()
+		var pos_offset_z = [-0.05, 0.05].pick_random()
+
+		# Ursprüngliche Position merken (wichtig, falls sich die Kamera bewegt!)
+		
+		
+
+		# 2. Kamera um die zufälligen Werte verschieben
+		camera.position += Vector3(pos_offset_x, pos_offset_y, pos_offset_z)
+		# Alternativ einzeln:
+		# camera.position.x += pos_offset_x
+		# camera.position.y += pos_offset_y
+		# camera.position.z += pos_offset_z
+
+		# 3. Kurz warten
+		await get_tree().create_timer(0.08).timeout
+
+		# 4. Kamera wieder auf die ursprüngliche Position zurücksetzen
+		camera.position = original_pos
+		var rotation_deg_x = [-1.81, 1.81].pick_random()
+		var rotation_deg_z = [-0.5, 3].pick_random()
+		var rotation_deg_y = [-3, 3].pick_random()
 		camera.rotate_z(deg_to_rad(rotation_deg_x))
 		camera.rotate_x(deg_to_rad(rotation_deg_z))
-		camera.rotate_y(deg_to_rad(rotation_deg_y))
+		#camera.rotate_y(deg_to_rad(rotation_deg_y))
 		# Wenn health weniger wird dann werde ich absitlich die rotation_deg erhöhrn
 		#camera.rotate_y(deg_to_rad(rotation_deg))
 		await get_tree().create_timer(0.08).timeout
-		camera.rotation.z = 0 
+		camera.rotation.z = 0
 		camera.rotation.y = 0 
 		await get_tree().create_timer(0.4).timeout  
 		$Shell_drop.play()  # <---- ändere es noch um das shell drop random.radiant (1,4) ist 
