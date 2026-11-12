@@ -143,23 +143,40 @@ func _process(delta: float) -> void:
 
 		# 4. Kamera wieder auf die ursprüngliche Position zurücksetzen
 		camera.position = original_pos
-		var rotation_deg_x = [-1.81, 1.81].pick_random()
+		# Zufällige Rotationswerte wählen
+		var rotation_deg_x = [-3.81, 3.81].pick_random()
 		var rotation_deg_z = [-0.5, 3].pick_random()
 		var rotation_deg_y = [-3, 3].pick_random()
-		camera.rotate_z(deg_to_rad(rotation_deg_x))
-		camera.rotate_x(deg_to_rad(rotation_deg_z))
-		#camera.rotate_y(deg_to_rad(rotation_deg_y))
-		# Wenn health weniger wird dann werde ich absitlich die rotation_deg erhöhrn
-		#camera.rotate_y(deg_to_rad(rotation_deg))
-		await get_tree().create_timer(0.08).timeout
-		camera.rotation.z = 0
-		camera.rotation.y = 0 
+
+	# Zielrotation berechnen (Ausgangswert + zufälliger Ausschlag)
+		var target_rot = camera.rotation
+		target_rot.z += deg_to_rad(rotation_deg_x)
+		target_rot.x += deg_to_rad(rotation_deg_z)
+		# target_rot.y += deg_to_rad(rotation_deg_y)
+
+		# Tween erstellen für einen sanften Übergang
+		var tween = create_tween()
+
+		# 1. Schneller Ausschlag nach außen (0.04 Sekunden)
+		tween.tween_property(camera, "rotation", target_rot, 0.04)\
+			.set_trans(Tween.TRANS_SINE)\
+			.set_ease(Tween.EASE_OUT)
+
+		# 2. Sanftes Zurückgleiten auf 0 (0.15 Sekunden)
+		tween.tween_property(camera, "rotation:z", 0.0, 0.15)\
+			.set_trans(Tween.TRANS_SINE)\
+	.		set_ease(Tween.EASE_IN_OUT)
+
+		# Parallel dazu die Y-Rotation zurücksetzen (falls genutzt)
+		tween.parallel().tween_property(camera, "rotation:y", 0.0, 0.15)\
+			.set_trans(Tween.TRANS_SINE)\
+			.set_ease(Tween.EASE_IN_OUT)
 		await get_tree().create_timer(0.4).timeout  
 		$Shell_drop.play()  # <---- ändere es noch um das shell drop random.radiant (1,4) ist 
 		var Chance = randi_range(1,50)
 		if Chance == 1 and is_any_sound_playing():
-			Walkie_Talkie.play()
-			Parameter.play()
+					Walkie_Talkie.play()
+					Parameter.play()
 		
 		
 							
