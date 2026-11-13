@@ -77,7 +77,7 @@ func Uhrzeit():
 		Uhrzeit_text.text = "03:0" + str(Zahl)
 		await get_tree().create_timer(60).timeout
 		Zahl += 1
-		Uhrzeit_text.text = "03:0" + str(Zahl)
+		Uhrzeit_text.text = "03:0" + str(Zahl)	
 		Uhrzeit()
 		
 

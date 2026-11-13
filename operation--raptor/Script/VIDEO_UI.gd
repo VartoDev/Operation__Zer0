@@ -18,7 +18,20 @@ extends VideoStreamPlayer
 
 # ....----* Main Code *----.... 
 func _ready():
-	play()  # <----- Video wird abgespielt
+	
+	print("VIDEO-DATEI: ",
+	FileAccess.file_exists("res://videos/1001.mp4"))
+
+	print("VIDEO-RESSOURCE: ", stream)
+
+	play()
+
+	await get_tree().create_timer(2.0).timeout
+
+	print("VIDEO LÄUFT: ", is_playing())
+	print("VIDEO POSITION: ", stream_position)
+
+	#play()  # <----- Video wird abgespielt
 	Random_Zahl_generieren() # <---- Loop für die Sounds wird in rollen gebracht 
 	while 1 == 1:
 		Sound_play(Communication_Sound, 3, 15)
