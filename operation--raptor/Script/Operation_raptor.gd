@@ -149,7 +149,7 @@ func _process(delta: float) -> void:
 		camera.position = original_pos
 		# Zufällige Rotationswerte wählen
 		var rotation_deg_x = [-3.81, 3.81].pick_random()
-		var rotation_deg_z = [-0.5, 3].pick_random()
+		var rotation_deg_z = [-0.5, 5].pick_random()
 		var rotation_deg_y = [-0.5, 3].pick_random()
 
 	# Zielrotation berechnen (Ausgangswert + zufälliger Ausschlag)
@@ -191,12 +191,12 @@ func _process(delta: float) -> void:
 		
 	
 	# Prüfen, ob die rechte Maustaste gedrückt gehalten wird
-	var target_z = original_pos.x
-	if Input.is_mouse_button_pressed(MOUSE_BUTTON_RIGHT):
-		target_z = original_pos.x + zoom_offset
+	#var target_z = original_pos.x
+	#if Input.is_mouse_button_pressed(MOUSE_BUTTON_RIGHT):
+		#target_z = original_pos.x + zoom_offset
 	
 	# Kamera sanft auf die Ziel-Z-Position bewegen
-	camera.position.x = lerp(camera.position.x, target_z, zoom_speed * delta)
+	#camera.position.x = lerp(camera.position.x, target_z, zoom_speed * delta)
 	
 	# --- Hier folgt dein restlicher Bewegungscode (move_and_slide usw.) ---
 		
@@ -247,6 +247,7 @@ func _physics_process(_delta: float) -> void:
 		if not Sound_gespielt and not sound_played:
 			Walking.play()
 			Sound_gespielt = true
+			
 	
 	# A steuert fest nach -X (Westen)
 	if Input.is_key_pressed(KEY_A) or Input.is_action_pressed("ui_left") and Global.allowed_move and not Sprinting:

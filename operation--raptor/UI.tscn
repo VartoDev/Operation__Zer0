@@ -1,11 +1,11 @@
 [gd_scene format=3 uid="uid://csq13oulvumxj"]
 
-[ext_resource type="VideoStream" uid="uid://csf7hifekl4rn" path="res://videos/1001.mp4" id="1_3b2b5"]
+[ext_resource type="VideoStream" uid="uid://cu6mfjekb0nkn" path="res://videos/Bildschirmaufnahme 2026-11-13 um 21.46.47.mp4" id="1_d5rvm"]
 [ext_resource type="Script" uid="uid://bem0mcb12460f" path="res://Script/VIDEO_UI.gd" id="2_3b2b5"]
+[ext_resource type="Shader" uid="uid://dkxxdwqlhi4r4" path="res://Script/operation__raptor.gdshader" id="3_d5rvm"]
 [ext_resource type="Script" uid="uid://boc2s8wifv7hg" path="res://Script/Button_Play.gd" id="3_vrfts"]
 [ext_resource type="Script" uid="uid://dvyl2bx21e4sx" path="res://Script/Button_Exit.gd" id="4_0mc3e"]
 [ext_resource type="Script" uid="uid://bcsymscvv84nm" path="res://Script/Button_Settings.gd" id="5_2n5f6"]
-[ext_resource type="Script" uid="uid://dhauba0ja7j8j" path="res://DEBUG.gd" id="5_d5rvm"]
 [ext_resource type="AudioStream" uid="uid://6fpvwhvetsuc" path="res://Sounds/operation_zero_mouse_click.mp3" id="6_0mc3e"]
 [ext_resource type="Script" uid="uid://bue4f2g8rtfe0" path="res://Script/Button_Varto.gd" id="6_27c8x"]
 [ext_resource type="AudioStream" uid="uid://5qhnecji8tpi" path="res://Sounds/freesound_community-radio-static-6382 (mp3cut.net).mp3" id="7_2n5f6"]
@@ -17,11 +17,20 @@
 [ext_resource type="AudioStream" uid="uid://btdxop3emcwdg" path="res://Sounds/dragon-studio-car-engine-372477.mp3" id="14_foiwe"]
 [ext_resource type="AudioStream" uid="uid://b2hr37mxgmh7h" path="res://Sounds/freesound_community-gun-shots-from-a-distance-10-39819.mp3" id="15_3ujc7"]
 [ext_resource type="AudioStream" uid="uid://ue7vlrapbcd0" path="res://Sounds/Reload.mp3" id="16_5xurb"]
-[ext_resource type="Shader" uid="uid://ba56v33p58k8u" path="res://UI.gdshader" id="16_taqas"]
+[ext_resource type="AudioStream" uid="uid://cyhhn6bibmcrq" path="res://Sounds/Helicopter - Sound Effect (mp3cut.net).mp3" id="19_qo1pa"]
+[ext_resource type="FontFile" uid="uid://drmg31630aq1q" path="res://ll-detechno-glitch/LLDEtechnoGlitch-Bold0.ttf" id="20_40r0a"]
+[ext_resource type="FontFile" uid="uid://c0o1y88bld8de" path="res://ll-detechno-glitch/LLDEtechnoGlitch-BoldItalic100.ttf" id="21_ly2lw"]
+[ext_resource type="FontFile" uid="uid://bxykh5xcee4cq" path="res://Monocraft-Black-Italic.ttf" id="22_3mirh"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_05blp"]
-shader = ExtResource("16_taqas")
-shader_parameter/contrast = 1.80000006175
+shader = ExtResource("3_d5rvm")
+shader_parameter/scanline_count = 665.934031156865
+shader_parameter/contrast = 1.0
+shader_parameter/distortion = 0.1
+shader_parameter/grain_strength = 0.10000000149012
+shader_parameter/blur_strength = 0.0
+shader_parameter/glitch_strength = 0.022
+shader_parameter/glitch_frequency = 12.0
 
 [node name="Control" type="Control" unique_id=1260267113]
 layout_mode = 3
@@ -39,7 +48,7 @@ offset_top = -95.0
 offset_right = 3173.0
 offset_bottom = 2000.0
 audio_track = 1
-stream = ExtResource("1_3b2b5")
+stream = ExtResource("1_d5rvm")
 autoplay = true
 expand = true
 loop = true
@@ -49,12 +58,14 @@ script = ExtResource("2_3b2b5")
 layer = 5
 
 [node name="ColorRect" type="ColorRect" parent="VideoStreamPlayer/CanvasLayer" unique_id=1069550608]
+z_index = 1
 material = SubResource("ShaderMaterial_05blp")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = -71.0
-offset_top = -41.0
+offset_top = -96.0
+offset_right = 261.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
@@ -71,28 +82,15 @@ offset_bottom = 634.302
 flat = true
 script = ExtResource("3_vrfts")
 
-[node name="DEBUG" type="Button" parent="." unique_id=659451544]
-layout_mode = 1
-anchors_preset = -1
-anchor_right = 0.384
-anchor_bottom = 0.093
-offset_left = 1762.0
-offset_top = 255.0
-offset_right = 1014.02405
-offset_bottom = 266.302
-theme_override_font_sizes/font_size = 100
-text = "DRÜCK MICH"
-script = ExtResource("5_d5rvm")
-
 [node name="Button_Exit" type="Button" parent="." unique_id=1884502093]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 0.384
 anchor_bottom = 0.093
 offset_left = 2337.0
-offset_top = 1390.0
-offset_right = 1589.024
-offset_bottom = 1434.302
+offset_top = 1248.0
+offset_right = 1565.024
+offset_bottom = 1327.302
 flat = true
 script = ExtResource("4_0mc3e")
 
@@ -101,10 +99,10 @@ layout_mode = 1
 anchors_preset = -1
 anchor_right = 0.384
 anchor_bottom = 0.093
-offset_left = 2173.0
+offset_left = 2193.0
 offset_top = 963.0
 offset_right = 1748.024
-offset_bottom = 1067.302
+offset_bottom = 972.302
 flat = true
 script = ExtResource("5_2n5f6")
 
@@ -113,9 +111,9 @@ layout_mode = 1
 anchors_preset = -1
 anchor_right = 0.384
 anchor_bottom = 0.093
-offset_left = 2238.0
-offset_top = 1696.0
-offset_right = 1638.024
+offset_left = 2392.0
+offset_top = 1522.0
+offset_right = 1515.024
 offset_bottom = 1599.302
 flat = true
 script = ExtResource("6_27c8x")
@@ -166,8 +164,115 @@ stream = ExtResource("16_5xurb")
 volume_db = 24.0
 max_polyphony = 2
 
+[node name="Heli" type="AudioStreamPlayer2D" parent="." unique_id=283536133]
+stream = ExtResource("19_qo1pa")
+volume_db = 5.888
+autoplay = true
+parameters/looping = true
+
+[node name="Titel" type="Label" parent="." unique_id=1921128580]
+z_index = 100
+layout_mode = 0
+offset_left = 325.0
+offset_top = 765.0
+offset_right = 1084.0
+offset_bottom = 1248.0
+theme_override_fonts/font = ExtResource("20_40r0a")
+theme_override_font_sizes/font_size = 200
+text = "Operation
+Zero"
+horizontal_alignment = 1
+
+[node name="Titel2" type="Label" parent="." unique_id=1740175484]
+z_index = 100
+layout_mode = 0
+offset_left = 2136.0
+offset_top = 613.0
+offset_right = 2895.0
+offset_bottom = 1096.0
+theme_override_fonts/font = ExtResource("21_ly2lw")
+theme_override_font_sizes/font_size = 200
+text = "Play"
+horizontal_alignment = 1
+
+[node name="Titel3" type="Label" parent="." unique_id=268558574]
+z_index = 100
+layout_mode = 0
+offset_left = 2116.0
+offset_top = 929.0
+offset_right = 2875.0
+offset_bottom = 1655.0
+theme_override_fonts/font = ExtResource("21_ly2lw")
+theme_override_font_sizes/font_size = 200
+text = "Settings
+
+"
+horizontal_alignment = 1
+
+[node name="Titel4" type="Label" parent="." unique_id=2007068468]
+z_index = 100
+layout_mode = 0
+offset_left = 2128.0
+offset_top = 1245.0
+offset_right = 2887.0
+offset_bottom = 1728.0
+theme_override_colors/font_color = Color(0.8632203, 0, 0.025498709, 1)
+theme_override_fonts/font = ExtResource("20_40r0a")
+theme_override_font_sizes/font_size = 200
+text = "Exit
+"
+horizontal_alignment = 1
+
+[node name="Titel5" type="Label" parent="." unique_id=1392571716]
+z_index = 100
+layout_mode = 0
+offset_left = 2235.0
+offset_top = 1542.0
+offset_right = 2788.0
+offset_bottom = 2025.0
+theme_override_fonts/font = ExtResource("20_40r0a")
+theme_override_font_sizes/font_size = 80
+text = "Made by 
+Varto"
+horizontal_alignment = 1
+
+[node name="Titel6" type="Label" parent="." unique_id=1747965158]
+z_index = 100
+layout_mode = 0
+offset_left = 2386.0
+offset_top = 88.0
+offset_right = 3145.0
+offset_bottom = 571.0
+theme_override_fonts/font = ExtResource("22_3mirh")
+theme_override_font_sizes/font_size = 100
+text = "Cam 1"
+horizontal_alignment = 1
+
+[node name="Titel8" type="Label" parent="." unique_id=1187824548]
+z_index = 100
+layout_mode = 0
+offset_left = 2366.0
+offset_top = 225.0
+offset_right = 3125.0
+offset_bottom = 708.0
+theme_override_fonts/font = ExtResource("22_3mirh")
+theme_override_font_sizes/font_size = 35
+text = "Recording!"
+horizontal_alignment = 1
+
+[node name="Titel7" type="Label" parent="." unique_id=1842393112]
+z_index = 100
+layout_mode = 0
+offset_left = 18.0
+offset_top = 1740.0
+offset_right = 777.0
+offset_bottom = 2223.0
+theme_override_fonts/font = ExtResource("22_3mirh")
+theme_override_font_sizes/font_size = 65
+text = "24.02.1981"
+horizontal_alignment = 1
+
 [connection signal="pressed" from="Button_Play" to="Button_Play" method="_on_pressed"]
-[connection signal="pressed" from="DEBUG" to="DEBUG" method="_on_pressed"]
 [connection signal="pressed" from="Button_Exit" to="Button_Exit" method="_on_pressed"]
 [connection signal="pressed" from="Button_Settings" to="Button_Settings" method="_on_pressed"]
 [connection signal="pressed" from="Button_Varto" to="Button_Varto" method="_on_pressed"]

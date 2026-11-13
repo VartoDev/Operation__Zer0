@@ -6102,9 +6102,10 @@ layer = 0
 [node name="ColorRect" type="ColorRect" parent="Player/Camera3D/CanvasLayer" unique_id=1868731790]
 material = SubResource("ShaderMaterial_5wpy2")
 custom_minimum_size = Vector2(2560, 1664)
-custom_maximum_size = Vector2(2560, 1664)
+custom_maximum_size = Vector2(3000, 3000)
+offset_top = -968.99994
 offset_right = 2560.0
-offset_bottom = 1664.0
+offset_bottom = 791.9001
 scale = Vector2(10, 10)
 
 [node name="Walking_Sound" type="AudioStreamPlayer3D" parent="Player" unique_id=969772032]
@@ -7014,3 +7015,12 @@ doppler_tracking = 2
 parameters/looping = true
 script = ExtResource("48_ydesc")
 gebaeude_kollisions_maske = 7
+
+[node name="Cam12" type="Label" parent="." unique_id=205698467]
+z_index = 4096
+offset_left = 21651.0
+offset_top = 213.0
+offset_right = 25222.0
+offset_bottom = 5342.0
+theme_override_font_sizes/font_size = 1000
+text = "Cam 12"

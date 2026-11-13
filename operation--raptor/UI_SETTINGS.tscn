@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://b4b18hihplvah" path="res://Script/VIDEO_UI2.gd" id="2_tciom"]
 [ext_resource type="AudioStream" uid="uid://6fpvwhvetsuc" path="res://Sounds/operation_zero_mouse_click.mp3" id="3_5ixev"]
 [ext_resource type="AudioStream" uid="uid://b2hr37mxgmh7h" path="res://Sounds/freesound_community-gun-shots-from-a-distance-10-39819.mp3" id="3_flto6"]
-[ext_resource type="Shader" uid="uid://ba56v33p58k8u" path="res://UI.gdshader" id="3_p051w"]
+[ext_resource type="Shader" uid="uid://dkxxdwqlhi4r4" path="res://Script/operation__raptor.gdshader" id="3_p051w"]
 [ext_resource type="AudioStream" uid="uid://5qhnecji8tpi" path="res://Sounds/freesound_community-radio-static-6382 (mp3cut.net).mp3" id="4_ki5r6"]
 [ext_resource type="AudioStream" uid="uid://dfd05y7s75ih4" path="res://Sounds/kave_msri-ak47-machine-gun-burst-sfx-332103.mp3" id="5_kfddy"]
 [ext_resource type="AudioStream" uid="uid://1b2dfwojatoe" path="res://Sounds/u_wxn5lzrjy3-military-radio-communication-222904.mp3" id="6_dtmyu"]
@@ -16,10 +16,17 @@
 [ext_resource type="Script" uid="uid://by5k7v607ebgo" path="res://Script/Found_a_Bug_Button.gd" id="10_ki5r6"]
 [ext_resource type="Script" uid="uid://ceuglxm5btcmr" path="res://Script/Glitch_Sensi_Buttons.gd" id="11_dtmyu"]
 [ext_resource type="AudioStream" uid="uid://ue7vlrapbcd0" path="res://Sounds/Reload.mp3" id="11_nwjgv"]
+[ext_resource type="FontFile" uid="uid://bxykh5xcee4cq" path="res://Monocraft-Black-Italic.ttf" id="17_u8mfl"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_u8mfl"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xk6fa"]
 shader = ExtResource("3_p051w")
-shader_parameter/contrast = 2.0
+shader_parameter/scanline_count = 634.4510296614225
+shader_parameter/contrast = 1.7550000596125
+shader_parameter/distortion = 0.1
+shader_parameter/grain_strength = 0.10000000149012
+shader_parameter/blur_strength = 0.0
+shader_parameter/glitch_strength = 0.062000002945
+shader_parameter/glitch_frequency = 12.0
 
 [node name="Control" type="Control" unique_id=220277187]
 layout_mode = 3
@@ -44,7 +51,7 @@ script = ExtResource("2_tciom")
 layer = 5
 
 [node name="ColorRect" type="ColorRect" parent="VideoStreamPlayer/CanvasLayer" unique_id=1860720807]
-material = SubResource("ShaderMaterial_u8mfl")
+material = SubResource("ShaderMaterial_xk6fa")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -166,6 +173,18 @@ offset_right = 488.0
 offset_bottom = 1986.0
 flat = true
 script = ExtResource("10_5ixev")
+
+[node name="Titel6" type="Label" parent="." unique_id=985403287]
+z_index = 100
+layout_mode = 0
+offset_left = -128.0
+offset_top = 33.0
+offset_right = 631.0
+offset_bottom = 516.0
+theme_override_fonts/font = ExtResource("17_u8mfl")
+theme_override_font_sizes/font_size = 100
+text = "Cam 3"
+horizontal_alignment = 1
 
 [connection signal="pressed" from="Low_Sound" to="Low_Sound" method="_on_pressed"]
 [connection signal="pressed" from="Medium_Sound" to="Medium_Sound" method="_on_pressed_medium"]
