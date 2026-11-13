@@ -5,6 +5,10 @@ extends CharacterBody3D
 @export var mouse_sensitivity: float = 0.003
 var time_passed: float = 0.0
 var rotation_x: float = 0.0 
+@export var speed_of_zoom: float = 5
+@export var mouse_sensitivity_zoom: float = 0.003
+@export var zoom_offset: float = 0.6
+@export var zoom_speed: float = 7
 
 # -----Booleans--------
 var Sound_gespielt = false
@@ -124,7 +128,7 @@ func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("Schießen") and Global.allowed_to_shoot and not Ist_Reloading:
 		$Shot.play()
 		var pos_offset_x = [-0.05, 0.05].pick_random()
-		var pos_offset_y = [-0.03, 0.08].pick_random()
+		var pos_offset_y = [-0.05, 0.08].pick_random()
 		var pos_offset_z = [-0.05, 0.05].pick_random()
 
 		# Ursprüngliche Position merken (wichtig, falls sich die Kamera bewegt!)
@@ -146,7 +150,7 @@ func _process(delta: float) -> void:
 		# Zufällige Rotationswerte wählen
 		var rotation_deg_x = [-3.81, 3.81].pick_random()
 		var rotation_deg_z = [-0.5, 3].pick_random()
-		var rotation_deg_y = [-3, 3].pick_random()
+		var rotation_deg_y = [-0.5, 3].pick_random()
 
 	# Zielrotation berechnen (Ausgangswert + zufälliger Ausschlag)
 		var target_rot = camera.rotation
@@ -185,7 +189,16 @@ func _process(delta: float) -> void:
 		
 		
 		
-		
+	
+	# Prüfen, ob die rechte Maustaste gedrückt gehalten wird
+	var target_z = original_pos.x
+	if Input.is_mouse_button_pressed(MOUSE_BUTTON_RIGHT):
+		target_z = original_pos.x + zoom_offset
+	
+	# Kamera sanft auf die Ziel-Z-Position bewegen
+	camera.position.x = lerp(camera.position.x, target_z, zoom_speed * delta)
+	
+	# --- Hier folgt dein restlicher Bewegungscode (move_and_slide usw.) ---
 		
 		
 	

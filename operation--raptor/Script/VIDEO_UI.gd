@@ -24,7 +24,7 @@ func _ready():
 
 	print("VIDEO-RESSOURCE: ", stream)
 
-	play()
+	VideoHelper.start_video(self)
 
 	await get_tree().create_timer(2.0).timeout
 
@@ -54,6 +54,7 @@ func _ready():
 func Sound_play(Name_of_song, Anfang, Ende):
 	var Random_Zahl = randi_range(Anfang, Ende)
 	await get_tree().create_timer(Random_Zahl).timeout  # Eine Funktion die ein Sound nach einer gewissen Zeit abspielt
+	print(Name_of_song)
 	Name_of_song.play()
 
 
@@ -71,10 +72,6 @@ func Sound_Abspielen(frequenz):
 
 	
 	
-	
-	
-	
 
-	  
-
-		
+func _enter_tree() -> void:
+	autoplay = false

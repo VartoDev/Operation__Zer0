@@ -17,6 +17,7 @@ extends VideoStreamPlayer
 
 # ....----* Main Code *----.... 
 func _ready():
+	VideoHelper.start_video(self)
 	Button_Sound.play()
 	Random_Zahl_generieren() # <---- Loop für die Sounds wird in rollen gebracht 
 	while 1 == 1:
@@ -58,8 +59,9 @@ func Sound_Abspielen(frequenz):
 
 	
 	
-	
-	
+func _enter_tree() -> void:
+	autoplay = false
+
 	
 	
 	

@@ -16,6 +16,7 @@
 [ext_resource type="Script" uid="uid://by5k7v607ebgo" path="res://Script/Found_a_Bug_Button.gd" id="13_mcr0o"]
 [ext_resource type="Script" uid="uid://dk8i4knvubykj" path="res://Script/Create_lobby.gd" id="15_ru6a5"]
 [ext_resource type="Script" uid="uid://cyvrobqh4earp" path="res://Script/Join_Lobby.gd" id="16_ru6a5"]
+[ext_resource type="AudioStream" uid="uid://ue7vlrapbcd0" path="res://Sounds/Reload.mp3" id="17_l81y5"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_l81y5"]
 shader = ExtResource("3_ru6a5")
@@ -90,11 +91,6 @@ position = Vector2(-3, -95)
 stream = ExtResource("10_4ev6u")
 volume_db = 11.664
 
-[node name="Shots" type="AudioStreamPlayer2D" parent="." unique_id=1558798505]
-position = Vector2(-3, -95)
-stream = ExtResource("11_4ev6u")
-volume_db = 11.664
-
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1715312850]
 position = Vector2(831, 112.5)
 scale = Vector2(11.928571, 2.6509433)
@@ -134,6 +130,17 @@ offset_right = 2097.0
 offset_bottom = 1350.0
 flat = true
 script = ExtResource("16_ru6a5")
+
+[node name="Shots" type="AudioStreamPlayer2D" parent="." unique_id=1653432028]
+position = Vector2(-3, -95)
+stream = ExtResource("11_4ev6u")
+volume_db = 11.664
+
+[node name="Reload" type="AudioStreamPlayer2D" parent="." unique_id=1134378551]
+position = Vector2(-3, -95)
+stream = ExtResource("17_l81y5")
+volume_db = 10.0
+max_polyphony = 2
 
 [connection signal="pressed" from="Go_Back" to="Go_Back" method="_on_pressed"]
 [connection signal="pressed" from="Found_a_Bug" to="Found_a_Bug" method="_on_pressed"]
