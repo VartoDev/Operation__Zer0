@@ -149,7 +149,7 @@ func _process(delta: float) -> void:
 		camera.position = original_pos
 		# Zufällige Rotationswerte wählen
 		var rotation_deg_x = [-3.81, 3.81].pick_random()
-		var rotation_deg_z = [-0.5, 5].pick_random()
+		var rotation_deg_z = [5, 5].pick_random()
 		var rotation_deg_y = [-0.5, 3].pick_random()
 
 	# Zielrotation berechnen (Ausgangswert + zufälliger Ausschlag)
