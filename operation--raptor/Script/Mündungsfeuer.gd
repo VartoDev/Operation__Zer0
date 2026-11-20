@@ -5,7 +5,7 @@ extends Node
 var Mündungsfeuer := self
 var Ist_Reloading: bool = false
 
-@onready var Animation_Reload = $"../AnimationPlayer"
+@onready var Animation_Reload = $"../AK47/AnimationPlayer"
 
 
 # Called when the node enters the scene tree for the first time.
